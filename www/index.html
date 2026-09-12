@@ -751,16 +751,27 @@ function openBeanForm(id){
     modalHead(isEdit?'编辑豆子':'新增豆子')+
     '<div class="field"><label>品名 *</label><input class="input" name="name" value="'+esc(b.name||'')+'" placeholder="例如：埃塞 耶加雪菲"></div>'+
     '<div class="field"><label>烘焙商</label><input class="input" name="roaster" value="'+esc(b.roaster||'')+'" placeholder="例如：某某烘焙"></div>'+
-    '<div class="field"><label class="switch" style="font-size:13px"><span style="color:var(--dim);font-weight:700">拼配豆</span>'+
-      '<input type="checkbox" name="blend" '+(b.blend?'checked':'')+'><span class="track"></span></label></div>'+
-    '<div class="row2">'+
-      '<div class="field"><label>产地/产区/处理站</label><input class="input" name="origin" value="'+esc(b.origin||'')+'"></div>'+
-      '<div class="field"><label>豆种</label><input class="input" name="variety" value="'+esc(b.variety||'')+'" placeholder="例如：Heirloom"></div>'+
+    '<div class="field"><label class="switch" style="font-size:13px" id="blendLabel"><span style="color:var(--dim);font-weight:700" id="blendText">拼配豆</span>'+
+      '<input type="checkbox" name="blend" id="fBlend" '+(b.blend?'checked':'')+'><span class="track"></span></label></div>'+
+
+    '<div id="singleBeanFields">'+
+      '<div class="row2">'+
+        '<div class="field"><label>产地/产区/处理站</label><input class="input" name="origin" value="'+esc(b.origin||'')+'"></div>'+
+        '<div class="field"><label>豆种</label><input class="input" name="variety" value="'+esc(b.variety||'')+'" placeholder="例如：Heirloom"></div>'+
+      '</div>'+
+      '<div class="row2">'+
+        '<div class="field"><label>处理法</label><input class="input" name="process" value="'+esc(b.process||'')+'" placeholder="水洗/日晒/蜜处理"></div>'+
+        '<div class="field"><label>烘焙度</label><input class="input" name="roastLevel" value="'+esc(b.roastLevel||'')+'" placeholder="浅/中/深"></div>'+
+      '</div>'+
     '</div>'+
-    '<div class="row2">'+
-      '<div class="field"><label>处理法</label><input class="input" name="process" value="'+esc(b.process||'')+'" placeholder="水洗/日晒/蜜处理"></div>'+
-      '<div class="field"><label>烘焙度</label><input class="input" name="roastLevel" value="'+esc(b.roastLevel||'')+'" placeholder="浅/中/深"></div>'+
+
+    '<div id="blendBeanFields" style="display:none">'+
+      '<div class="field"><label>拼配组成（不同产区/豆种/处理法）</label>'+
+        '<div id="blendList"></div>'+
+        '<button type="button" class="btn btn-ghost btn-block" style="margin-top:8px;padding:8px" id="addBlendRowBtn">+ 添加一种豆</button>'+
+      '</div>'+
     '</div>'+
+
     '<div class="field"><label>烘焙日期</label><input type="date" class="input" name="roastDate" value="'+esc(b.roastDate||'')+'"></div>'+
 
     '<div class="field"><label>状态</label><div class="seg" id="segStatus">'+
@@ -784,6 +795,7 @@ function openBeanForm(id){
 
   openModal(html);
   setTimeout(()=>bindPerG(),30);
+  setTimeout(()=>bindBlendLogic(b),30);
 }
 
 function bindPerG(){
@@ -796,6 +808,70 @@ function bindPerG(){
   p.addEventListener('input',upd);
   w.addEventListener('input',upd);
   upd();
+}
+
+/* 拼配逻辑绑定 */
+function bindBlendLogic(b) {
+  const fBlend = $('#fBlend');
+  const singleBeanFields = $('#singleBeanFields');
+  const blendBeanFields = $('#blendBeanFields');
+  const blendText = $('#blendText');
+  const blendList = $('#blendList');
+  const addBlendRowBtn = $('#addBlendRowBtn');
+  if (!fBlend || !blendList) return;
+
+  const addBlendRow = (data) => {
+    data = data || { origin: '', variety: '', process: '' };
+    const row = document.createElement('div');
+    row.className = 'blend-row';
+    row.style.cssText = 'display:grid;grid-template-columns:1fr 1fr 1fr 24px;gap:6px;margin-bottom:8px;align-items:center;';
+    row.innerHTML = `
+      <input class="input" placeholder="产地" value="${esc(data.origin)}" data-field="origin" style="padding:8px 10px;font-size:12px;">
+      <input class="input" placeholder="豆种" value="${esc(data.variety)}" data-field="variety" style="padding:8px 10px;font-size:12px;">
+      <input class="input" placeholder="处理法" value="${esc(data.process)}" data-field="process" style="padding:8px 10px;font-size:12px;">
+      <button type="button" class="btn btn-danger" style="padding:0;width:24px;height:24px;border-radius:50%;font-size:14px;line-height:1;margin:0 auto;">×</button>
+    `;
+    row.querySelector('button').addEventListener('click', () => row.remove());
+    blendList.appendChild(row);
+  };
+
+  const updateBlendUI = () => {
+    const isChecked = fBlend.checked;
+    singleBeanFields.style.display = isChecked ? 'none' : 'block';
+    blendBeanFields.style.display = isChecked ? 'block' : 'none';
+    blendText.style.color = isChecked ? 'var(--accent)' : 'var(--dim)';
+    blendText.textContent = isChecked ? '拼配豆 ✓' : '拼配豆';
+    if (isChecked && blendList.children.length === 0) {
+      addBlendRow({});
+    }
+  };
+
+  fBlend.addEventListener('change', updateBlendUI);
+  addBlendRowBtn.addEventListener('click', () => addBlendRow({}));
+
+  // 初始化
+  if (b.blend) {
+    blendText.style.color = 'var(--accent)';
+    blendText.textContent = '拼配豆 ✓';
+    if (b.blendInfo) {
+      try {
+        const parts = JSON.parse(b.blendInfo);
+        if (Array.isArray(parts) && parts.length > 0) {
+          parts.forEach(p => addBlendRow(p));
+        } else {
+          addBlendRow({origin: b.origin, variety: b.variety, process: b.process});
+        }
+      } catch(e) {
+        addBlendRow({origin: b.origin, variety: b.variety, process: b.process});
+      }
+    } else {
+      addBlendRow({origin: b.origin, variety: b.variety, process: b.process});
+    }
+    singleBeanFields.style.display = 'none';
+    blendBeanFields.style.display = 'block';
+  } else {
+    updateBlendUI();
+  }
 }
 
 /* =====================================================
@@ -1021,24 +1097,44 @@ function dl(k,v){ if(v===undefined||v===null||v==='') return ''; return '<div cl
 function viewBeanDetail(id){
   const b=DB.beans.find(x=>x.id===id); if(!b) return;
   const perG=(num(b.price)&&num(b.weight))?(num(b.price)/num(b.weight)).toFixed(2)+' 元/g':'';
+
+  let metaHtml = dl('烘焙商',b.roaster);
+  if (!b.blend) {
+    metaHtml += dl('产地/产区/处理站',b.origin) + dl('豆种',b.variety) + dl('处理法',b.process);
+  }
+  metaHtml += dl('烘焙度',b.roastLevel) + dl('烘焙日期',b.roastDate) + 
+              dl('购买日期',b.purchaseDate) + dl('实付金额',b.price?money(b.price):'') + 
+              dl('重量',b.weight?b.weight+' g':'') + dl('克价',perG);
+
+  let blendHtml = '';
+  if (b.blend && b.blendInfo) {
+      try {
+          const parts = JSON.parse(b.blendInfo);
+          if (Array.isArray(parts) && parts.length > 0) {
+              blendHtml = '<div class="sec-title">拼配组成</div>' +
+                  parts.map((p, i) => '<div class="card" style="margin:0 0 8px 0;padding:12px;background:var(--card2)">' +
+                      '<span class="tag tag-title" style="margin-bottom:6px;display:inline-block">拼配 '+(i+1)+'</span>' +
+                      '<div style="font-size:13.5px;margin-top:4px">'+
+                      (p.origin?'<div>产地：'+esc(p.origin)+'</div>':'')+
+                      (p.variety?'<div>豆种：'+esc(p.variety)+'</div>':'')+
+                      (p.process?'<div>处理法：'+esc(p.process)+'</div>':'')+
+                      '</div>' +
+                  '</div>').join('');
+          }
+      } catch(e) {
+          blendHtml = '<div class="sec-title">拼配信息</div><div class="card">'+esc(b.blendInfo)+'</div>';
+      }
+  }
+
   const html=
     modalHead(b.name||'豆子详情')+
     '<div style="margin-bottom:14px">'+
       '<span class="tag '+(b.status==='在喝'?'tag-accent':'tag-title')+'">'+esc(b.status||'在喝')+'</span>'+
-      (b.blend?'<span class="tag">拼配</span>':'<span class="tag">单品</span>')+
+      (b.blend?'<span class="tag tag-accent" style="margin-left:6px">拼配</span>':'<span class="tag" style="margin-left:6px">单品</span>')+
     '</div>'+
-    '<dl style="margin:0">'+
-      dl('烘焙商',b.roaster)+
-      dl('产地/产区/处理站',b.origin)+
-      dl('豆种',b.variety)+
-      dl('处理法',b.process)+
-      dl('烘焙度',b.roastLevel)+
-      dl('烘焙日期',b.roastDate)+
-      dl('购买日期',b.purchaseDate)+
-      dl('实付金额',b.price?money(b.price):'')+
-      dl('重量',b.weight?b.weight+' g':'')+
-      dl('克价',perG)+
-    '</dl>'+
+    blendHtml +
+    '<div class="sec-title">基础信息</div>'+
+    '<dl style="margin:0">'+metaHtml+'</dl>'+
     (b.flavor?'<div class="sec-title">风味</div><div class="card" style="white-space:pre-wrap;font-size:13.5px;line-height:1.7">'+esc(b.flavor)+'</div>':'')+
     (b.brewAdvice?'<div class="sec-title">豆卡 / 官方建议</div><div class="card" style="white-space:pre-wrap;font-size:13.5px;line-height:1.7">'+esc(b.brewAdvice)+'</div>':'')+
     '<div class="btn-row">'+
@@ -1203,6 +1299,31 @@ document.addEventListener('click',function(ev){
     case 'save-bean': {
       const d=readForm();
       if(!d.name){ toast('请填写品名'); return; }
+
+      // 处理拼配豆的数据收集
+      if (d.blend) {
+          const rows = $$('#blendList .blend-row');
+          const blendArr = [];
+          rows.forEach(r => {
+              const inputs = r.querySelectorAll('input');
+              const origin = inputs[0].value.trim();
+              const variety = inputs[1].value.trim();
+              const process = inputs[2].value.trim();
+              if (origin || variety || process) {
+                  blendArr.push({origin, variety, process});
+              }
+          });
+          d.blendInfo = JSON.stringify(blendArr);
+          // 为了兼容旧版搜索，把拼配组合存进原字段
+          if (blendArr.length > 0) {
+              d.origin = blendArr.map(x => x.origin).filter(Boolean).join(' / ');
+              d.variety = blendArr.map(x => x.variety).filter(Boolean).join(' / ');
+              d.process = blendArr.map(x => x.process).filter(Boolean).join(' / ');
+          }
+      } else {
+          d.blendInfo = ''; // 单品则清空
+      }
+
       if(id){
         const b=DB.beans.find(x=>x.id===id);
         Object.assign(b,d);
