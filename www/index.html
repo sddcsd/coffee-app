@@ -136,13 +136,30 @@ svg{width:100%;height:100%;display:block;}
 .btn-block{width:100%;}
 .btn-row{display:flex;gap:10px;margin-top:18px;}
 .btn-row .btn{flex:1;}
-.btn-fab-bottom{
-  display:flex;align-items:center;justify-content:center;gap:6px;
-  width:100%;padding:12px;border-radius:16px;
-  background:var(--fab-bg);color:var(--fab-fg);font-weight:700;font-size:15px;
-  margin-top:16px;margin-bottom:20px;box-shadow:0 4px 12px rgba(0,0,0,.15);
+
+/* 修改后的底部圆形悬浮按钮 */
+.btn-fab-bottom {
+  position: fixed;
+  bottom: 85px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--fab-bg);
+  color: var(--fab-fg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 16px rgba(0,0,0,.25);
+  z-index: 90;
+  padding: 0;
+  margin: 0;
 }
-.btn-fab-bottom:active{transform:scale(.98);}
+.btn-fab-bottom .ic {
+  width: 28px;
+  height: 28px;
+}
 
 /* ===== 表单 ===== */
 .field{margin-bottom:14px;}
@@ -217,7 +234,7 @@ svg{width:100%;height:100%;display:block;}
 .empty .ic-lg{width:44px;height:44px;margin:0 auto 12px;opacity:.4;}
 .empty p{font-size:13.5px;margin:0 0 16px;}
 
-/* 顶部控制区（豆仓/方案/记一笔） */
+/* 顶部控制区 */
 .top-controls {
   display:flex;align-items:center;justify-content:space-between;gap:12px;
   margin-bottom:12px;
@@ -655,7 +672,7 @@ function viewBeans(){
        '<button class="btn" data-action="new-bean">添加第一款豆</button></div>';
   }else{
     h+=list.map(b=>DB.settings.beanView==='simple'?beanCardLite(b):beanCardFull(b)).join('');
-    h+='<button class="btn-fab-bottom" data-action="new-bean">'+ICON.plus+' 添加豆子</button>';
+    h+='<button class="btn-fab-bottom" data-action="new-bean" title="添加豆子">'+ICON.plus+'</button>';
   }
   return h;
 }
@@ -736,7 +753,7 @@ function viewLog(){
           '</div></div>';
       }
     }).join('');
-    h+='<button class="btn-fab-bottom" data-action="open-log-add">'+ICON.plus+' 记一笔</button>';
+    h+='<button class="btn-fab-bottom" data-action="open-log-add" title="记一笔">'+ICON.plus+'</button>';
   }
   return h;
 }
@@ -768,7 +785,7 @@ function viewRecipes(){
        '<button class="btn" data-action="new-recipe">新建方案</button></div>';
   }else{
     h+=list.map(r=>DB.settings.recipeView==='simple'?recipeCardLite(r):recipeCardFull(r)).join('');
-    h+='<button class="btn-fab-bottom" data-action="new-recipe">'+ICON.plus+' 新建方案</button>';
+    h+='<button class="btn-fab-bottom" data-action="new-recipe" title="新建方案">'+ICON.plus+'</button>';
   }
   return h;
 }
@@ -1225,7 +1242,6 @@ function openBrewForm(id){
   const b=id?DB.brews.find(x=>x.id===id)||{}:{};
   const drinking=DB.beans.filter(x=>x.status==='在喝');
 
-  // 收集历史参数
   const drippers = [...new Set(DB.brews.map(x=>x.dripper).filter(Boolean))];
   const grinders = [...new Set(DB.brews.map(x=>x.grinder).filter(Boolean))];
   const grinds = [...new Set(DB.brews.map(x=>x.grindSize).filter(Boolean))];
@@ -1407,8 +1423,10 @@ function openSettings(){
     modalHead('设置')+
     '<div class="sec-title" style="margin-top:0">App 名称</div>'+
     '<div class="field" style="display:flex;gap:8px;align-items:center">'+
-      '<input class="input" id="appNameInput" value="'+esc(DB.settings.appName||'西洋豆浆萃')+'" placeholder="输入你喜欢的名字" style="flex:1">'+
-      '<button class="btn" style="padding:11px 14px" data-action="save-app-name">'+ICON.check+'</button>'+
+      '<input class="input" id="appNameInput" value="'+esc(DB.settings.appName||'西洋豆浆萃')+'" placeholder="输入你喜欢的名字" style="flex:1;min-width:0">'+
+      '<button class="btn" style="width:44px;height:44px;padding:0;border-radius:12px;flex:none;display:flex;align-items:center;justify-content:center" data-action="save-app-name">'+
+        '<span class="ic" style="width:20px;height:20px">'+ICON.check+'</span>'+
+      '</button>'+
     '</div>'+
 
     '<div class="sec-title">主题配色</div>'+
