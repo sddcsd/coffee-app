@@ -1,0 +1,1690 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="euro-pink">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#F6E8EA">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>西洋豆浆萃</title>
+<style>
+:root, [data-theme="euro-pink"]{--bg:#F6E8EA;--card:#FFFFFF;--card2:#F9E8E9;--text:#3A2022;--dim:#A8787A;--title:#673D47;--accent:#B34C4E;--border:rgba(103,61,71,.1);--fab-bg:#673D47;--fab-fg:#F9E8E9;--shadow:0 2px 10px rgba(103,61,71,.08);--r:16px;}
+[data-theme="euro-blue"]{--bg:#E8EFF4;--card:#FFFFFF;--card2:#E6EFF6;--text:#1B2A38;--dim:#7A93A8;--title:#29475F;--accent:#326FAD;--border:rgba(41,71,95,.1);--fab-bg:#29475F;--fab-fg:#E6EFF6;--shadow:0 2px 10px rgba(41,71,95,.08);}
+[data-theme="euro-green"]{--bg:#E7EFEA;--card:#FFFFFF;--card2:#E4F0E8;--text:#1C2E25;--dim:#7A9987;--title:#2D5044;--accent:#347B59;--border:rgba(45,80,68,.1);--fab-bg:#2D5044;--fab-fg:#E4F0E8;--shadow:0 2px 10px rgba(45,80,68,.08);}
+[data-theme="euro-gold"]{--bg:#F7F0E5;--card:#FFFFFF;--card2:#FAF0DF;--text:#332B21;--dim:#A8957C;--title:#65513B;--accent:#BA8B36;--border:rgba(101,81,59,.1);--fab-bg:#65513B;--fab-fg:#FAF0DF;--shadow:0 2px 10px rgba(101,81,59,.08);}
+[data-theme="euro-purple"]{--bg:#EFEAF2;--card:#FFFFFF;--card2:#EFE8F4;--text:#2A2133;--dim:#9182A3;--title:#513B68;--accent:#75529E;--border:rgba(81,59,104,.1);--fab-bg:#513B68;--fab-fg:#EFE8F4;--shadow:0 2px 10px rgba(81,59,104,.08);}
+[data-theme="dark"]{--bg:#161823;--card:#1E2130;--card2:#232739;--text:#E6EAF2;--dim:#8B93A8;--title:#B8CEE2;--accent:#53589A;--border:rgba(184,206,226,.16);--fab-bg:#53589A;--fab-fg:#E6EAF2;--shadow:0 2px 10px rgba(0,0,0,.35);}
+
+/* 基础样式（保持不变） */
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}html,body{margin:0;padding:0;}body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Helvetica Neue","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.5;overscroll-behavior-y:none;-webkit-font-smoothing:antialiased;}button,input,select,textarea{font-family:inherit;font-size:inherit;color:inherit;}button{border:none;background:none;cursor:pointer;padding:0;}svg{width:100%;height:100%;display:block;}
+.ic{width:22px;height:22px;flex:none;}.ic-sm{width:18px;height:18px;flex:none;}.ic-lg{width:30px;height:30px;flex:none;}.app{display:flex;flex-direction:column;height:100vh;height:100dvh;}
+.topbar{flex:none;display:flex;align-items:center;justify-content:space-between;padding:calc(env(safe-area-inset-top,0px) + 12px) 18px 10px;min-height:56px;background:var(--bg);transition:background .3s;}
+.brand{font-size:20px;font-weight:800;color:var(--title);letter-spacing:.5px;}.tb-title{font-size:19px;font-weight:700;color:var(--title);}.tb-right{display:flex;gap:6px;align-items:center;}
+.icon-btn{width:36px;height:36px;border-radius:12px;display:flex;align-items:center;justify-content:center;color:var(--title);background:transparent;flex:none;}
+.icon-btn:active{background:var(--card2);}.icon-btn .ic{width:18px;height:18px;}
+.view{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:0 16px calc(96px + env(safe-area-inset-bottom,0px));}.view::-webkit-scrollbar{display:none;}
+.tabbar{flex:none;display:flex;align-items:flex-end;justify-content:space-around;background:var(--card);border-top:1px solid var(--border);padding:6px 4px calc(6px + env(safe-area-inset-bottom,0px));box-shadow:0 -2px 12px rgba(0,0,0,.05);position:relative;z-index:20;}
+.tab{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;color:var(--dim);padding:4px 0;transition:color .18s;}.tab .tab-icon{width:24px;height:24px;transition:transform .2s;}.tab.active{color:var(--title);}.tab.active .tab-icon{transform:translateY(-1px) scale(1.06);}.tab-label{font-size:10.5px;font-weight:600;letter-spacing:.2px;}
+.card{background:var(--card);border-radius:var(--r);padding:14px;box-shadow:var(--shadow);margin-bottom:12px;border:1px solid var(--border);transition:transform .2s;position:relative;overflow:hidden;}
+.hero{background:linear-gradient(135deg,var(--card) 0%,var(--card2) 100%);border-radius:20px;padding:20px 18px;margin-bottom:16px;box-shadow:var(--shadow);border:1px solid var(--border);}
+.hero-title{font-size:17px;font-weight:800;color:var(--title);margin-bottom:2px;}.hero-sub{font-size:12.5px;color:var(--dim);margin-bottom:16px;}.hero-stats{display:flex;justify-content:space-between;}.hero-stats>div{flex:1;text-align:center;display:flex;flex-direction:column;gap:2px;}.hero-stats b{font-size:19px;color:var(--title);font-weight:800;}.hero-stats span{font-size:11px;color:var(--dim);}
+.sec-title{font-size:14px;font-weight:700;color:var(--title);margin:20px 2px 10px;display:flex;align-items:center;justify-content:space-between;}.sec-title .more{font-size:12px;font-weight:500;color:var(--dim);}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:11px 18px;border-radius:12px;font-weight:700;font-size:14.5px;background:var(--fab-bg);color:var(--fab-fg);transition:opacity .15s;}.btn:active{opacity:.8;}
+.btn-ghost{background:var(--card2);color:var(--title);border:1px solid var(--border);}.btn-danger{background:#C0392B;color:#fff;}.btn-block{width:100%;}.btn-row{display:flex;gap:10px;margin-top:18px;}.btn-row .btn{flex:1;}
+.btn-fab-bottom{position:fixed;bottom:85px;left:50%;transform:translateX(-50%);width:56px;height:56px;border-radius:50%;background:var(--fab-bg);color:var(--fab-fg);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 16px rgba(0,0,0,.25);z-index:90;padding:0;margin:0;}.btn-fab-bottom .ic{width:28px;height:28px;}
+.field{margin-bottom:14px;}.field label{display:block;font-size:12.5px;font-weight:700;color:var(--dim);margin-bottom:6px;letter-spacing:.2px;}
+.input,.select,.textarea{width:100%;padding:11px 13px;border-radius:12px;background:var(--card2);border:1px solid var(--border);color:var(--text);outline:none;transition:border-color .15s;}
+.input:focus,.select:focus,.textarea:focus{border-color:var(--accent);}.textarea{min-height:80px;resize:vertical;line-height:1.55;}
+.select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--dim) 50%),linear-gradient(135deg,var(--dim) 50%,transparent 50%);background-position:calc(100% - 18px) 50%,calc(100% - 13px) 50%;background-size:5px 5px,5px 5px;background-repeat:no-repeat;padding-right:34px;}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px;}.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;}.auto-val{padding:11px 13px;border-radius:12px;background:var(--card2);border:1px dashed var(--border);color:var(--title);font-weight:700;}
+.hint{font-size:11.5px;color:var(--dim);margin-top:5px;}
+.switch{display:flex;align-items:center;justify-content:space-between;padding:4px 0;}.switch input{display:none;}
+.switch .track{width:46px;height:27px;border-radius:14px;background:var(--border);position:relative;transition:background .2s;flex:none;}
+.switch .track::after{content:'';position:absolute;top:3px;left:3px;width:21px;height:21px;border-radius:50%;background:#fff;transition:transform .2s;box-shadow:0 1px 3px rgba(0,0,0,.2);}
+.switch input:checked + .track{background:var(--accent);}.switch input:checked + .track::after{transform:translateX(19px);}
+.seg{display:flex;background:var(--card2);border-radius:12px;padding:3px;border:1px solid var(--border);}.seg button{flex:1;padding:8px 4px;border-radius:9px;font-size:13px;font-weight:700;color:var(--dim);transition:all .15s;}.seg button.on{background:var(--card);color:var(--title);box-shadow:0 1px 4px rgba(0,0,0,.08);}
+.stars{display:flex;gap:1px;}.star{font-size:20px;line-height:1;color:var(--border);transition:transform .12s,color .12s;padding:0 1px;}.star.on{color:var(--accent);}.star:active{transform:scale(1.2);}
+.tag{display:inline-block;padding:3px 9px;border-radius:8px;font-size:11px;font-weight:700;background:var(--card2);color:var(--dim);margin:0 2px;}.tag-accent{background:var(--accent);color:#fff;}.tag-title{background:var(--title);color:var(--card);}.tag-friend{background:var(--card2);color:var(--accent);border:1px solid var(--border);}
+.swipe-container{position:relative;overflow:hidden;margin-bottom:12px;border-radius:var(--r);}
+.swipe-actions{position:absolute;top:0;right:0;height:100%;display:flex;z-index:1;}
+.swipe-actions button{width:64px;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:700;gap:4px;border:none;}
+.swipe-actions .swipe-edit{background:var(--accent);}.swipe-actions .swipe-top{background:var(--title);}.swipe-actions .swipe-del{background:#C0392B;}
+.swipe-card{position:relative;z-index:2;transform:translateX(0);transition:transform .25s cubic-bezier(.2,.8,.3,1);background:var(--card);border-radius:var(--r);border:1px solid var(--border);box-shadow:var(--shadow);padding:14px;cursor:pointer;}
+.swipe-card.swiped{transform:translateX(-192px);}.swipe-card.swiped-2{transform:translateX(-128px);}
+.bc-head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:6px;}.bc-name{font-size:16.5px;font-weight:800;color:var(--title);line-height:1.3;}.bc-sub{font-size:12.5px;color:var(--dim);margin-bottom:8px;}
+.bc-meta{font-size:12.5px;color:var(--dim);display:flex;flex-wrap:wrap;gap:4px 12px;}.bc-meta b{color:var(--text);font-weight:600;}.bc-tags{margin-top:8px;display:flex;gap:4px;flex-wrap:wrap;}
+.bc-lite{display:flex;justify-content:space-between;align-items:center;}.bc-lite .bc-name{font-size:15px;}
+.empty{text-align:center;padding:50px 20px;color:var(--dim);}.empty .ic-lg{width:44px;height:44px;margin:0 auto 12px;opacity:.4;}.empty p{font-size:13.5px;margin:0 0 16px;}
+.top-controls{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px;}.top-controls .seg{flex:1;max-width:200px;}
+.sort-btn{width:36px;height:36px;border-radius:10px;background:var(--card2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--title);flex:none;}.sort-btn .ic-sm{width:18px;height:18px;}
+.searchbar{display:flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:9px 12px;margin-bottom:12px;box-shadow:var(--shadow);}.searchbar input{flex:1;border:none;background:transparent;outline:none;}
+.toolrow{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:12px;}.chips{display:flex;gap:6px;overflow-x:auto;padding:2px 0;flex:1;-ms-overflow-style:none;scrollbar-width:none;}.chips::-webkit-scrollbar{display:none;}.chip{padding:7px 13px;border-radius:20px;font-size:12.5px;font-weight:700;white-space:nowrap;background:var(--card);color:var(--dim);border:1px solid var(--border);}.chip.on{background:var(--title);color:var(--card);border-color:var(--title);}
+.modal{position:fixed;inset:0;z-index:100;display:none;}.modal.show{display:block;}.modal-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.45);animation:fade .2s;}.modal-panel{position:absolute;left:0;right:0;bottom:0;max-height:90vh;overflow-y:auto;background:var(--card);border-radius:22px 22px 0 0;padding:20px 18px calc(24px + env(safe-area-inset-bottom,0px));animation:up .25s cubic-bezier(.2,.8,.3,1);}.modal-panel::-webkit-scrollbar{display:none;}.modal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;}.modal-head h3{margin:0;font-size:18px;font-weight:800;color:var(--title);}.modal-close{width:32px;height:32px;border-radius:50%;background:var(--card2);color:var(--dim);display:flex;align-items:center;justify-content:center;font-size:18px;line-height:1;}
+@keyframes fade{from{opacity:0}to{opacity:1}}@keyframes up{from{transform:translateY(100%)}to{transform:translateY(0)}}
+.add-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}.add-card{background:var(--card2);border:1px solid var(--border);border-radius:18px;padding:22px 12px;display:flex;flex-direction:column;align-items:center;gap:8px;transition:transform .12s;}.add-card:active{transform:scale(.96);}.add-ic{width:48px;height:48px;color:var(--title);display:flex;align-items:center;justify-content:center;}.add-title{font-size:14.5px;font-weight:800;color:var(--title);}.add-sub{font-size:11px;color:var(--dim);}
+.dl{display:flex;justify-content:space-between;gap:14px;padding:8px 0;border-bottom:1px solid var(--border);font-size:13.5px;}.dl:last-child{border-bottom:none;}.dl dt{color:var(--dim);flex:none;font-weight:600;}.dl dd{margin:0;text-align:right;color:var(--text);word-break:break-all;}
+.info-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 10px;margin-bottom:12px;}.info-item{padding:8px 10px;background:var(--card2);border-radius:10px;border:1px solid var(--border);display:flex;flex-direction:column;justify-content:center;}
+.info-item .label{font-size:11px;color:var(--dim);font-weight:700;margin-bottom:2px;}.info-item .value{font-size:13px;color:var(--text);font-weight:600;word-break:break-all;}
+.stat-big{background:linear-gradient(135deg,var(--card) 0%,var(--card2) 100%);border-radius:20px;padding:20px;box-shadow:var(--shadow);border:1px solid var(--border);margin-bottom:14px;}.stat-big .label{font-size:12.5px;color:var(--dim);font-weight:700;margin-bottom:14px;}.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;text-align:center;}.stat-grid b{display:block;font-size:19px;color:var(--title);font-weight:800;}.stat-grid span{font-size:11px;color:var(--dim);}
+.bar-row{display:flex;align-items:center;gap:10px;margin-bottom:10px;font-size:13px;}.bar-row .name{width:88px;flex:none;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--text);font-weight:600;}.bar-row .bar{flex:1;height:8px;border-radius:5px;background:var(--card2);overflow:hidden;}.bar-row .bar i{display:block;height:100%;background:var(--accent);border-radius:5px;transition:width .4s;}.bar-row .val{width:56px;text-align:right;color:var(--dim);font-size:12px;flex:none;}
+.chart-container{display:flex;align-items:flex-end;justify-content:space-between;height:160px;padding:10px 0;gap:6px;}.chart-col{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;height:100%;}.chart-bars{flex:1;width:100%;display:flex;justify-content:center;gap:3px;align-items:flex-end;}.chart-bar{width:10px;border-radius:4px 4px 0 0;transition:height .3s;}.chart-bar.buy{background:var(--accent);}.chart-bar.exp{background:var(--title);opacity:0.6;}.chart-label{font-size:9px;color:var(--dim);}
+.toast{position:fixed;left:50%;bottom:110px;transform:translate(-50%,10px);background:rgba(0,0,0,.82);color:#fff;padding:10px 20px;border-radius:20px;font-size:13.5px;opacity:0;pointer-events:none;transition:all .25s;z-index:200;max-width:80vw;text-align:center;}.toast.show{opacity:1;transform:translate(-50%,0);}
+.theme-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}.theme-item{border-radius:14px;padding:12px;border:2px solid var(--border);display:flex;flex-direction:column;gap:8px;transition:border-color .15s;}.theme-item.on{border-color:var(--title);}.theme-item .swatches{display:flex;gap:5px;}.theme-item .sw{width:26px;height:26px;border-radius:50%;border:1px solid rgba(0,0,0,.08);}.theme-item .tname{font-size:12.5px;font-weight:700;}
+.blend-table{width:100%;border-collapse:collapse;font-size:12px;margin-top:4px;}.blend-table th,.blend-table td{border:1px solid var(--border);padding:6px 8px;text-align:left;}.blend-table th{background:var(--card2);color:var(--title);font-weight:700;}.blend-table td{color:var(--text);}
+.purchase-row{display:grid;grid-template-columns:1fr 1fr 1fr 24px;gap:6px;margin-bottom:6px;align-items:center;}.purchase-row input{padding:8px 10px;font-size:12px;}.purchase-row button{padding:0;width:24px;height:24px;border-radius:50%;font-size:14px;line-height:1;margin:0 auto;}
+.month-picker-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}.month-picker-grid button{padding:12px 0;border-radius:12px;background:var(--card2);color:var(--text);font-weight:700;border:1px solid var(--border);}.month-picker-grid button.on{background:var(--title);color:var(--card);border-color:var(--title);}.year-selector{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;padding:0 10px;}.year-selector button{width:40px;height:40px;border-radius:50%;background:var(--card2);display:flex;align-items:center;justify-content:center;font-size:18px;}.year-selector span{font-size:18px;font-weight:800;color:var(--title);}
+.dropdown-suggestions{position:absolute;top:100%;left:0;right:0;background:var(--card);border:1px solid var(--border);border-radius:0 0 12px 12px;box-shadow:0 8px 16px rgba(0,0,0,.1);z-index:50;max-height:180px;overflow-y:auto;display:none;}.dropdown-suggestions.show{display:block;}
+.dropdown-suggestions div{padding:10px 13px;font-size:14px;color:var(--text);border-bottom:1px solid var(--border);cursor:pointer;}.dropdown-suggestions div:last-child{border-bottom:none;}.dropdown-suggestions div:active{background:var(--card2);}
+
+/* 自定义主题相关样式 */
+.my-theme-item { display: flex; align-items: center; justify-content: space-between; padding: 10px 12px; background: var(--card2); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 8px; cursor: pointer; }
+.my-theme-item.on { border-color: var(--accent); }
+.my-theme-item .theme-info { display: flex; align-items: center; gap: 8px; }
+.my-theme-item .theme-name { font-size: 13.5px; font-weight: 700; color: var(--title); }
+.my-theme-item .theme-colors { display: flex; gap: 4px; }
+.my-theme-item .theme-colors span { width: 16px; height: 16px; border-radius: 4px; border: 1px solid rgba(0,0,0,.1); }
+.my-theme-item .theme-actions { display: flex; gap: 8px; align-items: center; }
+.my-theme-item .theme-actions button { font-size: 12px; font-weight: 700; color: var(--dim); padding: 4px; }
+.my-theme-item .theme-actions .edit-btn { color: var(--accent); }
+.my-theme-item .theme-actions .del-btn { color: #C0392B; }
+
+.color-input-row { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+.color-input-row label { width: 60px; font-size: 13px; font-weight: 700; color: var(--dim); }
+.color-input-row input[type="color"] { width: 40px; height: 40px; padding: 0; border: none; border-radius: 8px; cursor: pointer; background: transparent; }
+.color-input-row input[type="text"] { flex: 1; padding: 10px; border-radius: 10px; border: 1px solid var(--border); background: var(--card2); color: var(--text); outline: none; font-family: monospace; }
+
+.history-colors { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.history-color-box { width: 38px; height: 38px; border-radius: 8px; border: 2px solid var(--border); cursor: pointer; position: relative; transition: transform .12s; }
+.history-color-box:active { transform: scale(.9); }
+.history-color-box.locked { border-color: var(--accent); }
+.history-color-box .lock-icon { position: absolute; bottom: -4px; right: -4px; background: var(--accent); color: #fff; border-radius: 50%; width: 16px; height: 16px; font-size: 10px; display: flex; align-items: center; justify-content: center; }
+
+.preview-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 14px; margin-top: 10px; box-shadow: var(--shadow); }
+.preview-card .p-title { font-size: 16px; font-weight: 800; color: var(--title); }
+.preview-card .p-text { font-size: 13px; color: var(--text); margin-top: 4px; }
+.preview-card .p-dim { font-size: 12px; color: var(--dim); margin-top: 2px; }
+.preview-card .p-btn { display: inline-block; padding: 6px 14px; border-radius: 8px; background: var(--accent); color: var(--fab-fg); font-size: 12px; font-weight: 700; margin-top: 8px; }
+
+/* 颜色长按气泡菜单 */
+.color-bubble-menu { position: absolute; background: var(--card); border: 1px solid var(--border); border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,.15); display: flex; overflow: hidden; z-index: 1000; animation: fade .15s; }
+.color-bubble-menu button { padding: 8px 14px; font-size: 12px; font-weight: 700; background: var(--card); color: var(--text); border: none; cursor: pointer; }
+.color-bubble-menu button:active { background: var(--card2); }
+.color-bubble-menu .bubble-del { color: #C0392B; }
+.color-bubble-menu .bubble-lock { color: var(--accent); }
+
+/* 居中二次确认弹窗 */
+.confirm-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.4); z-index: 200; display: none; align-items: center; justify-content: center; }
+.confirm-overlay.show { display: flex; }
+.confirm-box { background: var(--card); border-radius: 16px; width: 260px; padding: 20px; box-shadow: 0 8px 24px rgba(0,0,0,.2); text-align: center; }
+.confirm-box h4 { margin: 0 0 10px; font-size: 16px; color: var(--title); }
+.confirm-box p { margin: 0 0 18px; font-size: 13.5px; color: var(--dim); line-height: 1.5; }
+.confirm-box .confirm-btns { display: flex; gap: 10px; }
+.confirm-box .confirm-btns button { flex: 1; height: 40px; border-radius: 10px; font-weight: 700; font-size: 13.5px; }
+.confirm-box .confirm-cancel { background: var(--card2); color: var(--title); }
+.confirm-box .confirm-delete { background: #C0392B; color: #fff; }
+</style>
+</head>
+<body>
+<div class="app"><header class="topbar" id="topbar"></header><main class="view" id="view"></main><nav class="tabbar" id="tabbar"></nav></div>
+<div class="modal" id="modal"></div><div class="toast" id="toast"></div>
+<div class="confirm-overlay" id="confirmOverlay"></div>
+
+<script>
+/* ---------- 图标（保留最新版本） ---------- */
+const ICON={
+  bean:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><g transform="rotate(25 8 11)"><ellipse cx="8" cy="11" rx="4.5" ry="7.5" /><path d="M 8 4 C 6 8, 10 12, 8 18" /></g><g transform="rotate(-35 15 14)"><ellipse cx="15" cy="14" rx="7.5" ry="4.5" fill="var(--card)" /><path d="M 8 14 C 11 11, 19 17, 22 14" fill="none"/></g></svg>',
+  mug:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 10.5h12v6.5a3.5 3.5 0 0 1-3.5 3.5H7a3.5 3.5 0 0 1-3.5-3.5z" fill="currentColor" stroke="none"/><path d="M15.5 11.6h2.2a2.4 2.4 0 0 1 0 4.8h-2.2" fill="none"/><path d="M7.6 7.4c0-1.2 1-1.4 1-2.6M11.4 7.4c0-1.2 1-1.4 1-2.6" fill="none"/></svg>',
+  plus:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5.5v13M5.5 12h13"/></svg>',
+  gear:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.5"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>',
+  pour:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-4 6H9z"/><path d="M8 14v3M16 14v3M7 18h10"/></svg>',
+  shop:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 10 12 3.6 20.6 10"/><path d="M5.4 10v10.4h13.2V10"/><path d="M9.4 20.4V15h5.2v5.4"/></svg>',
+  chevron:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>',
+  search:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg>',
+  arrowUp:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>',
+  arrowDown:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>',
+  check:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>'
+};
+
+/* ---------- 工具函数 ---------- */
+const $=(s,r=document)=>r.querySelector(s);const $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,7);const pad2=n=>String(n).padStart(2,'0');
+const todayStr=()=>{const d=new Date();return d.getFullYear()+'-'+pad2(d.getMonth()+1)+'-'+pad2(d.getDate());};
+const curMonth=()=>{const d=new Date();return d.getFullYear()+'-'+pad2(d.getMonth()+1);};
+const money=n=>'¥'+(Math.round((Number(n)||0)*100)/100).toFixed(2);const num=v=>{const n=parseFloat(v);return isNaN(n)?0:n;};
+function toast(msg){const t=$('#toast');t.textContent=msg;t.classList.add('show');clearTimeout(t._tid);t._tid=setTimeout(()=>t.classList.remove('show'),1800);}
+
+/* ---------- 颜色工具函数 ---------- */
+function hexToRgb(hex) {
+  let r = 0, g = 0, b = 0;
+  if (hex.length == 4) {
+    r = parseInt(hex[1] + hex[1], 16); g = parseInt(hex[2] + hex[2], 16); b = parseInt(hex[3] + hex[3], 16);
+  } else if (hex.length == 7) {
+    r = parseInt(hex.substring(1, 3), 16); g = parseInt(hex.substring(3, 5), 16); b = parseInt(hex.substring(5, 7), 16);
+  }
+  return [r, g, b];
+}
+function rgbToHex(r, g, b) {
+  return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+}
+function getLuminance(hex) {
+  const [r, g, b] = hexToRgb(hex).map(v => {
+    v /= 255;
+    return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+  });
+  return 0.2126 * r + 0.7152 * g + 0.0722 * b;
+}
+function getContrast(hex1, hex2) {
+  const l1 = getLuminance(hex1), l2 = getLuminance(hex2);
+  return (Math.max(l1, l2) + 0.05) / (Math.min(l1, l2) + 0.05);
+}
+function adjustColor(hex, amount) {
+  const [r, g, b] = hexToRgb(hex);
+  return rgbToHex(Math.min(255, Math.max(0, r + amount)), Math.min(255, Math.max(0, g + amount)), Math.min(255, Math.max(0, b + amount)));
+}
+function mixColors(hex1, hex2, weight1) {
+  const [r1, g1, b1] = hexToRgb(hex1);
+  const [r2, g2, b2] = hexToRgb(hex2);
+  const w1 = weight1, w2 = 1 - weight1;
+  const r = Math.round(r1 * w1 + r2 * w2);
+  const g = Math.round(g1 * w1 + g2 * w2);
+  const b = Math.round(b1 * w1 + b2 * w2);
+  return rgbToHex(r, g, b);
+}
+
+/* ---------- 数据加载与兼容 ---------- */
+const STORE_KEY='xydjz_db_v1';
+const DEFAULT_SETTINGS={
+  theme:'euro-pink', beanView:'detailed', recipeView:'detailed',
+  appName:'西洋豆浆萃', beanSort:'desc',
+  customThemes:[], historyColors:[]
+};
+
+function defaultDB(){
+  return {beans:[],brews:[],experiences:[],recipes:[],settings:Object.assign({},DEFAULT_SETTINGS)};
+}
+
+let DB = (function load(){
+  try{
+    const raw=localStorage.getItem(STORE_KEY);
+    if(!raw) return defaultDB();
+    const d=JSON.parse(raw);
+    const base=defaultDB();
+    // 兼容旧数据，如果字段不存在，则补全
+    base.beans=Array.isArray(d.beans)?d.beans:[];
+    base.brews=Array.isArray(d.brews)?d.brews:[];
+    base.experiences=Array.isArray(d.experiences)?d.experiences:[];
+    base.recipes=Array.isArray(d.recipes)?d.recipes:[];
+    base.settings=Object.assign({},DEFAULT_SETTINGS,d.settings||{});
+    // 确保自定义主题和历史色号是数组
+    if (!Array.isArray(base.settings.customThemes)) base.settings.customThemes = [];
+    if (!Array.isArray(base.settings.historyColors)) base.settings.historyColors = [];
+    return base;
+  }catch(e){ return defaultDB(); }
+})();
+
+function save(){
+  try{ localStorage.setItem(STORE_KEY,JSON.stringify(DB)); }
+  catch(e){ toast('保存失败：存储空间可能已满'); }
+}
+
+const state={tab:'home',beanFilter:'all',beanSearch:'',recipeFilter:'all',recipeSearch:'',logFilter:'all',logSearch:'',statsMonth:null,openSwipeId:null};
+
+/* ---------- 主题应用逻辑 ---------- */
+function applyTheme(){
+  const themeId = DB.settings.theme || 'euro-pink';
+  const customThemes = DB.settings.customThemes || [];
+  const custom = customThemes.find(t => t.id === themeId);
+
+  if (custom) {
+    // 使用自定义主题
+    document.documentElement.removeAttribute('data-theme');
+    const bg = custom.bg || '#F6E8EA';
+    const card = custom.card || '#FFFFFF';
+    const title = custom.title || '#673D47';
+    const accent = custom.accent || '#B34C4E';
+
+    // 派生逻辑
+    const card2 = mixColors(card, bg, 0.7); // 卡片与背景混合，形成稍浅的卡片内色块
+    let text = mixColors(title, bg, 0.7); // 正文色：标题与背景混合，降低对比度
+    let dim = mixColors(title, bg, 0.4); // 次要文字：标题与背景混合，更低对比度
+    const border = mixColors(accent, bg, 0.15); // 边框色：强调色与背景混合
+    const fabBg = accent;
+    const shadow = `0 2px 10px ${mixColors(title, bg, 0.08)}`;
+
+    // 自动对比度保护
+    let fabFg = getLuminance(accent) > 0.5 ? '#000000' : '#FFFFFF';
+    if (getContrast(bg, title) < 4.5) {
+      // 如果标题和背景对比度太低，强制将标题调深/调浅
+      title = getLuminance(bg) > 0.5 ? '#000000' : '#FFFFFF';
+      text = mixColors(title, bg, 0.7);
+      dim = mixColors(title, bg, 0.4);
+    }
+    if (getContrast(bg, text) < 4.5) {
+      text = getLuminance(bg) > 0.5 ? '#1A1A1A' : '#E6EAF2';
+      dim = mixColors(text, bg, 0.5);
+    }
+
+    const root = document.documentElement;
+    root.style.setProperty('--bg', bg);
+    root.style.setProperty('--card', card);
+    root.style.setProperty('--card2', card2);
+    root.style.setProperty('--text', text);
+    root.style.setProperty('--dim', dim);
+    root.style.setProperty('--title', title);
+    root.style.setProperty('--accent', accent);
+    root.style.setProperty('--border', border);
+    root.style.setProperty('--fab-bg', fabBg);
+    root.style.setProperty('--fab-fg', fabFg);
+    root.style.setProperty('--shadow', shadow);
+    root.style.setProperty('--r', '16px');
+  } else {
+    // 使用预设主题
+    document.documentElement.setAttribute('data-theme', themeId);
+    // 清除内联样式
+    const root = document.documentElement;
+    ['--bg','--card','--card2','--text','--dim','--title','--accent','--border','--fab-bg','--fab-fg','--shadow'].forEach(p => root.style.removeProperty(p));
+    root.style.setProperty('--r', '16px');
+  }
+  document.querySelector('meta[name="theme-color"]').setAttribute('content', getComputedStyle(document.documentElement).getPropertyValue('--bg').trim());
+}
+
+/* ---------- 渲染 ---------- */
+function render(){
+  applyTheme();
+  $('#topbar').innerHTML=renderTopbar();
+  $('#view').innerHTML=renderView();
+  $('#tabbar').innerHTML=renderTabbar();
+}
+
+function renderTopbar(){
+  if(state.tab==='home'){
+    return '<div class="brand">'+esc(DB.settings.appName||'西洋豆浆萃')+'</div>'+
+      '<div class="tb-right"><button class="icon-btn" data-action="settings">'+ICON.gear+'</button></div>';
+  }
+  const titles={beans:'豆仓',log:'记一笔',recipes:'冲煮方案',stats:'统计'};
+  return '<div class="tb-title">'+(titles[state.tab]||'')+'</div><div class="tb-right"></div>';
+}
+
+const TABS=[
+  {id:'home',label:'首页'},
+  {id:'beans',label:'豆仓'},
+  {id:'log',label:'记一笔'},
+  {id:'recipes',label:'冲煮方案'},
+  {id:'stats',label:'统计'}
+];
+
+function renderTabbar(){
+  return TABS.map(t=>{
+    const on=state.tab===t.id;
+    return '<button class="tab'+(on?' active':'')+'" data-action="tab" data-tab="'+t.id+'">'+
+      '<span class="tab-icon">'+(on?ICON.mug:ICON.bean)+'</span>'+
+      '<span class="tab-label">'+t.label+'</span></button>';
+  }).join('');
+}
+
+function renderView(){
+  switch(state.tab){
+    case 'home':return viewHome();
+    case 'beans':return viewBeans();
+    case 'log':return viewLog();
+    case 'recipes':return viewRecipes();
+    case 'stats':return viewStats();
+    default:return '';
+  }
+}
+
+/* ============ 首页 ============ */
+function viewHome(){
+  const m=curMonth();
+  const drinking=DB.beans.filter(b=>b.status==='在喝');
+  const monthBrews=DB.brews.filter(b=>(b.date||'').startsWith(m));
+  const monthBuy=DB.beans.filter(b=>(b.purchaseDate||'').startsWith(m)).reduce((s,b)=>s+num(b.price),0);
+
+  const recent=[].concat(
+    DB.brews.map(b=>({o:b,type:'brew'})),
+    DB.experiences.map(e=>({o:e,type:'exp'}))
+  ).sort((a,b)=>(b.o.date||'').localeCompare(a.o.date||'')).slice(0,6);
+
+  let h='';
+  h+='<div class="hero">'+
+     '<div class="hero-title">今天也要好好喝一杯</div>'+
+     '<div class="hero-sub">'+todayStr()+'</div>'+
+     '<div class="hero-stats">'+
+       '<div><b>'+monthBrews.length+'</b><span>本月冲煮</span></div>'+
+       '<div><b>'+money(monthBuy)+'</b><span>本月买豆</span></div>'+
+       '<div><b>'+drinking.length+'</b><span>在喝的豆</span></div>'+
+     '</div></div>';
+
+  h+='<div class="sec-title">在喝的豆<span class="more">'+drinking.length+' 款</span></div>';
+  if(!drinking.length){
+    h+='<div class="card" style="text-align:center;color:var(--dim);font-size:13px;padding:22px">还没有在喝的豆，去「豆仓」添加吧</div>';
+  }else{
+    h+=drinking.slice(0,3).map(beanCardLite).join('');
+  }
+
+  h+='<div class="sec-title">最近记录</div>';
+  if(!recent.length){
+    h+='<div class="card" style="text-align:center;color:var(--dim);font-size:13px;padding:22px">还没有记录，点底部「+」记一笔</div>';
+  }else{
+    h+=recent.map(item=>{
+      if(item.type==='brew'){
+        const b=item.o;
+        return '<div class="card" data-action="view-brew" data-id="'+b.id+'">'+
+          '<div class="bc-head"><div class="bc-name">'+esc(b.beanName||'未命名豆子')+'</div><span class="tag tag-title">制作</span></div>'+
+          '<div class="bc-sub">'+esc(b.date||'')+(b.dripper?' · '+esc(b.dripper):'')+(b.method?' · '+esc(b.method):'')+'</div>'+
+          '<div class="bc-meta">'+
+            (b.dose?'<span>粉量 <b>'+esc(b.dose)+'g</b></span>':'')+
+            (b.water?'<span>水量 <b>'+esc(b.water)+'g</b></span>':'')+
+            (b.temp?'<span>水温 <b>'+esc(b.temp)+'℃</b></span>':'')+
+            (b.overall?'<span>整体 <b>'+'★'.repeat(+b.overall)+'</b></span>':'')+
+          '</div></div>';
+      }else{
+        const e=item.o;
+        return '<div class="card" data-action="view-exp" data-id="'+e.id+'">'+
+          '<div class="bc-head"><div class="bc-name">'+esc(e.shop||e.drink||'门店体验')+'</div><span class="tag">体验</span></div>'+
+          '<div class="bc-sub">'+esc(e.date||'')+(e.drink?' · '+esc(e.drink):'')+'</div>'+
+          '<div class="bc-meta">'+
+            (e.price?'<span>价格 <b>'+money(e.price)+'</b></span>':'')+
+            (e.rating?'<span>评分 <b>'+'★'.repeat(+e.rating)+'</b></span>':'')+
+          '</div></div>';
+      }
+    }).join('');
+  }
+  return h;
+}
+
+/* ============ 豆仓 ============ */
+function viewBeans(){
+  const filters=[['all','全部'],['在喝','在喝'],['囤豆中','囤豆中'],['喝完','喝完']];
+  const q=state.beanSearch.trim().toLowerCase();
+  let list=DB.beans.slice();
+  if(state.beanFilter!=='all') list=list.filter(b=>b.status===state.beanFilter);
+  if(q) list=list.filter(b=>[b.name,b.roaster,b.origin,b.variety,b.process,b.roastLevel,b.flavor].join(' ').toLowerCase().includes(q));
+
+  const sort = DB.settings.beanSort || 'desc';
+  list.sort((a,b) => {
+    const dateA = a.purchaseDate || '';
+    const dateB = b.purchaseDate || '';
+    return sort === 'desc' ? dateB.localeCompare(dateA) : dateA.localeCompare(dateB);
+  });
+
+  let h='';
+  h+='<div class="top-controls">'+
+       '<div class="seg">'+
+         '<button class="'+(DB.settings.beanView==='detailed'?'on':'')+'" data-action="bean-view" data-v="detailed">详细</button>'+
+         '<button class="'+(DB.settings.beanView==='simple'?'on':'')+'" data-action="bean-view" data-v="simple">简略</button>'+
+       '</div>'+
+       '<button class="sort-btn" data-action="bean-sort">'+(sort==='desc'?ICON.arrowDown:ICON.arrowUp)+'</button>'+
+     '</div>';
+  h+='<div class="searchbar"><span class="ic-sm" style="color:var(--dim)">'+ICON.search+'</span>'+
+     '<input id="beanSearch" placeholder="搜索品名 / 烘焙商 / 产地" value="'+esc(state.beanSearch)+'"></div>';
+  h+='<div class="toolrow"><div class="chips">'+
+     filters.map(f=>'<button class="chip'+(state.beanFilter===f[0]?' on':'')+'" data-action="bean-filter" data-v="'+f[0]+'">'+f[1]+'</button>').join('')+
+     '</div></div>';
+
+  if(!list.length){
+    h+='<div class="empty"><div class="ic-lg">'+ICON.bean+'</div><p>还没有豆子记录</p>'+
+       '<button class="btn" data-action="new-bean">添加第一款豆</button></div>';
+  }else{
+    h+=list.map(b=>{
+      const isSwiped=state.openSwipeId===b.id;
+      const content=DB.settings.beanView==='simple'?beanCardLite(b):beanCardFull(b);
+      return '<div class="swipe-container" data-id="'+b.id+'">'+
+        '<div class="swipe-actions">'+
+          '<button class="swipe-edit" data-action="edit-bean" data-id="'+b.id+'">修改</button>'+
+          '<button class="swipe-del" data-action="delete-bean" data-id="'+b.id+'">删除</button>'+
+        '</div>'+
+        '<div class="swipe-card '+(isSwiped?'swiped-2':'')+'" data-action="view-bean" data-id="'+b.id+'">'+content+'</div>'+
+      '</div>';
+    }).join('');
+    h+='<button class="btn-fab-bottom" data-action="new-bean" title="添加豆子">'+ICON.plus+'</button>';
+  }
+  return h;
+}
+
+function beanCardLite(b){
+  const blendTag='<span class="tag '+(b.blend?'tag-accent':'tag-title')+'">'+(b.blend?'拼配':'单品')+'</span>';
+  const statusTag='<span class="tag '+(b.status==='在喝'?'tag-accent':'')+'">'+esc(b.status||'在喝')+'</span>';
+  const friendTag=b.tag==='friend'?'<span class="tag tag-friend">朋友分享</span>':'';
+  return '<div class="card" style="margin:0">'+
+    '<div class="bc-lite">'+
+      '<div><div class="bc-name">'+esc(b.name||'未命名')+'</div>'+
+      '<div class="bc-sub" style="margin:2px 0 0">'+esc(b.roaster||'')+(b.roastLevel?' · '+esc(b.roastLevel):'')+'</div></div>'+
+      '<div style="display:flex;gap:4px;flex-wrap:wrap;justify-content:flex-end;align-items:flex-start">'+friendTag+statusTag+blendTag+'</div>'+
+    '</div></div>';
+}
+
+function beanCardFull(b){
+  const perG=(num(b.price)&&num(b.weight))?(num(b.price)/num(b.weight)).toFixed(2):'';
+  const flavors=(b.flavor||'').split(/[,，\s]+/).filter(Boolean).slice(0,6);
+  const blendTag='<span class="tag '+(b.blend?'tag-accent':'tag-title')+'">'+(b.blend?'拼配':'单品')+'</span>';
+  const statusTag='<span class="tag '+(b.status==='在喝'?'tag-accent':(b.status==='喝完'?'':'tag-title'))+'">'+esc(b.status||'在喝')+'</span>';
+  const friendTag=b.tag==='friend'?'<span class="tag tag-friend">朋友分享</span>':'';
+  return '<div class="card" style="margin:0">'+
+    '<div class="bc-head"><div class="bc-name">'+esc(b.name||'未命名')+'</div>'+
+      '<div style="display:flex;gap:4px;flex-wrap:wrap;justify-content:flex-end;align-items:flex-start">'+friendTag+statusTag+blendTag+'</div></div>'+
+    '<div class="bc-sub">'+esc(b.roaster||'—')+(b.blend?' · 拼配':' · 单品')+(b.roastLevel?' · '+esc(b.roastLevel):'')+(b.process?' · '+esc(b.process):'')+'</div>'+
+    '<div class="bc-meta">'+
+      (b.origin?'<span>产地 <b>'+esc(b.origin)+'</b></span>':'')+
+      (b.variety?'<span>豆种 <b>'+esc(b.variety)+'</b></span>':'')+
+      (b.roastDate?'<span>烘焙 <b>'+esc(b.roastDate)+'</b></span>':'')+
+      (perG?'<span>克价 <b>'+perG+' 元/g</b></span>':'')+
+    '</div>'+
+    (flavors.length?'<div class="bc-tags">'+flavors.map(f=>'<span class="tag">'+esc(f)+'</span>').join('')+'</div>':'')+
+    '</div>';
+}
+
+/* ============ 记一笔 ============ */
+function viewLog(){
+  const filters=[['all','全部'],['brew','制作'],['exp','消费体验']];
+  const q=state.logSearch.trim().toLowerCase();
+  let list=[].concat(
+    DB.brews.map(b=>({o:b,type:'brew'})),
+    DB.experiences.map(e=>({o:e,type:'exp'}))
+  );
+  if(state.logFilter!=='all') list=list.filter(x=>x.type===state.logFilter);
+  if(q) list=list.filter(x=>{
+    const o=x.o;
+    const str = x.type==='brew' ? [o.beanName,o.dripper,o.method,o.flavor,o.notes].join(' ') : [o.shop,o.drink,o.origin,o.other,o.experience].join(' ');
+    return str.toLowerCase().includes(q);
+  });
+  list.sort((a,b)=>(b.o.date||'').localeCompare(a.o.date||''));
+
+  let h='';
+  h+='<div class="searchbar"><span class="ic-sm" style="color:var(--dim)">'+ICON.search+'</span>'+
+     '<input id="logSearch" placeholder="搜索豆子 / 店名 / 风味" value="'+esc(state.logSearch)+'"></div>';
+  h+='<div class="toolrow"><div class="chips">'+
+     filters.map(f=>'<button class="chip'+(state.logFilter===f[0]?' on':'')+'" data-action="log-filter" data-v="'+f[0]+'">'+f[1]+'</button>').join('')+
+     '</div></div>';
+
+  if(!list.length){
+    h+='<div class="empty"><div class="ic-lg">'+ICON.mug+'</div><p>还没有记录</p>'+
+       '<button class="btn" data-action="open-log-add">记一笔</button></div>';
+  }else{
+    h+=list.map(item=>{
+      const isSwiped=state.openSwipeId===item.o.id;
+      if(item.type==='brew'){
+        const b=item.o;
+        const content='<div class="card" style="margin:0"><div class="bc-head"><div class="bc-name">'+esc(b.beanName||'未命名豆子')+'</div><span class="tag tag-title">制作</span></div><div class="bc-sub">'+esc(b.date||'')+(b.dripper?' · '+esc(b.dripper):'')+(b.method?' · '+esc(b.method):'')+'</div><div class="bc-meta">'+(b.dose?'<span>粉量 <b>'+esc(b.dose)+'g</b></span>':'')+(b.water?'<span>水量 <b>'+esc(b.water)+'g</b></span>':'')+(b.temp?'<span>水温 <b>'+esc(b.temp)+'℃</b></span>':'')+(b.overall?'<span>整体 <b>'+'★'.repeat(+b.overall)+'</b></span>':'')+'</div></div>';
+        return '<div class="swipe-container" data-id="'+b.id+'"><div class="swipe-actions"><button class="swipe-edit" data-action="edit-brew" data-id="'+b.id+'">修改</button><button class="swipe-del" data-action="delete-brew" data-id="'+b.id+'">删除</button></div><div class="swipe-card '+(isSwiped?'swiped-2':'')+'" data-action="view-brew" data-id="'+b.id+'">'+content+'</div></div>';
+      }else{
+        const e=item.o;
+        const content='<div class="card" style="margin:0"><div class="bc-head"><div class="bc-name">'+esc(e.shop||e.drink||'门店体验')+'</div><span class="tag">消费体验</span></div><div class="bc-sub">'+esc(e.date||'')+(e.drink?' · '+esc(e.drink):'')+'</div><div class="bc-meta">'+(e.price?'<span>价格 <b>'+money(e.price)+'</b></span>':'')+(e.rating?'<span>评分 <b>'+'★'.repeat(+e.rating)+'</b></span>':'')+'</div></div>';
+        return '<div class="swipe-container" data-id="'+e.id+'"><div class="swipe-actions"><button class="swipe-edit" data-action="edit-exp" data-id="'+e.id+'">修改</button><button class="swipe-del" data-action="delete-exp" data-id="'+e.id+'">删除</button></div><div class="swipe-card '+(isSwiped?'swiped-2':'')+'" data-action="view-exp" data-id="'+e.id+'">'+content+'</div></div>';
+      }
+    }).join('');
+    h+='<button class="btn-fab-bottom" data-action="open-log-add" title="记一笔">'+ICON.plus+'</button>';
+  }
+  return h;
+}
+
+/* ============ 冲煮方案 ============ */
+function viewRecipes(){
+  const filters=[['all','全部'],['own','我的优化'],['collect','收集']];
+  const q=state.recipeSearch.trim().toLowerCase();
+  let list=DB.recipes.slice();
+  if(state.recipeFilter!=='all') list=list.filter(r=>r.type===state.recipeFilter);
+  if(q) list=list.filter(r=>[r.name,r.beanName,r.dripper,r.flavor,r.review].join(' ').toLowerCase().includes(q));
+  list.sort((a,b)=>{ if(a.isTop&&!b.isTop)return -1; if(!a.isTop&&b.isTop)return 1; return (b.createdAt||0)-(a.createdAt||0); });
+
+  let h='';
+  h+='<div class="top-controls">'+
+       '<div class="seg">'+
+         '<button class="'+(DB.settings.recipeView==='detailed'?'on':'')+'" data-action="recipe-view" data-v="detailed">详细</button>'+
+         '<button class="'+(DB.settings.recipeView==='simple'?'on':'')+'" data-action="recipe-view" data-v="simple">简略</button>'+
+       '</div>'+
+     '</div>';
+  h+='<div class="searchbar"><span class="ic-sm" style="color:var(--dim)">'+ICON.search+'</span>'+
+     '<input id="recipeSearch" placeholder="搜索方案名 / 豆子 / 风味" value="'+esc(state.recipeSearch)+'"></div>';
+  h+='<div class="toolrow"><div class="chips">'+
+     filters.map(f=>'<button class="chip'+(state.recipeFilter===f[0]?' on':'')+'" data-action="recipe-filter" data-v="'+f[0]+'">'+f[1]+'</button>').join('')+
+     '</div></div>';
+
+  if(!list.length){
+    h+='<div class="empty"><div class="ic-lg">'+ICON.mug+'</div><p>还没有冲煮方案</p>'+
+       '<button class="btn" data-action="new-recipe">新建方案</button></div>';
+  }else{
+    h+=list.map(r=>{
+      const isSwiped=state.openSwipeId===r.id;
+      const content=DB.settings.recipeView==='simple'?recipeCardLite(r):recipeCardFull(r);
+      return '<div class="swipe-container" data-id="'+r.id+'">'+
+        '<div class="swipe-actions">'+
+          '<button class="swipe-top" data-action="toggle-top-recipe" data-id="'+r.id+'">'+(r.isTop?'取消置顶':'置顶')+'</button>'+
+          '<button class="swipe-edit" data-action="edit-recipe" data-id="'+r.id+'">修改</button>'+
+          '<button class="swipe-del" data-action="delete-recipe" data-id="'+r.id+'">删除</button>'+
+        '</div>'+
+        '<div class="swipe-card '+(isSwiped?'swiped':'')+'" data-action="view-recipe" data-id="'+r.id+'">'+content+'</div>'+
+      '</div>';
+    }).join('');
+    h+='<button class="btn-fab-bottom" data-action="new-recipe" title="新建方案">'+ICON.plus+'</button>';
+  }
+  return h;
+}
+
+function recipeCardLite(r){
+  return '<div class="card" style="margin:0"><div class="bc-lite"><div><div class="bc-name">'+esc(r.name||'未命名方案')+'</div>'+
+    '<div class="bc-sub" style="margin:2px 0 0">'+esc(r.dose||'')+(r.dose?'g':'')+(r.water?' / '+esc(r.water)+'g':'')+(r.temp?' · '+esc(r.temp)+'℃':'')+'</div></div>'+
+    '<span class="tag '+(r.type==='own'?'tag-accent':'')+'">'+(r.type==='own'?'我的':'收集')+'</span></div></div>';
+}
+function recipeCardFull(r){
+  return '<div class="card" style="margin:0"><div class="bc-head"><div class="bc-name">'+esc(r.name||'未命名方案')+'</div>'+
+    '<span class="tag '+(r.type==='own'?'tag-accent':'')+'">'+(r.type==='own'?'我的优化':'收集')+'</span></div>'+
+    (r.beanName?'<div class="bc-sub">关联豆：'+esc(r.beanName)+'</div>':'')+
+    '<div class="bc-meta">'+
+      (r.dripper?'<span>滤杯 <b>'+esc(r.dripper)+'</b></span>':'')+
+      (r.dose?'<span>粉量 <b>'+esc(r.dose)+'g</b></span>':'')+
+      (r.water?'<span>水量 <b>'+esc(r.water)+'g</b></span>':'')+
+      (r.ratio?'<span>比例 <b>'+esc(r.ratio)+'</b></span>':'')+
+      (r.temp?'<span>水温 <b>'+esc(r.temp)+'℃</b></span>':'')+
+      (r.grind?'<span>研磨 <b>'+esc(r.grind)+'</b></span>':'')+
+      (r.totalTime?'<span>时长 <b>'+esc(r.totalTime)+'</b></span>':'')+
+    '</div>'+
+    (r.stages?'<div style="margin-top:10px;font-size:12.5px;color:var(--dim);line-height:1.6;white-space:pre-wrap">'+esc(r.stages)+'</div>':'')+
+    (r.flavor?'<div class="bc-tags">'+String(r.flavor).split(/[,，\s]+/).filter(Boolean).slice(0,6).map(f=>'<span class="tag">'+esc(f)+'</span>').join('')+'</div>':'')+
+    (r.review?'<div style="margin-top:10px;padding-top:10px;border-top:1px solid var(--border);font-size:12.5px;color:var(--text);line-height:1.6;white-space:pre-wrap">'+esc(r.review)+'</div>':'')+
+    '</div>';
+}
+
+/* ============ 统计 ============ */
+function viewStats(){
+  const m=state.statsMonth||curMonth();
+  const [y,mo]=m.split('-').map(Number);
+  const now=new Date();
+  const isCur=(m===curMonth());
+  const daysInMonth=new Date(y,mo,0).getDate();
+  const dayCount=isCur?now.getDate():daysInMonth;
+
+  const brews=DB.brews.filter(b=>(b.date||'').startsWith(m));
+  const exps=DB.experiences.filter(e=>(e.date||'').startsWith(m));
+  const boughtBeans=DB.beans.filter(b=>(b.purchaseDate||'').startsWith(m));
+
+  const totalDose=brews.reduce((s,b)=>s+num(b.dose),0);
+  const totalBuy=boughtBeans.reduce((s,b)=>s+num(b.price),0);
+  const buyWeight=boughtBeans.reduce((s,b)=>s+num(b.weight),0);
+  const avgPerG=buyWeight>0?(totalBuy/buyWeight):0;
+  const perDay=dayCount>0?(totalDose/dayCount):0;
+
+  const recipeCount={};
+  brews.forEach(b=>{const k=b.recipeName||b.method||'未命名';recipeCount[k]=(recipeCount[k]||0)+1;});
+  const topRecipes=Object.entries(recipeCount).sort((a,b)=>b[1]-a[1]).slice(0,5);
+
+  const beanCount={};
+  DB.beans.forEach(b=>{
+    let count = 1;
+    if (b.purchases && Array.isArray(b.purchases) && b.purchases.length > 0) count = b.purchases.length;
+    if(b.name) beanCount[b.name]=(beanCount[b.name]||0)+count;
+  });
+  const topBeans=Object.entries(beanCount).sort((a,b)=>b[1]-a[1]).slice(0,5);
+
+  const originCount={};
+  DB.beans.forEach(b=>{
+    if(b.origin){
+      let country='其他';
+      for(let c of BEAN_COUNTRIES){ if(b.origin.includes(c)){ country=c; break; } }
+      if(country==='其他'){ const parts=b.origin.split(/[\s\/,，]+/); country=parts[0]||'其他'; }
+      originCount[country]=(originCount[country]||0)+1;
+    }
+  });
+  const topOrigins=Object.entries(originCount).sort((a,b)=>b[1]-a[1]).slice(0,5);
+
+  const processCount={};
+  DB.beans.forEach(b=>{if(b.process)processCount[b.process]=(processCount[b.process]||0)+1;});
+  const topProcess=Object.entries(processCount).sort((a,b)=>b[1]-a[1]).slice(0,5);
+
+  let h='';
+  h+='<div class="field" style="margin-bottom:14px">'+
+       '<div class="auto-val" style="display:flex;justify-content:space-between;align-items:center;cursor:pointer" data-action="open-month-picker">'+
+         '<span>'+esc(m)+'</span><span class="ic-sm">'+ICON.chevron+'</span>'+
+       '</div>'+
+     '</div>';
+
+  h+='<div class="stat-big"><div class="label">'+esc(m)+' 总消耗</div>'+
+     '<div class="stat-grid">'+
+       '<div><b>'+money(totalBuy)+'</b><span>总花费</span></div>'+
+       '<div><b>'+perDay.toFixed(1)+'g</b><span>日均消耗</span></div>'+
+       '<div><b>'+(avgPerG?avgPerG.toFixed(2):'—')+'</b><span>平均克价</span></div>'+
+     '</div>'+
+     '<div style="margin-top:16px;padding-top:14px;border-top:1px solid var(--border);display:flex;justify-content:space-between;font-size:12.5px;color:var(--dim)">'+
+       '<span>本月冲煮 <b style="color:var(--title)">'+brews.length+'</b> 次</span>'+
+       '<span>累计粉量 <b style="color:var(--title)">'+totalDose.toFixed(1)+'g</b></span>'+
+       '<span>门店体验 <b style="color:var(--title)">'+exps.length+'</b> 次</span>'+
+     '</div></div>';
+
+  h+='<div class="sec-title">本月买豆总金额</div>';
+  h+='<div class="card" style="display:flex;justify-content:space-between;align-items:center">'+
+     '<div><div style="font-size:26px;font-weight:800;color:var(--title)">'+money(totalBuy)+'</div>'+
+     '<div style="font-size:12px;color:var(--dim);margin-top:2px">'+boughtBeans.length+' 笔购买 · 合计 '+(buyWeight?buyWeight:'0')+'g</div></div>'+
+     '</div>';
+
+  h+=bars('常用方案',topRecipes,'次');
+  h+=bars('常买豆子',topBeans,'次');
+  h+=bars('产地分布',topOrigins,'款');
+  h+=bars('处理法',topProcess,'款');
+
+  h+='<div class="sec-title">年度消费统计（'+y+'）</div>';
+  h+='<div class="card"><div class="chart-container">';
+  const yearData=[]; let maxVal=0;
+  for(let i=1;i<=12;i++){
+    const mStr=y+'-'+pad2(i);
+    const buy=DB.beans.filter(b=>(b.purchaseDate||'').startsWith(mStr)).reduce((s,b)=>s+num(b.price),0);
+    const exp=DB.experiences.filter(e=>(e.date||'').startsWith(mStr)).reduce((s,e)=>s+num(e.price),0);
+    yearData.push({m:i,buy,exp});
+    if(buy>maxVal)maxVal=buy;
+    if(exp>maxVal)maxVal=exp;
+  }
+  if(maxVal===0)maxVal=1;
+  yearData.forEach(d=>{
+    const buyH=(d.buy/maxVal)*100;
+    const expH=(d.exp/maxVal)*100;
+    h+='<div class="chart-col">'+
+         '<div class="chart-bars">'+
+           '<div class="chart-bar buy" style="height:'+buyH+'%" title="买豆 ¥'+d.buy.toFixed(0)+'"></div>'+
+           '<div class="chart-bar exp" style="height:'+expH+'%" title="门店 ¥'+d.exp.toFixed(0)+'"></div>'+
+         '</div>'+
+         '<div class="chart-label">'+d.m+'月</div>'+
+       '</div>';
+  });
+  h+='</div>';
+  h+='<div style="display:flex;justify-content:center;gap:16px;font-size:11px;color:var(--dim);margin-top:8px">'+
+       '<span><span style="display:inline-block;width:10px;height:10px;background:var(--accent);border-radius:2px;margin-right:4px"></span>买豆</span>'+
+       '<span><span style="display:inline-block;width:10px;height:10px;background:var(--title);opacity:0.6;border-radius:2px;margin-right:4px"></span>门店</span>'+
+     '</div>';
+  h+='</div>';
+
+  return h;
+}
+
+function bars(title,data,unit){
+  let h='<div class="sec-title">'+title+'</div><div class="card">';
+  if(!data.length){ h+='<div style="text-align:center;color:var(--dim);font-size:13px;padding:10px">暂无数据</div>'; }
+  else{
+    const max=Math.max.apply(null,data.map(d=>d[1]))||1;
+    h+=data.map(d=>'<div class="bar-row">'+
+      '<div class="name">'+esc(d[0])+'</div>'+
+      '<div class="bar"><i style="width:'+(d[1]/max*100)+'%"></i></div>'+
+      '<div class="val">'+d[1]+unit+'</div></div>').join('');
+  }
+  h+='</div>';
+  return h;
+}
+
+function openMonthPicker(){
+  const m=state.statsMonth||curMonth();
+  let [y,mo]=m.split('-').map(Number);
+  const html=modalHead('选择月份')+
+    '<div class="year-selector">'+
+      '<button type="button" data-action="month-year" data-v="-1">‹</button>'+
+      '<span id="pickerYear">'+y+'</span>'+
+      '<button type="button" data-action="month-year" data-v="1">›</button>'+
+    '</div>'+
+    '<div class="month-picker-grid" id="monthGrid">'+
+      Array.from({length:12},(_,i)=>i+1).map(i=>'<button type="button" class="'+(i===mo?'on':'')+'" data-action="month-pick" data-v="'+i+'">'+i+'月</button>').join('')+
+    '</div>';
+  openModal(html);
+}
+
+/* =====================================================
+   弹窗与设置
+   ===================================================== */
+function openModal(html,opts){
+  opts=opts||{};
+  const m=$('#modal');
+  m.innerHTML='<div class="modal-backdrop"></div><div class="modal-panel">'+html+'</div>';
+  m.classList.add('show');
+  document.body.style.overflow='hidden';
+  const bd=m.querySelector('.modal-backdrop');
+  bd.addEventListener('click',()=>{ if(opts.dismissable!==false) closeModal(); });
+  const panel=m.querySelector('.modal-panel');
+  panel.scrollTop=0;
+}
+function closeModal(){
+  const m=$('#modal');
+  m.classList.remove('show');
+  m.innerHTML='';
+  document.body.style.overflow='';
+  state.openSwipeId=null;
+}
+function modalHead(title){
+  return '<div class="modal-head"><h3>'+esc(title)+'</h3>'+
+    '<button class="modal-close" data-action="close-modal">✕</button></div>';
+}
+
+function openLogAddSheet(){
+  openModal(
+    modalHead('记一笔')+
+    '<div class="add-grid">'+
+      '<button class="add-card" data-action="new-brew">'+
+        '<span class="add-ic">'+ICON.pour+'</span>'+
+        '<span class="add-title">制作咖啡</span>'+
+        '<span class="add-sub">记录一次手冲</span>'+
+      '</button>'+
+      '<button class="add-card" data-action="new-experience">'+
+        '<span class="add-ic">'+ICON.shop+'</span>'+
+        '<span class="add-title">消费体验</span>'+
+        '<span class="add-sub">门店 / 其他</span>'+
+      '</button>'+
+    '</div>'
+  );
+}
+
+function starsHTML(name,value){
+  value=Number(value)||0;
+  let h='<div class="stars" data-star-name="'+name+'" data-value="'+value+'">';
+  for(let i=1;i<=5;i++){
+    h+='<button type="button" class="star'+(i<=value?' on':'')+'" data-action="star" data-val="'+i+'">★</button>';
+  }
+  h+='</div>';
+  return h;
+}
+
+/* ============ 豆仓表单 ============ */
+function openBeanForm(id){
+  const b=id?DB.beans.find(x=>x.id===id)||{}:{};
+  const isEdit=!!id;
+  let purchases = b.purchases || [];
+  if (purchases.length === 0 && (b.price || b.weight || b.purchaseDate)) {
+    purchases.push({ date: b.purchaseDate || '', price: b.price || '', weight: b.weight || '' });
+  }
+  if (purchases.length === 0) {
+    purchases.push({ date: todayStr(), price: '', weight: '' });
+  }
+
+  const purchaseHtml = purchases.map((p, i) => `
+    <div class="purchase-row" data-index="${i}">
+      <input type="date" class="input" value="${esc(p.date||'')}" data-field="date">
+      <input type="number" step="0.01" class="input" placeholder="金额" value="${esc(p.price||'')}" data-field="price">
+      <input type="number" step="1" class="input" placeholder="克重" value="${esc(p.weight||'')}" data-field="weight">
+      <button type="button" class="btn btn-danger delete-purchase-row" ${purchases.length<=1?'style="display:none"':''}>×</button>
+    </div>
+  `).join('');
+
+  const html=
+    modalHead(isEdit?'编辑豆子':'新增豆子')+
+    '<div class="field"><label>品名 *</label><input class="input" name="name" value="'+esc(b.name||'')+'" placeholder="例如：埃塞 耶加雪菲"></div>'+
+    '<div class="field"><label>烘焙商</label><input class="input" name="roaster" value="'+esc(b.roaster||'')+'" placeholder="例如：某某烘焙"></div>'+
+    '<div class="field"><label>烘焙度</label><input class="input" name="roastLevel" value="'+esc(b.roastLevel||'')+'" placeholder="浅/中/深"></div>'+
+    '<div class="field"><label class="switch" style="font-size:13px" id="blendLabel"><span style="color:var(--dim);font-weight:700" id="blendText">拼配豆</span>'+
+      '<input type="checkbox" name="blend" id="fBlend" '+(b.blend?'checked':'')+'><span class="track"></span></label></div>'+
+
+    '<div id="singleBeanFields">'+
+      '<div class="row2">'+
+        '<div class="field"><label>产地/产区/处理站</label><input class="input" name="origin" value="'+esc(b.origin||'')+'"></div>'+
+        '<div class="field"><label>豆种</label><input class="input" name="variety" value="'+esc(b.variety||'')+'" placeholder="例如：Heirloom"></div>'+
+      '</div>'+
+      '<div class="row2">'+
+        '<div class="field"><label>处理法</label><input class="input" name="process" value="'+esc(b.process||'')+'" placeholder="水洗/日晒/蜜处理"></div>'+
+      '</div>'+
+    '</div>'+
+
+    '<div id="blendBeanFields" style="display:none">'+
+      '<div class="field"><label>拼配组成（不同产区/豆种/处理法）</label>'+
+        '<div id="blendList"></div>'+
+        '<button type="button" class="btn btn-ghost btn-block" style="margin-top:8px;padding:8px" id="addBlendRowBtn">+ 添加一种豆</button>'+
+      '</div>'+
+    '</div>'+
+
+    '<div class="field"><label>烘焙日期</label><input type="date" class="input" name="roastDate" value="'+esc(b.roastDate||'')+'"></div>'+
+
+    '<div class="field"><label>状态</label><div class="seg" id="segStatus">'+
+      ['在喝','囤豆中','喝完'].map(s=>'<button type="button" data-action="seg-set" data-target="status" data-v="'+s+'" class="'+((b.status||'在喝')===s?'on':'')+'">'+s+'</button>').join('')+
+    '</div><input type="hidden" name="status" value="'+esc(b.status||'在喝')+'"></div>'+
+
+    '<div class="field"><label>购买记录（日期 / 金额 / 克重）</label>'+
+      '<div id="purchaseList">'+purchaseHtml+'</div>'+
+      '<button type="button" class="btn btn-ghost btn-block" style="margin-top:8px;padding:8px" id="addPurchaseRowBtn">+ 添加购买记录</button>'+
+    '</div>'+
+    '<div class="row2">'+
+      '<div class="field"><label>最新克价</label><div class="auto-val" id="latestPerG">— 元/g</div></div>'+
+      '<div class="field"><label>最低克价</label><div class="auto-val" id="lowestPerG">— 元/g</div></div>'+
+    '</div>'+
+
+    '<div class="field"><label>参考风味</label><textarea class="textarea" name="flavor" placeholder="用逗号分隔，例如：柑橘，茉莉，蜂蜜">'+esc(b.flavor||'')+'</textarea></div>'+
+    '<div class="field"><label>官方冲煮建议</label><textarea class="textarea" name="brewAdvice" style="min-height:110px" placeholder="粉量、水量、水温、研磨度、注水节奏…">'+esc(b.brewAdvice||'')+'</textarea></div>'+
+    '<div class="field"><label>笔记</label><textarea class="textarea" name="personalNotes" style="min-height:100px" placeholder="记录你对这款豆子真实的感受...">'+esc(b.personalNotes||'')+'</textarea></div>'+
+
+    '<div class="btn-row">'+
+      (isEdit?'<button class="btn btn-danger" data-action="delete-bean" data-id="'+b.id+'">删除</button>':'')+
+      '<button class="btn" data-action="save-bean" data-id="'+(b.id||'')+'">保存</button>'+
+    '</div>';
+
+  openModal(html);
+  setTimeout(()=>{ bindPerG(); bindBlendLogic(b); bindPurchaseLogic(); },30);
+}
+
+function bindPerG(){
+  const latest=$('#latestPerG'),lowest=$('#lowestPerG');
+  if(!latest||!lowest)return;
+  const updatePrice = () => {
+    const rows = $$('#purchaseList .purchase-row');
+    let latestPrice = 0, latestWeight = 0;
+    let lowestPrice = Infinity;
+    let hasValid = false;
+    let latestDate = '';
+
+    rows.forEach(row => {
+      const date = row.querySelector('[data-field="date"]').value;
+      const price = num(row.querySelector('[data-field="price"]').value);
+      const weight = num(row.querySelector('[data-field="weight"]').value);
+      if (price && weight) {
+        hasValid = true;
+        const perG = price / weight;
+        if (perG < lowestPrice) lowestPrice = perG;
+        if (!latestDate || date > latestDate) {
+          latestDate = date;
+          latestPrice = price;
+          latestWeight = weight;
+        }
+      }
+    });
+
+    latest.textContent = (latestPrice && latestWeight) ? (latestPrice/latestWeight).toFixed(2)+' 元/g' : '— 元/g';
+    lowest.textContent = hasValid ? lowestPrice.toFixed(2)+' 元/g' : '— 元/g';
+  };
+  $('#purchaseList').addEventListener('input', updatePrice);
+  updatePrice();
+}
+
+function bindPurchaseLogic() {
+  const list = $('#purchaseList');
+  const addBtn = $('#addPurchaseRowBtn');
+  if (!list || !addBtn) return;
+
+  const updateButtons = () => {
+    const rows = list.querySelectorAll('.purchase-row');
+    rows.forEach((row, i) => {
+      const btn = row.querySelector('.delete-purchase-row');
+      if (btn) btn.style.display = rows.length > 1 ? 'block' : 'none';
+    });
+  };
+
+  addBtn.addEventListener('click', () => {
+    const div = document.createElement('div');
+    div.className = 'purchase-row';
+    div.innerHTML = `
+      <input type="date" class="input" value="${todayStr()}" data-field="date">
+      <input type="number" step="0.01" class="input" placeholder="金额" data-field="price">
+      <input type="number" step="1" class="input" placeholder="克重" data-field="weight">
+      <button type="button" class="btn btn-danger delete-purchase-row">×</button>
+    `;
+    list.appendChild(div);
+    updateButtons();
+  });
+
+  list.addEventListener('click', (e) => {
+    if (e.target.classList.contains('delete-purchase-row')) {
+      e.target.closest('.purchase-row').remove();
+      updateButtons();
+      const latest=$('#latestPerG'), lowest=$('#lowestPerG');
+      if (latest && lowest) {
+        const rows = $$('#purchaseList .purchase-row');
+        let latestPrice = 0, latestWeight = 0, lowestPrice = Infinity, hasValid = false, latestDate = '';
+        rows.forEach(row => {
+          const date = row.querySelector('[data-field="date"]').value;
+          const price = num(row.querySelector('[data-field="price"]').value);
+          const weight = num(row.querySelector('[data-field="weight"]').value);
+          if (price && weight) {
+            hasValid = true;
+            const perG = price / weight;
+            if (perG < lowestPrice) lowestPrice = perG;
+            if (!latestDate || date > latestDate) {
+              latestDate = date; latestPrice = price; latestWeight = weight;
+            }
+          }
+        });
+        latest.textContent = (latestPrice && latestWeight) ? (latestPrice/latestWeight).toFixed(2)+' 元/g' : '— 元/g';
+        lowest.textContent = hasValid ? lowestPrice.toFixed(2)+' 元/g' : '— 元/g';
+      }
+    }
+  });
+
+  updateButtons();
+}
+
+function bindBlendLogic(b) {
+  const fBlend = $('#fBlend');
+  const singleBeanFields = $('#singleBeanFields');
+  const blendBeanFields = $('#blendBeanFields');
+  const blendText = $('#blendText');
+  const blendList = $('#blendList');
+  const addBlendRowBtn = $('#addBlendRowBtn');
+  if (!fBlend || !blendList) return;
+
+  const addBlendRow = (data) => {
+    data = data || { origin: '', variety: '', process: '' };
+    const row = document.createElement('div');
+    row.className = 'blend-row';
+    row.style.cssText = 'display:grid;grid-template-columns:1fr 1fr 1fr 24px;gap:6px;margin-bottom:8px;align-items:center;';
+    row.innerHTML = `
+      <input class="input" placeholder="产地" value="${esc(data.origin)}" data-field="origin" style="padding:8px 10px;font-size:12px;">
+      <input class="input" placeholder="豆种" value="${esc(data.variety)}" data-field="variety" style="padding:8px 10px;font-size:12px;">
+      <input class="input" placeholder="处理法" value="${esc(data.process)}" data-field="process" style="padding:8px 10px;font-size:12px;">
+      <button type="button" class="btn btn-danger" style="padding:0;width:24px;height:24px;border-radius:50%;font-size:14px;line-height:1;margin:0 auto;">×</button>
+    `;
+    row.querySelector('button').addEventListener('click', () => row.remove());
+    blendList.appendChild(row);
+  };
+
+  const updateBlendUI = () => {
+    const isChecked = fBlend.checked;
+    singleBeanFields.style.display = isChecked ? 'none' : 'block';
+    blendBeanFields.style.display = isChecked ? 'block' : 'none';
+    blendText.style.color = isChecked ? 'var(--accent)' : 'var(--dim)';
+    blendText.textContent = isChecked ? '拼配豆 ✓' : '拼配豆';
+    if (isChecked && blendList.children.length === 0) {
+      addBlendRow({});
+    }
+  };
+
+  fBlend.addEventListener('change', updateBlendUI);
+  addBlendRowBtn.addEventListener('click', () => addBlendRow({}));
+
+  if (b.blend) {
+    blendText.style.color = 'var(--accent)';
+    blendText.textContent = '拼配豆 ✓';
+    if (b.blendInfo) {
+      try {
+        const parts = JSON.parse(b.blendInfo);
+        if (Array.isArray(parts) && parts.length > 0) {
+          parts.forEach(p => addBlendRow(p));
+        } else {
+          addBlendRow({origin: b.origin, variety: b.variety, process: b.process});
+        }
+      } catch(e) { addBlendRow({origin: b.origin, variety: b.variety, process: b.process}); }
+    } else {
+      addBlendRow({origin: b.origin, variety: b.variety, process: b.process});
+    }
+    singleBeanFields.style.display = 'none';
+    blendBeanFields.style.display = 'block';
+  } else {
+    updateBlendUI();
+  }
+}
+
+/* ============ 制作记录表单 ============ */
+function openBrewForm(id){
+  const b=id?DB.brews.find(x=>x.id===id)||{}:{};
+  const drinking=DB.beans.filter(x=>x.status==='在喝');
+  const drippers=[...new Set(DB.brews.map(x=>x.dripper).filter(Boolean))];
+  const grinders=[...new Set(DB.brews.map(x=>x.grinder).filter(Boolean))];
+  const grinds=[...new Set(DB.brews.map(x=>x.grindSize).filter(Boolean))];
+  const methods=[...new Set(DB.brews.map(x=>x.method).filter(Boolean))];
+
+  let beanSelect='<div class="field"><label>豆子（在喝的豆）</label><select class="select" name="beanId" id="fBean"><option value="">— 手动输入 —</option>'+
+    drinking.map(x=>'<option value="'+x.id+'" '+(b.beanId===x.id?'selected':'')+'>'+esc(x.name)+(x.roaster?' · '+esc(x.roaster):'')+'</option>').join('')+
+    '</select></div>';
+  beanSelect+='<div class="field"><label>或手动输入豆名</label><input class="input" name="beanName" id="fBeanName" value="'+esc(b.beanName||'')+'" placeholder="不在豆仓里的豆子"></div>';
+
+  const html=
+    modalHead(id?'编辑冲煮记录':'制作记录')+
+    beanSelect+
+    '<div class="field"><label>冲煮日期</label><input type="date" class="input" name="date" value="'+esc(b.date||todayStr())+'"></div>'+
+
+    '<div class="sec-title" style="margin-top:6px">冲煮参数</div>'+
+    '<div class="row2">'+
+      '<div class="field" style="position:relative"><label>滤杯 / 咖啡机</label><input class="input" name="dripper" id="bDripper" value="'+esc(b.dripper||'')+'" placeholder="V60 / Origami" autocomplete="off"><div class="dropdown-suggestions" id="suggDripper"></div></div>'+
+      '<div class="field"><label>粉量 (g)</label><input type="number" step="0.1" class="input" name="dose" id="bDose" value="'+esc(b.dose||'')+'"></div>'+
+    '</div>'+
+    '<div class="row2">'+
+      '<div class="field" style="position:relative"><label>磨豆机</label><input class="input" name="grinder" id="bGrinder" value="'+esc(b.grinder||'')+'" placeholder="C40 / 1Zpresso" autocomplete="off"><div class="dropdown-suggestions" id="suggGrinder"></div></div>'+
+      '<div class="field" style="position:relative"><label>研磨度</label><input class="input" name="grindSize" id="bGrind" value="'+esc(b.grindSize||'')+'" placeholder="例如 22格" autocomplete="off"><div class="dropdown-suggestions" id="suggGrind"></div></div>'+
+    '</div>'+
+    '<div class="field" style="position:relative"><label>方式</label><input class="input" name="method" id="bMethod" value="'+esc(b.method||'')+'" placeholder="一刀流 / 三段式" autocomplete="off"><div class="dropdown-suggestions" id="suggMethod"></div></div>'+
+    '<div class="row2">'+
+      '<div class="field"><label>粉水比</label><div class="auto-val" id="bRatio">—</div></div>'+
+      '<div class="field"><label>总水量 (g)</label><input type="number" step="1" class="input" name="water" id="bWater" value="'+esc(b.water||'')+'"></div>'+
+    '</div>'+
+    '<div class="row2">'+
+      '<div class="field"><label>水温 (℃)</label><input type="number" step="1" class="input" name="temp" value="'+esc(b.temp||'')+'"></div>'+
+      '<div class="field"><label>总时长</label><input class="input" name="totalTime" value="'+esc(b.totalTime||'')+'" placeholder="例如 2:15"></div>'+
+    '</div>'+
+
+    '<div class="sec-title" style="margin-top:6px">口感评价</div>'+
+    '<div class="info-grid" style="margin-bottom:12px">'+
+      '<div class="info-item" style="flex-direction:row;align-items:center;justify-content:space-between;padding:6px 10px"><div class="label" style="margin:0">苦</div>'+starsHTML('bitter',b.bitter)+'</div>'+
+      '<div class="info-item" style="flex-direction:row;align-items:center;justify-content:space-between;padding:6px 10px"><div class="label" style="margin:0">酸</div>'+starsHTML('sour',b.sour)+'</div>'+
+      '<div class="info-item" style="flex-direction:row;align-items:center;justify-content:space-between;padding:6px 10px"><div class="label" style="margin:0">甜感</div>'+starsHTML('sweet',b.sweet)+'</div>'+
+      '<div class="info-item" style="flex-direction:row;align-items:center;justify-content:space-between;padding:6px 10px"><div class="label" style="margin:0">醇厚</div>'+starsHTML('body',b.body)+'</div>'+
+      '<div class="info-item" style="flex-direction:row;align-items:center;justify-content:space-between;padding:6px 10px"><div class="label" style="margin:0">整体</div>'+starsHTML('overall',b.overall)+'</div>'+
+    '</div>'+
+    '<div class="field"><label>风味</label><textarea class="textarea" name="flavor" placeholder="例如：柑橘、红茶、焦糖">'+esc(b.flavor||'')+'</textarea></div>'+
+    '<div class="field"><label>手法备注</label><textarea class="textarea" name="technique" placeholder="注水节奏、闷蒸时间等">'+esc(b.technique||'')+'</textarea></div>'+
+    '<div class="field"><label>口感笔记</label><textarea class="textarea" name="notes" placeholder="喝起来怎么样">'+esc(b.notes||'')+'</textarea></div>'+
+
+    '<div class="field" style="margin-top:16px;padding:12px;background:var(--card2);border-radius:12px;border:1px solid var(--border)">'+
+      '<label class="switch" style="font-size:13px">'+
+        '<span id="friendText" style="color:var(--dim);font-weight:700">朋友分享</span>'+
+        '<input type="checkbox" name="friendShare" id="fFriendShare" '+(b.friendShare?'checked':'')+'>'+
+        '<span class="track"></span>'+
+      '</label>'+
+      '<div class="hint" style="margin-top:6px">勾选后，系统会自动在豆仓建一支豆子，方便日后关联冲煮记录。</div>'+
+    '</div>'+
+
+    '<div class="btn-row">'+
+      (id?'<button class="btn btn-danger" data-action="delete-brew" data-id="'+b.id+'">删除</button>':'')+
+      '<button class="btn" data-action="save-brew" data-id="'+(b.id||'')+'">保存</button>'+
+    '</div>';
+
+  openModal(html);
+  setTimeout(()=>{
+    const d=$('#bDose'),w=$('#bWater'),r=$('#bRatio');
+    const upd=()=>{ const dv=num(d.value),wv=num(w.value); r.textContent=(dv&&wv)?('1:'+(wv/dv).toFixed(1)):'—'; };
+    d.addEventListener('input',upd); w.addEventListener('input',upd); upd();
+
+    const fFriend=$('#fFriendShare'), fText=$('#friendText');
+    if(fFriend&&fText){
+      const updateFriend=()=>{ const on=fFriend.checked; fText.style.color=on?'var(--accent)':'var(--dim)'; fText.textContent=on?'朋友分享 ✓':'朋友分享'; };
+      fFriend.addEventListener('change',updateFriend); updateFriend();
+    }
+
+    const bindSuggest=(inputId,suggId,list)=>{
+      const inp=$('#'+inputId),sugg=$('#'+suggId); if(!inp||!sugg)return;
+      const show=()=>{ const v=inp.value.toLowerCase(); const filtered=list.filter(x=>x.toLowerCase().includes(v)); if(!filtered.length||inp.value===''){ sugg.classList.remove('show'); return; } sugg.innerHTML=filtered.map(x=>'<div data-val="'+esc(x)+'">'+esc(x)+'</div>').join(''); sugg.classList.add('show'); };
+      inp.addEventListener('focus',show); inp.addEventListener('input',show); inp.addEventListener('blur',()=>setTimeout(()=>sugg.classList.remove('show'),200));
+      sugg.addEventListener('click',e=>{ const div=e.target.closest('div[data-val]'); if(div){ inp.value=div.dataset.val; sugg.classList.remove('show'); } });
+    };
+    bindSuggest('bDripper','suggDripper',drippers); bindSuggest('bGrinder','suggGrinder',grinders); bindSuggest('bGrind','suggGrind',grinds); bindSuggest('bMethod','suggMethod',methods);
+  },30);
+}
+
+/* ============ 消费体验表单 ============ */
+function openExpForm(id){
+  const e=id?DB.experiences.find(x=>x.id===id)||{}:{};
+  const html=
+    modalHead(id?'编辑体验':'消费体验')+
+    '<div class="field"><label>日期</label><input type="date" class="input" name="date" value="'+esc(e.date||todayStr())+'"></div>'+
+    '<div class="field"><label>店名</label><input class="input" name="shop" value="'+esc(e.shop||'')+'" placeholder="咖啡店名称"></div>'+
+    '<div class="field"><label>饮品名字</label><input class="input" name="drink" value="'+esc(e.drink||'')+'" placeholder="例如：手冲 耶加雪菲"></div>'+
+    '<div class="row2">'+
+      '<div class="field"><label>豆子产地</label><input class="input" name="origin" value="'+esc(e.origin||'')+'"></div>'+
+      '<div class="field"><label>烘焙度</label><input class="input" name="roastLevel" value="'+esc(e.roastLevel||'')+'"></div>'+
+    '</div>'+
+    '<div class="field"><label>其他</label><input class="input" name="other" value="'+esc(e.other||'')+'" placeholder="处理法、豆种等"></div>'+
+    '<div class="row2">'+
+      '<div class="field"><label>价格</label><input type="number" step="0.01" class="input" name="price" value="'+esc(e.price||'')+'" placeholder="元"></div>'+
+      '<div class="field"><label>评分</label>'+starsHTML('rating',e.rating)+'</div>'+
+    '</div>'+
+    '<div class="field"><label>体验</label><textarea class="textarea" style="min-height:100px" name="experience" placeholder="环境、风味、服务…">'+esc(e.experience||'')+'</textarea></div>'+
+    '<div class="btn-row">'+
+      (id?'<button class="btn btn-danger" data-action="delete-exp" data-id="'+e.id+'">删除</button>':'')+
+      '<button class="btn" data-action="save-exp" data-id="'+(e.id||'')+'">保存</button>'+
+    '</div>';
+  openModal(html);
+}
+
+/* ============ 冲煮方案表单 ============ */
+function openRecipeForm(id){
+  const r=id?DB.recipes.find(x=>x.id===id)||{}:{};
+  const html=
+    modalHead(id?'编辑方案':'新建方案')+
+    '<div class="field"><label>方案名称 *</label><input class="input" name="name" value="'+esc(r.name||'')+'" placeholder="例如：V60 三段式"></div>'+
+    '<div class="field"><label>类型</label><div class="seg">'+
+      '<button type="button" data-action="seg-set" data-target="type" data-v="own" class="'+((r.type||'own')==='own'?'on':'')+'">我的优化方案</button>'+
+      '<button type="button" data-action="seg-set" data-target="type" data-v="collect" class="'+(r.type==='collect'?'on':'')+'">收集有趣方案</button>'+
+    '</div><input type="hidden" name="type" value="'+esc(r.type||'own')+'"></div>'+
+
+    '<div class="field"><label>关联豆子（可空）</label><select class="select" name="beanId" id="rBean">'+
+      '<option value="">— 不关联 —</option>'+
+      DB.beans.map(x=>'<option value="'+x.id+'" '+(r.beanId===x.id?'selected':'')+'>'+esc(x.name)+'</option>').join('')+
+    '</select></div>'+
+    '<input type="hidden" name="beanName" id="rBeanName" value="'+esc(r.beanName||'')+'">'+
+
+    '<div class="row3">'+
+      '<div class="field"><label>粉量 (g)</label><input type="number" step="0.1" class="input" name="dose" id="rDose" value="'+esc(r.dose||'')+'"></div>'+
+      '<div class="field"><label>水量 (g)</label><input type="number" step="1" class="input" name="water" id="rWater" value="'+esc(r.water||'')+'"></div>'+
+      '<div class="field"><label>水温 (℃)</label><input type="number" step="1" class="input" name="temp" value="'+esc(r.temp||'')+'"></div>'+
+    '</div>'+
+    '<div class="row2">'+
+      '<div class="field"><label>粉水比</label><div class="auto-val" id="rRatio">'+esc(r.ratio||'—')+'</div><input type="hidden" name="ratio" id="rRatioInput" value="'+esc(r.ratio||'')+'"></div>'+
+      '<div class="field"><label>总时长</label><input class="input" name="totalTime" value="'+esc(r.totalTime||'')+'" placeholder="2:15"></div>'+
+    '</div>'+
+    '<div class="row2">'+
+      '<div class="field"><label>滤杯</label><input class="input" name="dripper" value="'+esc(r.dripper||'')+'"></div>'+
+      '<div class="field"><label>研磨度</label><input class="input" name="grind" value="'+esc(r.grind||'')+'"></div>'+
+    '</div>'+
+
+    '<div class="field"><label>注水段数 / 每段水量与时间</label><textarea class="textarea" name="stages" placeholder="闷蒸 30g / 30s&#10;第二段 至 150g / 60s&#10;第三段 至 240g / 45s">'+esc(r.stages||'')+'</textarea></div>'+
+    '<div class="field"><label>风味</label><textarea class="textarea" name="flavor" placeholder="用逗号分隔">'+esc(r.flavor||'')+'</textarea></div>'+
+    '<div class="field"><label>评价</label><textarea class="textarea" style="min-height:100px" name="review" placeholder="这套方案喝起来怎么样">'+esc(r.review||'')+'</textarea></div>'+
+
+    '<div class="btn-row">'+
+      (id?'<button class="btn btn-danger" data-action="delete-recipe" data-id="'+r.id+'">删除</button>':'')+
+      '<button class="btn" data-action="save-recipe" data-id="'+(r.id||'')+'">保存</button>'+
+    '</div>';
+
+  openModal(html);
+  setTimeout(()=>{
+    const d=$('#rDose'),w=$('#rWater'),out=$('#rRatio'),inp=$('#rRatioInput');
+    const upd=()=>{
+      const dv=num(d.value),wv=num(w.value);
+      if(dv&&wv){ const t='1:'+(wv/dv).toFixed(1); out.textContent=t; inp.value=t; }
+      else{ out.textContent='—'; inp.value=''; }
+    };
+    if(d&&w){ d.addEventListener('input',upd); w.addEventListener('input',upd); upd(); }
+    const sel=$('#rBean'),nm=$('#rBeanName');
+    if(sel){ sel.addEventListener('change',()=>{ const bean=DB.beans.find(x=>x.id===sel.value); nm.value=bean?(bean.name||''):''; }); }
+  },30);
+}
+
+/* =====================================================
+   设置页面（含自定义主题与历史色号）
+   ===================================================== */
+const PRESET_THEMES=[
+  {id:'euro-pink',name:'欧元粉',colors:['#F6E8EA','#E29A91','#B34C4E']},
+  {id:'euro-blue',name:'欧元蓝',colors:['#E8EFF4','#87B8D8','#326FAD']},
+  {id:'euro-green',name:'欧元绿',colors:['#E7EFEA','#91B889','#347B59']},
+  {id:'euro-gold',name:'欧元金',colors:['#F7F0E5','#E4BD65','#BA8B36']},
+  {id:'euro-purple',name:'欧元紫',colors:['#EFEAF2','#AF8AC1','#75529E']},
+  {id:'dark',name:'深色',colors:['#161823','#53589A','#B8CEE2']}
+];
+
+function openSettings(){
+  const customThemes = DB.settings.customThemes || [];
+  let html = modalHead('设置')+
+    '<div class="sec-title" style="margin-top:0">App 名称</div>'+
+    '<div class="field" style="display:flex;gap:8px;align-items:center">'+
+      '<input class="input" id="appNameInput" value="'+esc(DB.settings.appName||'西洋豆浆萃')+'" placeholder="输入你喜欢的名字" style="flex:1;min-width:0">'+
+      '<button class="btn" style="width:44px;height:44px;padding:0;border-radius:12px;flex:none;display:flex;align-items:center;justify-content:center" data-action="save-app-name">'+
+        '<span class="ic" style="width:20px;height:20px">'+ICON.check+'</span>'+
+      '</button>'+
+    '</div>'+
+
+    '<div class="sec-title">官方预设主题</div>'+
+    '<div class="theme-grid">'+
+      PRESET_THEMES.map(t=>'<button class="theme-item '+(DB.settings.theme===t.id?'on':'')+'" data-action="set-theme" data-v="'+t.id+'">'+
+        '<div class="swatches">'+t.colors.map(c=>'<span class="sw" style="background:'+c+'"></span>').join('')+'</div>'+
+        '<div class="tname">'+t.name+'</div></button>').join('')+
+    '</div>'+
+
+    '<div class="sec-title">我的自定义主题（'+customThemes.length+'/6）</div>';
+  
+  if (customThemes.length === 0) {
+    html += '<div class="hint" style="text-align:center;padding:12px;color:var(--dim)">还没有自定义主题，点击下方按钮创建</div>';
+  } else {
+    html += customThemes.map(t => 
+      '<div class="my-theme-item '+(DB.settings.theme===t.id?'on':'')+'" data-action="apply-custom-theme" data-id="'+t.id+'">'+
+        '<div class="theme-info">'+
+          '<div class="theme-name">'+esc(t.name)+'</div>'+
+          '<div class="theme-colors">'+
+            '<span style="background:'+t.bg+'"></span>'+
+            '<span style="background:'+t.card+'"></span>'+
+            '<span style="background:'+t.title+'"></span>'+
+            '<span style="background:'+t.accent+'"></span>'+
+          '</div>'+
+        '</div>'+
+        '<div class="theme-actions">'+
+          '<button class="edit-btn" data-action="edit-custom-theme" data-id="'+t.id+'">编辑</button>'+
+          '<button class="del-btn" data-action="delete-custom-theme" data-id="'+t.id+'">删除</button>'+
+        '</div>'+
+      '</div>'
+    ).join('');
+  }
+
+  html += '<div style="margin-top:12px">'+
+    '<button class="btn btn-ghost btn-block" style="margin-bottom:10px" data-action="create-custom-theme" '+(customThemes.length>=6?'disabled style="opacity:.5"':'')+'>'+
+      '<span class="ic-sm">'+ICON.plus+'</span> 创建新主题'+
+    '</button>'+
+  '</div>';
+
+  html += '<div class="sec-title">数据</div>'+
+    '<button class="btn btn-ghost btn-block" style="margin-bottom:10px" data-action="export-data">导出备份 (JSON)</button>'+
+    '<button class="btn btn-ghost btn-block" style="margin-bottom:10px" data-action="import-data">导入备份</button>'+
+    '<button class="btn btn-danger btn-block" data-action="clear-data">清空全部数据</button>'+
+    '<div class="hint" style="margin-top:14px;text-align:center">数据保存在本机，请定期导出备份</div>';
+
+  openModal(html);
+}
+
+/* ============ 自定义主题编辑弹窗 ============ */
+function openThemeEditor(themeId){
+  const customThemes = DB.settings.customThemes || [];
+  let theme = { id: 't_'+uid(), name: '', bg: '#F6E8EA', card: '#FFFFFF', title: '#673D47', accent: '#B34C4E' };
+  if (themeId) {
+    const found = customThemes.find(t => t.id === themeId);
+    if (found) theme = Object.assign({}, found);
+  }
+
+  const isEdit = !!themeId;
+  const historyColors = DB.settings.historyColors || [];
+
+  let html = modalHead(isEdit ? '编辑自定义主题' : '创建自定义主题')+
+    '<div class="field"><label>主题名称</label><input class="input" id="themeNameInput" value="'+esc(theme.name)+'" placeholder="例如：我的秋日私语"></div>'+
+    
+    '<div class="color-input-row">'+
+      '<label>背景色</label>'+
+      '<input type="color" id="colorBg" value="'+theme.bg+'">'+
+      '<input type="text" id="hexBg" value="'+theme.bg+'" maxlength="7" placeholder="#FFFFFF">'+
+    '</div>'+
+    '<div class="color-input-row">'+
+      '<label>卡片色</label>'+
+      '<input type="color" id="colorCard" value="'+theme.card+'">'+
+      '<input type="text" id="hexCard" value="'+theme.card+'" maxlength="7" placeholder="#FFFFFF">'+
+    '</div>'+
+    '<div class="color-input-row">'+
+      '<label>标题色</label>'+
+      '<input type="color" id="colorTitle" value="'+theme.title+'">'+
+      '<input type="text" id="hexTitle" value="'+theme.title+'" maxlength="7" placeholder="#000000">'+
+    '</div>'+
+    '<div class="color-input-row">'+
+      '<label>强调色</label>'+
+      '<input type="color" id="colorAccent" value="'+theme.accent+'">'+
+      '<input type="text" id="hexAccent" value="'+theme.accent+'" maxlength="7" placeholder="#000000">'+
+    '</div>'+
+
+    '<div class="sec-title" style="margin-top:16px">历史色号（最多10个）</div>'+
+    '<div class="hint" style="margin-bottom:6px">点击下方色块快速填入上方选择器，长按可锁定或删除</div>'+
+    '<div class="history-colors" id="historyColors"></div>'+
+
+    '<div class="sec-title">实时预览</div>'+
+    '<div class="preview-card">'+
+      '<div class="p-title">耶加雪菲</div>'+
+      '<div class="p-text">这是一段正文示例，展示文字颜色。</div>'+
+      '<div class="p-dim">这是一段次要文字，用于辅助信息。</div>'+
+      '<div class="p-btn">保存按钮</div>'+
+    '</div>'+
+
+    '<div class="btn-row">'+
+      (isEdit ? '<button class="btn btn-danger" data-action="delete-custom-theme" data-id="'+theme.id+'">删除主题</button>' : '')+
+      '<button class="btn" data-action="save-custom-theme" data-id="'+(theme.id||'')+'">保存并应用</button>'+
+    '</div>';
+
+  openModal(html);
+
+  setTimeout(()=>{
+    // 绑定颜色同步
+    const bindColorSync = (colorId, hexId) => {
+      const colorInput = $('#'+colorId);
+      const hexInput = $('#'+hexId);
+      if (colorInput && hexInput) {
+        colorInput.addEventListener('input', () => {
+          hexInput.value = colorInput.value.toUpperCase();
+          updatePreview();
+          addHistoryColor(colorInput.value);
+        });
+        hexInput.addEventListener('input', () => {
+          if (/^#[0-9A-F]{6}$/i.test(hexInput.value)) {
+            colorInput.value = hexInput.value;
+            updatePreview();
+            addHistoryColor(hexInput.value);
+          }
+        });
+      }
+    };
+    bindColorSync('colorBg', 'hexBg');
+    bindColorSync('colorCard', 'hexCard');
+    bindColorSync('colorTitle', 'hexTitle');
+    bindColorSync('colorAccent', 'hexAccent');
+
+    // 实时预览逻辑
+    const updatePreview = () => {
+      const bg = $('#hexBg').value;
+      const card = $('#hexCard').value;
+      const title = $('#hexTitle').value;
+      const accent = $('#hexAccent').value;
+      if (!/^#[0-9A-F]{6}$/i.test(bg) || !/^#[0-9A-F]{6}$/i.test(card) || !/^#[0-9A-F]{6}$/i.test(title) || !/^#[0-9A-F]{6}$/i.test(accent)) return;
+
+      const preview = $('.preview-card');
+      if (preview) {
+        // 简单派生用于预览
+        let text = mixColors(title, bg, 0.7);
+        let dim = mixColors(title, bg, 0.4);
+        const card2 = mixColors(card, bg, 0.7);
+        const border = mixColors(accent, bg, 0.15);
+        const fabFg = getLuminance(accent) > 0.5 ? '#000000' : '#FFFFFF';
+
+        if (getContrast(bg, title) < 4.5) {
+          text = getLuminance(bg) > 0.5 ? '#000000' : '#FFFFFF';
+          dim = mixColors(text, bg, 0.5);
+        }
+        if (getContrast(bg, text) < 4.5) {
+          text = getLuminance(bg) > 0.5 ? '#1A1A1A' : '#E6EAF2';
+          dim = mixColors(text, bg, 0.5);
+        }
+
+        preview.style.background = card;
+        preview.style.borderColor = border;
+        preview.querySelector('.p-title').style.color = title;
+        preview.querySelector('.p-text').style.color = text;
+        preview.querySelector('.p-dim').style.color = dim;
+        preview.querySelector('.p-btn').style.background = accent;
+        preview.querySelector('.p-btn').style.color = fabFg;
+        preview.style.boxShadow = `0 2px 10px ${mixColors(title, bg, 0.08)}`;
+      }
+    };
+
+    // 初始化历史色号
+    function renderHistoryColors() {
+      const container = $('#historyColors');
+      if (!container) return;
+      const colors = DB.settings.historyColors || [];
+      container.innerHTML = colors.map((c, i) => 
+        '<div class="history-color-box '+(c.locked?'locked':'')+'" data-index="'+i+'" style="background:'+c.color+'">'+
+          (c.locked ? '<div class="lock-icon">🔒</div>' : '')+
+        '</div>'
+      ).join('');
+    }
+
+    function addHistoryColor(color) {
+      if (!/^#[0-9A-F]{6}$/i.test(color)) return;
+      color = color.toUpperCase();
+      let colors = DB.settings.historyColors || [];
+      const existIdx = colors.findIndex(c => c.color === color);
+      if (existIdx !== -1) {
+        // 已存在，移到最新
+        const [item] = colors.splice(existIdx, 1);
+        colors.push(item);
+      } else {
+        colors.push({ color: color, locked: false });
+      }
+      // 淘汰逻辑：最多10个，且优先淘汰未锁定的
+      while (colors.length > 10) {
+        const idx = colors.findIndex(c => !c.locked);
+        if (idx !== -1) {
+          colors.splice(idx, 1);
+        } else {
+          break; // 全部锁定，不再淘汰
+        }
+      }
+      DB.settings.historyColors = colors;
+      save();
+      renderHistoryColors();
+    }
+
+    renderHistoryColors();
+    updatePreview();
+
+    // 绑定长按气泡菜单
+    let longPressTimer = null;
+    let activeMenu = null;
+
+    $('#historyColors').addEventListener('touchstart', (e) => {
+      const box = e.target.closest('.history-color-box');
+      if (!box) return;
+      longPressTimer = setTimeout(() => {
+        const idx = parseInt(box.dataset.index);
+        const colors = DB.settings.historyColors || [];
+        const item = colors[idx];
+        if (!item) return;
+        
+        // 移除旧菜单
+        if (activeMenu) activeMenu.remove();
+
+        const rect = box.getBoundingClientRect();
+        const menu = document.createElement('div');
+        menu.className = 'color-bubble-menu';
+        menu.style.left = (rect.left - 20) + 'px';
+        menu.style.top = (rect.top - 44) + 'px';
+        menu.innerHTML = `
+          <button class="bubble-lock">${item.locked ? '解锁' : '锁定'}</button>
+          <button class="bubble-del">删除</button>
+        `;
+
+        menu.querySelector('.bubble-lock').addEventListener('click', () => {
+          item.locked = !item.locked;
+          save();
+          renderHistoryColors();
+          menu.remove();
+          activeMenu = null;
+        });
+        menu.querySelector('.bubble-del').addEventListener('click', () => {
+          colors.splice(idx, 1);
+          save();
+          renderHistoryColors();
+          menu.remove();
+          activeMenu = null;
+        });
+
+        document.body.appendChild(menu);
+        activeMenu = menu;
+      }, 600);
+    }, { passive: true });
+
+    $('#historyColors').addEventListener('touchend', () => {
+      clearTimeout(longPressTimer);
+    });
+    $('#historyColors').addEventListener('touchmove', () => {
+      clearTimeout(longPressTimer);
+    });
+
+    // 点击历史色号填入
+    $('#historyColors').addEventListener('click', (e) => {
+      const box = e.target.closest('.history-color-box');
+      if (!box) return;
+      const idx = parseInt(box.dataset.index);
+      const colors = DB.settings.historyColors || [];
+      const item = colors[idx];
+      if (item) {
+        // 填到当前最近编辑的颜色输入框中（简单策略：填到背景色）
+        $('#hexBg').value = item.color;
+        $('#colorBg').value = item.color;
+        updatePreview();
+      }
+    });
+
+    // 点击空白关闭气泡菜单
+    document.addEventListener('click', function closeMenu(ev) {
+      if (activeMenu && !ev.target.closest('.color-bubble-menu') && !ev.target.closest('.history-color-box')) {
+        activeMenu.remove();
+        activeMenu = null;
+      }
+    });
+
+    // 阻止菜单关闭时的冒泡
+    document.querySelector('.color-bubble-menu')?.addEventListener('click', e => e.stopPropagation());
+  }, 100);
+}
+
+/* ============ 删除二次确认弹窗 ============ */
+function showConfirm(title, message, onConfirm) {
+  const overlay = $('#confirmOverlay');
+  overlay.innerHTML = `
+    <div class="confirm-box">
+      <h4>${title}</h4>
+      <p>${message}</p>
+      <div class="confirm-btns">
+        <button class="confirm-cancel">取消</button>
+        <button class="confirm-delete">删除</button>
+      </div>
+    </div>
+  `;
+  overlay.classList.add('show');
+  
+  overlay.querySelector('.confirm-cancel').addEventListener('click', () => {
+    overlay.classList.remove('show');
+    overlay.innerHTML = '';
+  });
+  overlay.querySelector('.confirm-delete').addEventListener('click', () => {
+    overlay.classList.remove('show');
+    overlay.innerHTML = '';
+    onConfirm();
+  });
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) {
+      overlay.classList.remove('show');
+      overlay.innerHTML = '';
+    }
+  });
+}
+
+/* =====================================================
+   事件绑定
+   ===================================================== */
+document.addEventListener('click',function(ev){
+  const el=ev.target.closest('[data-action]');
+  if(!el)return;
+  const action=el.dataset.action;
+  const id=el.dataset.id;
+
+  switch(action){
+    case 'tab':state.tab=el.dataset.tab;state.openSwipeId=null;render();break;
+    case 'open-log-add':openLogAddSheet();break;
+    case 'settings':openSettings();break;
+    case 'close-modal':closeModal();break;
+
+    case 'star':{
+      const wrap=el.closest('.stars');
+      const val=Number(el.dataset.val);
+      const cur=Number(wrap.dataset.value)||0;
+      const next=(cur===val)?0:val;
+      wrap.dataset.value=next;
+      $$('.star',wrap).forEach((s,i)=>{ s.classList.toggle('on',(i+1)<=next); });
+      break;
+    }
+
+    case 'seg-set':{
+      const target=el.dataset.target;
+      const v=el.dataset.v;
+      const seg=el.parentElement;
+      $$('button',seg).forEach(b=>b.classList.toggle('on',b===el));
+      const hidden=seg.parentElement.querySelector('input[type="hidden"][name="'+target+'"]');
+      if(hidden)hidden.value=v;
+      break;
+    }
+
+    case 'open-month-picker':openMonthPicker();break;
+    case 'month-year':{ const cur=($('#pickerYear').textContent||'2026'); const next=parseInt(cur)+parseInt(el.dataset.v); $('#pickerYear').textContent=next; break; }
+    case 'month-pick':{ const y=$('#pickerYear').textContent; const m=el.dataset.v.padStart(2,'0'); state.statsMonth=y+'-'+m; closeModal(); render(); break; }
+
+    case 'new-bean':closeModal();setTimeout(()=>openBeanForm(),120);break;
+    case 'view-bean':{state.openSwipeId=null;viewBeanDetail(id);}break;
+    case 'edit-bean':state.openSwipeId=null;closeModal();setTimeout(()=>openBeanForm(id),120);break;
+    case 'bean-sort':DB.settings.beanSort=(DB.settings.beanSort==='desc')?'asc':'desc';save();render();break;
+    
+    case 'save-bean':{
+      const d=readForm();
+      if(!d.name){toast('请填写品名');return;}
+      if(d.blend){
+        const rows=$$('#blendList .blend-row');const blendArr=[];
+        rows.forEach(r=>{
+          const inputs=r.querySelectorAll('input');
+          const origin=inputs[0].value.trim();const variety=inputs[1].value.trim();const process=inputs[2].value.trim();
+          if(origin||variety||process){blendArr.push({origin,variety,process});}
+        });
+        d.blendInfo=JSON.stringify(blendArr);
+        if(blendArr.length>0){
+          d.origin=blendArr.map(x=>x.origin).filter(Boolean).join(' / ');
+          d.variety=blendArr.map(x=>x.variety).filter(Boolean).join(' / ');
+          d.process=blendArr.map(x=>x.process).filter(Boolean).join(' / ');
+        }
+      }else{d.blendInfo='';}
+      if(d.purchases&&d.purchases.length>0){const latest=d.purchases.reduce((a,b)=>(a.date>b.date?a:b));d.purchaseDate=latest.date;d.price=latest.price;d.weight=latest.weight;}
+      if(id){const b=DB.beans.find(x=>x.id===id);Object.assign(b,d);}else{d.id=uid();d.createdAt=Date.now();DB.beans.push(d);}
+      save();closeModal();render();toast('已保存');
+      break;
+    }
+    case 'delete-bean':{if(!confirm('确定删除这款豆子吗？'))return;DB.beans=DB.beans.filter(x=>x.id!==id);save();state.openSwipeId=null;render();toast('已删除');break;}
+
+    case 'new-brew':closeModal();setTimeout(()=>openBrewForm(),120);break;
+    case 'view-brew':{state.openSwipeId=null;viewBrewDetail(id);}break;
+    case 'edit-brew':state.openSwipeId=null;closeModal();setTimeout(()=>openBrewForm(id),120);break;
+    case 'save-brew':{
+      const d=readForm();
+      if(d.beanId){const bean=DB.beans.find(x=>x.id===d.beanId);if(bean)d.beanName=bean.name||'';}
+      if(!d.beanName){toast('请选择或输入豆子');return;}
+      if(!d.date)d.date=todayStr();
+      if(d.friendShare){
+        let friendBean=DB.beans.find(x=>x.tag==='friend'&&x.name===d.beanName);
+        if(!friendBean){
+          friendBean={id:uid(),name:d.beanName,tag:'friend',status:'在喝',blend:false,createdAt:Date.now()};
+          DB.beans.push(friendBean);
+        }
+        d.beanId=friendBean.id;
+      }
+      if(id){Object.assign(DB.brews.find(x=>x.id===id),d);}else{d.id=uid();d.createdAt=Date.now();DB.brews.push(d);}
+      save();closeModal();render();toast('已保存');
+      break;
+    }
+    case 'delete-brew':{if(!confirm('确定删除这条冲煮记录吗？'))return;DB.brews=DB.brews.filter(x=>x.id!==id);save();state.openSwipeId=null;render();toast('已删除');break;}
+
+    case 'new-experience':closeModal();setTimeout(()=>openExpForm(),120);break;
+    case 'view-exp':{state.openSwipeId=null;viewExpDetail(id);}break;
+    case 'edit-exp':state.openSwipeId=null;closeModal();setTimeout(()=>openExpForm(id),120);break;
+    case 'save-exp':{const d=readForm();if(!d.date)d.date=todayStr();if(id){Object.assign(DB.experiences.find(x=>x.id===id),d);}else{d.id=uid();d.createdAt=Date.now();DB.experiences.push(d);}save();closeModal();render();toast('已保存');break;}
+    case 'delete-exp':{if(!confirm('确定删除这条体验记录吗？'))return;DB.experiences=DB.experiences.filter(x=>x.id!==id);save();state.openSwipeId=null;render();toast('已删除');break;}
+
+    case 'new-recipe':closeModal();setTimeout(()=>openRecipeForm(),120);break;
+    case 'view-recipe':{state.openSwipeId=null;viewRecipeDetail(id);}break;
+    case 'edit-recipe':state.openSwipeId=null;closeModal();setTimeout(()=>openRecipeForm(id),120);break;
+    case 'toggle-top-recipe':{const r=DB.recipes.find(x=>x.id===id);if(r){r.isTop=!r.isTop;save();state.openSwipeId=null;render();toast(r.isTop?'已置顶':'已取消置顶');}break;}
+    case 'save-recipe':{const d=readForm();if(!d.name){toast('请填写方案名称');return;}if(id){Object.assign(DB.recipes.find(x=>x.id===id),d);}else{d.id=uid();d.createdAt=Date.now();DB.recipes.push(d);}save();closeModal();render();toast('已保存');break;}
+    case 'delete-recipe':{if(!confirm('确定删除这个方案吗？'))return;DB.recipes=DB.recipes.filter(x=>x.id!==id);save();state.openSwipeId=null;render();toast('已删除');break;}
+
+    case 'bean-filter':state.beanFilter=el.dataset.v;state.openSwipeId=null;render();break;
+    case 'bean-view':DB.settings.beanView=el.dataset.v;save();state.openSwipeId=null;render();break;
+    case 'recipe-filter':state.recipeFilter=el.dataset.v;state.openSwipeId=null;render();break;
+    case 'recipe-view':DB.settings.recipeView=el.dataset.v;save();state.openSwipeId=null;render();break;
+    case 'log-filter':state.logFilter=el.dataset.v;state.openSwipeId=null;render();break;
+
+    case 'save-app-name':{const inp=$('#appNameInput');if(inp){DB.settings.appName=inp.value.trim()||'西洋豆浆萃';save();closeModal();render();toast('名称已保存');}break;}
+    
+    case 'set-theme':DB.settings.theme=el.dataset.v;save();applyTheme();openSettings();toast('主题已切换');break;
+    case 'apply-custom-theme':DB.settings.theme=el.dataset.id;save();applyTheme();openSettings();toast('已应用自定义主题');break;
+    case 'create-custom-theme':{ if(DB.settings.customThemes.length>=6){toast('最多只能保存6个自定义主题');return;} openThemeEditor(); }break;
+    case 'edit-custom-theme':openThemeEditor(el.dataset.id);break;
+    case 'delete-custom-theme':{
+      const themeId = el.dataset.id;
+      const theme = DB.settings.customThemes.find(t=>t.id===themeId);
+      if(!theme) return;
+      showConfirm('删除主题', '确定要删除「'+esc(theme.name)+'」主题吗？此操作不可恢复。', () => {
+        DB.settings.customThemes = DB.settings.customThemes.filter(t=>t.id!==themeId);
+        if (DB.settings.theme === themeId) DB.settings.theme = 'euro-pink';
+        save(); applyTheme(); closeModal(); render(); toast('主题已删除');
+      });
+      break;
+    }
+    case 'save-custom-theme':{
+      const nameInp = $('#themeNameInput');
+      let name = nameInp ? nameInp.value.trim() : '';
+      if (!name) name = '自定义主题 ' + (DB.settings.customThemes.length + 1);
+      
+      const bg = $('#hexBg')?.value || '#F6E8EA';
+      const card = $('#hexCard')?.value || '#FFFFFF';
+      const title = $('#hexTitle')?.value || '#673D47';
+      const accent = $('#hexAccent')?.value || '#B34C4E';
+      
+      if (!/^#[0-9A-F]{6}$/i.test(bg) || !/^#[0-9A-F]{6}$/i.test(card) || !/^#[0-9A-F]{6}$/i.test(title) || !/^#[0-9A-F]{6}$/i.test(accent)) {
+        toast('颜色格式不正确，请使用 HEX 格式（如 #FFFFFF）');
+        return;
+      }
+      
+      const newTheme = { id: id || ('t_'+uid()), name, bg: bg.toUpperCase(), card: card.toUpperCase(), title: title.toUpperCase(), accent: accent.toUpperCase() };
+      
+      if (id) {
+        const idx = DB.settings.customThemes.findIndex(t=>t.id===id);
+        if (idx !== -1) DB.settings.customThemes[idx] = newTheme;
+      } else {
+        DB.settings.customThemes.push(newTheme);
+      }
+      DB.settings.theme = newTheme.id;
+      save(); applyTheme(); closeModal(); render(); toast('主题已保存并应用');
+      break;
+    }
+
+    case 'export-data':closeModal();setTimeout(openExport,120);break;
+    case 'copy-export':{const ta=$('#exportArea');if(ta){ta.select();ta.setSelectionRange(0,999999);try{document.execCommand('copy');toast('已复制');}catch(e){toast('请长按选择复制');}}break;}
+    case 'download-export':{try{const data=JSON.stringify(DB,null,2);const blob=new Blob([data],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='西洋豆浆萃备份-'+todayStr()+'.json';document.body.appendChild(a);a.click();document.body.removeChild(a);setTimeout(()=>URL.revokeObjectURL(url),3000);toast('已下载');}catch(e){toast('下载失败，请用复制');}break;}
+    case 'import-data':closeModal();setTimeout(openImport,120);break;
+    case 'do-import':{const ta=$('#importArea');if(!ta||!ta.value.trim()){toast('请先粘贴内容');return;}try{const d=JSON.parse(ta.value);const base=defaultDB();base.beans=Array.isArray(d.beans)?d.beans:[];base.brews=Array.isArray(d.brews)?d.brews:[];base.experiences=Array.isArray(d.experiences)?d.experiences:[];base.recipes=Array.isArray(d.recipes)?d.recipes:[];base.settings=Object.assign({},DEFAULT_SETTINGS,d.settings||{});if(!Array.isArray(base.settings.customThemes))base.settings.customThemes=[];if(!Array.isArray(base.settings.historyColors))base.settings.historyColors=[];DB=base;save();closeModal();render();toast('导入成功');}catch(e){toast('格式错误，导入失败');}break;}
+    case 'clear-data':{if(!confirm('确定清空全部数据吗？此操作不可恢复。'))return;if(!confirm('再次确认：真的要清空所有记录吗？'))return;DB=defaultDB();save();closeModal();render();toast('已清空');break;}
+  }
+});
+
+document.addEventListener('input',function(ev){
+  const t=ev.target;
+  if(t.id==='beanSearch'){state.beanSearch=t.value;state.openSwipeId=null;const pos=t.selectionStart;const v=t.value;$('#view').innerHTML=viewBeans();const ni=$('#beanSearch');if(ni){ni.focus();try{ni.setSelectionRange(pos,pos);}catch(e){}}}
+  if(t.id==='logSearch'){state.logSearch=t.value;state.openSwipeId=null;const pos=t.selectionStart;const v=t.value;$('#view').innerHTML=viewLog();const ni=$('#logSearch');if(ni){ni.focus();try{ni.setSelectionRange(pos,pos);}catch(e){}}}
+  if(t.id==='recipeSearch'){state.recipeSearch=t.value;state.openSwipeId=null;const pos=t.selectionStart;const v=t.value;$('#view').innerHTML=viewRecipes();const ni=$('#recipeSearch');if(ni){ni.focus();try{ni.setSelectionRange(pos,pos);}catch(e){}}}
+});
+
+/* 滑动卡片逻辑 */
+let touchStartX=0,touchStartY=0,touchCurrentX=0,touchCurrentY=0,isSwiping=false,swipeTarget=null;
+document.addEventListener('touchstart',e=>{const card=e.target.closest('.swipe-card');if(!card)return;touchStartX=e.touches[0].clientX;touchStartY=e.touches[0].clientY;touchCurrentX=touchStartX;touchCurrentY=touchStartY;isSwiping=false;swipeTarget=card;},{passive:true});
+document.addEventListener('touchmove',e=>{if(!swipeTarget)return;touchCurrentX=e.touches[0].clientX;touchCurrentY=e.touches[0].clientY;const dx=touchCurrentX-touchStartX;const dy=touchCurrentY-touchStartY;if(Math.abs(dx)>10&&Math.abs(dy)<30){isSwiping=true;if(dx<0){swipeTarget.style.transform='translateX('+Math.max(dx,swipeTarget.classList.contains('swiped')||swipeTarget.classList.contains('swiped-2')?-192:-128)+'px)';}else if(swipeTarget.classList.contains('swiped')||swipeTarget.classList.contains('swiped-2')){swipeTarget.style.transform='translateX('+Math.min(dx-(swipeTarget.classList.contains('swiped')?192:128),0)+'px)';}}},{passive:true});
+document.addEventListener('touchend',e=>{if(!swipeTarget)return;const dx=touchCurrentX-touchStartX;const dy=touchCurrentY-touchStartY;if(isSwiping&&Math.abs(dx)>40&&Math.abs(dy)<30){if(dx<0){swipeTarget.classList.add(swipeTarget.classList.contains('swiped')||swipeTarget.classList.contains('swiped-2')?'swiped':'swiped-2');swipeTarget.style.transform='';}else{swipeTarget.classList.remove('swiped','swiped-2');swipeTarget.style.transform='';}}else if(swipeTarget.classList.contains('swiped')||swipeTarget.classList.contains('swiped-2')){swipeTarget.style.transform='';}else{swipeTarget.style.transform='';}setTimeout(()=>{if(swipeTarget){swipeTarget.style.transform='';swipeTarget=null;isSwiping=false;}},50);},{passive:true});
+
+// 初始化
+applyTheme();render();
+</script>
+</body>
+</html>
