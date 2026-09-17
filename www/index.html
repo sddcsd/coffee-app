@@ -1664,7 +1664,20 @@ document.addEventListener('click',function(ev){
     case 'export-data':closeModal();setTimeout(openExport,120);break;
     case 'copy-export':{const ta=$('#exportArea');if(ta){ta.select();ta.setSelectionRange(0,999999);try{document.execCommand('copy');toast('已复制');}catch(e){toast('请长按选择复制');}}break;}
     case 'download-export':{try{const data=JSON.stringify(DB,null,2);const blob=new Blob([data],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='西洋豆浆萃备份-'+todayStr()+'.json';document.body.appendChild(a);a.click();document.body.removeChild(a);setTimeout(()=>URL.revokeObjectURL(url),3000);toast('已下载');}catch(e){toast('下载失败，请用复制');}break;}
-    case 'import-data':closeModal();setTimeout(openImport,120);break;
+    case 'import-data': 
+  isSwiping = false; // 关键：强制解除防误触锁
+  closeModal(); // 先关闭设置弹窗
+  setTimeout(() => {
+    const html=modalHead('导入备份')+
+      '<div class="hint" style="margin-bottom:10px">粘贴之前导出的 JSON 内容。导入会覆盖当前全部数据。</div>'+
+      '<textarea class="textarea" id="importArea" style="min-height:240px;font-size:11px;font-family:monospace" placeholder="粘贴 JSON..."></textarea>'+
+      '<div class="btn-row">'+
+        '<button class="btn btn-ghost" data-action="close-modal">取消</button>'+
+        '<button class="btn btn-danger" data-action="do-import">确认导入</button>'+
+      '</div>';
+    openModal(html);
+  }, 150);
+  break;
     case 'do-import':{const ta=$('#importArea');if(!ta||!ta.value.trim()){toast('请先粘贴内容');return;}try{const d=JSON.parse(ta.value);const base=defaultDB();base.beans=Array.isArray(d.beans)?d.beans:[];base.brews=Array.isArray(d.brews)?d.brews:[];base.experiences=Array.isArray(d.experiences)?d.experiences:[];base.recipes=Array.isArray(d.recipes)?d.recipes:[];base.settings=Object.assign({},DEFAULT_SETTINGS,d.settings||{});if(!Array.isArray(base.settings.customThemes))base.settings.customThemes=[];if(!Array.isArray(base.settings.historyColors))base.settings.historyColors=[];DB=base;save();closeModal();render();toast('导入成功');}catch(e){toast('格式错误，导入失败');}break;}
     case 'clear-data':{if(!confirm('确定清空全部数据吗？此操作不可恢复。'))return;if(!confirm('再次确认：真的要清空所有记录吗？'))return;DB=defaultDB();save();closeModal();render();toast('已清空');break;}
   }
