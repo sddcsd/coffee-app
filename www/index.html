@@ -370,10 +370,7 @@ html += '<div style="margin-top:12px"><button class="btn btn-ghost btn-block" st
 function openThemeEditor(themeId){
   const customThemes = DB.settings.customThemes || [];
   let theme = { id: '', name: '', bg: '#F6E8EA', card: '#FFFFFF', title: '#673D47', accent: '#B34C4E' };
-  if (themeId) {
-    const found = customThemes.find(t => t.id === themeId);
-    if (found) theme = Object.assign({}, found);
-  }
+  if (themeId) { const found = customThemes.find(t => t.id === themeId); if (found) theme = Object.assign({}, found); }
   const isEdit = !!themeId;
 
   let html = modalHead(isEdit ? '编辑自定义主题' : '创建自定义主题')+
@@ -388,83 +385,36 @@ function openThemeEditor(themeId){
     '<div class="sec-title">实时预览</div>'+
     '<div class="preview-card"><div class="p-title">耶加雪菲</div><div class="p-text">这是一段正文示例，展示文字颜色。</div><div class="p-dim">这是一段次要文字，用于辅助信息。</div><div class="p-btn">保存按钮</div></div>'+
     '<div class="btn-row">'+
-      // 注意：这里的 data-id 在新建时为空，编辑时为 theme.id
       (isEdit ? '<button class="btn btn-danger" data-action="delete-custom-theme" data-id="'+theme.id+'">删除主题</button>' : '')+
       '<button class="btn" data-action="save-custom-theme" data-id="'+(isEdit ? theme.id : '')+'">保存并应用</button>'+
     '</div>';
   openModal(html);
 
   setTimeout(()=>{
-    const bindColorSync = (colorId, hexId) => {
-      const colorInput = $('#'+colorId); const hexInput = $('#'+hexId);
-      if (colorInput && hexInput) {
-        colorInput.addEventListener('input', () => { hexInput.value = colorInput.value.toUpperCase(); updatePreview(); addHistoryColor(colorInput.value); });
-        hexInput.addEventListener('input', () => { if (/^#[0-9A-F]{6}$/i.test(hexInput.value)) { colorInput.value = hexInput.value; updatePreview(); addHistoryColor(hexInput.value); } });
-      }
-    };
+    const bindColorSync = (colorId, hexId) => { const colorInput = $('#'+colorId); const hexInput = $('#'+hexId); if (colorInput && hexInput) { colorInput.addEventListener('input', () => { hexInput.value = colorInput.value.toUpperCase(); updatePreview(); addHistoryColor(colorInput.value); }); hexInput.addEventListener('input', () => { if (/^#[0-9A-F]{6}$/i.test(hexInput.value)) { colorInput.value = hexInput.value; updatePreview(); addHistoryColor(hexInput.value); } }); } };
     bindColorSync('colorBg', 'hexBg'); bindColorSync('colorCard', 'hexCard'); bindColorSync('colorTitle', 'hexTitle'); bindColorSync('colorAccent', 'hexAccent');
 
-    const updatePreview = () => {
-      const bg = normalizeHex($('#hexBg').value); const card = normalizeHex($('#hexCard').value); const title = normalizeHex($('#hexTitle').value); const accent = normalizeHex($('#hexAccent').value);
-      const preview = $('.preview-card');
-      if (preview) {
-        let text = mixColors(title, bg, 0.7); let dim = mixColors(title, bg, 0.4); const fabFg = getLuminance(accent) > 0.5 ? '#000000' : '#FFFFFF';
-        if (getContrast(bg, title) < 4.5) { text = getLuminance(bg) > 0.5 ? '#000000' : '#FFFFFF'; dim = mixColors(text, bg, 0.5); }
-        if (getContrast(bg, text) < 4.5) { text = getLuminance(bg) > 0.5 ? '#1A1A1A' : '#E6EAF2'; dim = mixColors(text, bg, 0.5); }
-        preview.style.background = card; preview.style.borderColor = mixColors(accent, bg, 0.15);
-        preview.querySelector('.p-title').style.color = title; preview.querySelector('.p-text').style.color = text;
-        preview.querySelector('.p-dim').style.color = dim; preview.querySelector('.p-btn').style.background = accent;
-        preview.querySelector('.p-btn').style.color = fabFg; preview.style.boxShadow = `0 2px 10px ${mixColors(title, bg, 0.08)}`;
-      }
-    };
+    const updatePreview = () => { const bg = normalizeHex($('#hexBg').value); const card = normalizeHex($('#hexCard').value); const title = normalizeHex($('#hexTitle').value); const accent = normalizeHex($('#hexAccent').value); const preview = $('.preview-card'); if (preview) { let text = mixColors(title, bg, 0.7); let dim = mixColors(title, bg, 0.4); const fabFg = getLuminance(accent) > 0.5 ? '#000000' : '#FFFFFF'; if (getContrast(bg, title) < 4.5) { text = getLuminance(bg) > 0.5 ? '#000000' : '#FFFFFF'; dim = mixColors(text, bg, 0.5); } if (getContrast(bg, text) < 4.5) { text = getLuminance(bg) > 0.5 ? '#1A1A1A' : '#E6EAF2'; dim = mixColors(text, bg, 0.5); } preview.style.background = card; preview.style.borderColor = mixColors(accent, bg, 0.15); preview.querySelector('.p-title').style.color = title; preview.querySelector('.p-text').style.color = text; preview.querySelector('.p-dim').style.color = dim; preview.querySelector('.p-btn').style.background = accent; preview.querySelector('.p-btn').style.color = fabFg; preview.style.boxShadow = `0 2px 10px ${mixColors(title, bg, 0.08)}`; } };
 
     function renderHistoryColors() { const container = $('#historyColors'); if (!container) return; const colors = DB.settings.historyColors || []; container.innerHTML = colors.map((c, i) => '<div class="history-color-box '+(c.locked?'locked':'')+'" data-index="'+i+'" style="background:'+c.color+'">'+(c.locked ? '<div class="lock-icon">🔒</div>' : '')+'</div>').join(''); }
 
     let historySaveTimer = null;
-    function addHistoryColor(color) {
-      if (!/^#[0-9A-F]{6}$/i.test(color)) return; color = color.toUpperCase();
-      let colors = DB.settings.historyColors || []; const existIdx = colors.findIndex(c => c.color === color);
-      if (existIdx !== -1) { const [item] = colors.splice(existIdx, 1); colors.push(item); } else { colors.push({ color: color, locked: false }); }
-      while (colors.length > 10) { const idx = colors.findIndex(c => !c.locked); if (idx !== -1) { colors.splice(idx, 1); } else { break; } }
-      DB.settings.historyColors = colors; clearTimeout(historySaveTimer); historySaveTimer = setTimeout(() => { save(); renderHistoryColors(); }, 500);
-    }
+    function addHistoryColor(color) { if (!/^#[0-9A-F]{6}$/i.test(color)) return; color = color.toUpperCase(); let colors = DB.settings.historyColors || []; const existIdx = colors.findIndex(c => c.color === color); if (existIdx !== -1) { const [item] = colors.splice(existIdx, 1); colors.push(item); } else { colors.push({ color: color, locked: false }); } while (colors.length > 10) { const idx = colors.findIndex(c => !c.locked); if (idx !== -1) { colors.splice(idx, 1); } else { break; } } DB.settings.historyColors = colors; clearTimeout(historySaveTimer); historySaveTimer = setTimeout(() => { save(); renderHistoryColors(); }, 500); }
 
     renderHistoryColors(); updatePreview();
 
     let longPressTimer = null; let activeMenu = null;
-    $('#historyColors').addEventListener('touchstart', (e) => {
-      const box = e.target.closest('.history-color-box'); if (!box) return;
-      longPressTimer = setTimeout(() => {
-        const idx = parseInt(box.dataset.index); const colors = DB.settings.historyColors || []; const item = colors[idx]; if (!item) return;
-        if (activeMenu) activeMenu.remove();
-        const rect = box.getBoundingClientRect(); const menu = document.createElement('div');
-        menu.className = 'color-bubble-menu'; menu.style.left = (rect.left - 20) + 'px'; menu.style.top = (rect.top - 44) + 'px';
-        menu.innerHTML = `<button class="bubble-lock">${item.locked ? '解锁' : '锁定'}</button><button class="bubble-del">删除</button>`;
-        menu.querySelector('.bubble-lock').addEventListener('click', () => { item.locked = !item.locked; save(); renderHistoryColors(); menu.remove(); activeMenu = null; });
-        menu.querySelector('.bubble-del').addEventListener('click', () => { colors.splice(idx, 1); save(); renderHistoryColors(); menu.remove(); activeMenu = null; });
-        document.body.appendChild(menu); activeMenu = menu;
-      }, 600);
-    }, { passive: true });
+    $('#historyColors').addEventListener('touchstart', (e) => { const box = e.target.closest('.history-color-box'); if (!box) return; longPressTimer = setTimeout(() => { const idx = parseInt(box.dataset.index); const colors = DB.settings.historyColors || []; const item = colors[idx]; if (!item) return; if (activeMenu) activeMenu.remove(); const rect = box.getBoundingClientRect(); const menu = document.createElement('div'); menu.className = 'color-bubble-menu'; menu.style.left = (rect.left - 20) + 'px'; menu.style.top = (rect.top - 44) + 'px'; menu.innerHTML = `<button class="bubble-lock">${item.locked ? '解锁' : '锁定'}</button><button class="bubble-del">删除</button>`; menu.querySelector('.bubble-lock').addEventListener('click', () => { item.locked = !item.locked; save(); renderHistoryColors(); menu.remove(); activeMenu = null; }); menu.querySelector('.bubble-del').addEventListener('click', () => { colors.splice(idx, 1); save(); renderHistoryColors(); menu.remove(); activeMenu = null; }); document.body.appendChild(menu); activeMenu = menu; }, 600); }, { passive: true });
     $('#historyColors').addEventListener('touchend', () => { clearTimeout(longPressTimer); });
     $('#historyColors').addEventListener('touchmove', () => { clearTimeout(longPressTimer); });
-    $('#historyColors').addEventListener('click', (e) => {
-      const box = e.target.closest('.history-color-box'); if (!box) return; const idx = parseInt(box.dataset.index); const colors = DB.settings.historyColors || []; const item = colors[idx];
-      if (item) { $('#hexBg').value = item.color; $('#colorBg').value = item.color; updatePreview(); }
-    });
+    $('#historyColors').addEventListener('click', (e) => { const box = e.target.closest('.history-color-box'); if (!box) return; const idx = parseInt(box.dataset.index); const colors = DB.settings.historyColors || []; const item = colors[idx]; if (item) { $('#hexBg').value = item.color; $('#colorBg').value = item.color; updatePreview(); } });
     document.addEventListener('click', function closeMenu(ev) { if (activeMenu && !ev.target.closest('.color-bubble-menu') && !ev.target.closest('.history-color-box')) { activeMenu.remove(); activeMenu = null; } });
     document.querySelector('.color-bubble-menu')?.addEventListener('click', e => e.stopPropagation());
   }, 100);
 }
 
 /* ============ 删除二次确认弹窗 ============ */
-function showConfirm(title, message, onConfirm) {
-  const overlay = $('#confirmOverlay');
-  overlay.innerHTML = `<div class="confirm-box"><h4>${title}</h4><p>${message}</p><div class="confirm-btns"><button class="confirm-cancel">取消</button><button class="confirm-delete">删除</button></div></div>`;
-  overlay.classList.add('show');
-  overlay.querySelector('.confirm-cancel').addEventListener('click', () => { overlay.classList.remove('show'); overlay.innerHTML = ''; });
-  overlay.querySelector('.confirm-delete').addEventListener('click', () => { overlay.classList.remove('show'); overlay.innerHTML = ''; onConfirm(); });
-  overlay.addEventListener('click', (e) => { if (e.target === overlay) { overlay.classList.remove('show'); overlay.innerHTML = ''; } });
-}
+function showConfirm(title, message, onConfirm) { const overlay = $('#confirmOverlay'); overlay.innerHTML = `<div class="confirm-box"><h4>${title}</h4><p>${message}</p><div class="confirm-btns"><button class="confirm-cancel">取消</button><button class="confirm-delete">删除</button></div></div>`; overlay.classList.add('show'); overlay.querySelector('.confirm-cancel').addEventListener('click', () => { overlay.classList.remove('show'); overlay.innerHTML = ''; }); overlay.querySelector('.confirm-delete').addEventListener('click', () => { overlay.classList.remove('show'); overlay.innerHTML = ''; onConfirm(); }); overlay.addEventListener('click', (e) => { if (e.target === overlay) { overlay.classList.remove('show'); overlay.innerHTML = ''; } }); }
 
 /* =====================================================
    事件绑定
@@ -524,23 +474,34 @@ document.addEventListener('click',function(ev){
       let card = normalizeHex($('#hexCard')?.value || $('#colorCard')?.value || '#FFFFFF');
       let title = normalizeHex($('#hexTitle')?.value || $('#colorTitle')?.value || '#673D47');
       let accent = normalizeHex($('#hexAccent')?.value || $('#colorAccent')?.value || '#B34C4E');
-      
       const newTheme = { id: id || ('t_'+uid()), name, bg, card, title, accent };
-      
-      // 关键修复：根据 data-id 是否存在来判断是编辑还是新增
-      if (id) {
-        const idx = DB.settings.customThemes.findIndex(t=>t.id===id);
-        if (idx !== -1) DB.settings.customThemes[idx] = newTheme;
-      } else {
-        DB.settings.customThemes.push(newTheme);
-      }
+      if (id) { const idx = DB.settings.customThemes.findIndex(t=>t.id===id); if (idx !== -1) DB.settings.customThemes[idx] = newTheme; } else { DB.settings.customThemes.push(newTheme); }
       DB.settings.theme = newTheme.id;
       save(); applyTheme(); closeModal(); render(); toast('主题已保存并应用');
       break;
     }
     case 'export-data':closeModal();setTimeout(openExport,120);break;
     case 'copy-export':{const ta=$('#exportArea');if(ta){ta.select();ta.setSelectionRange(0,999999);try{document.execCommand('copy');toast('已复制');}catch(e){toast('请长按选择复制');}}break;}
-    case 'download-export':{try{const data=JSON.stringify(DB,null,2);const blob=new Blob([data],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='西洋豆浆萃备份-'+todayStr()+'.json';document.body.appendChild(a);a.click();document.body.removeChild(a);setTimeout(()=>URL.revokeObjectURL(url),3000);toast('已下载');}catch(e){toast('下载失败，请用复制');}break;}
+    case 'download-export':{
+      try {
+        const data = JSON.stringify(DB, null, 2);
+        const blob = new Blob([data], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = '西洋豆浆萃备份-' + todayStr() + '.json';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        setTimeout(() => URL.revokeObjectURL(url), 3000);
+        toast('如果下载未响应，请使用【复制】按钮');
+      } catch(e) {
+        const ta = $('#exportArea');
+        if (ta) { ta.select(); ta.setSelectionRange(0, 999999); document.execCommand('copy'); }
+        toast('当前设备不支持下载，已自动复制到剪贴板');
+      }
+      break;
+    }
     case 'import-data':closeModal();setTimeout(openImport,120);break;
     case 'do-import':{
       const ta=$('#importArea'); if(!ta||!ta.value.trim()){toast('请先粘贴内容');return;}
@@ -552,8 +513,7 @@ document.addEventListener('click',function(ev){
         if(!Array.isArray(base.settings.customThemes))base.settings.customThemes=[];
         if(!Array.isArray(base.settings.historyColors))base.settings.historyColors=[];
         DB=base; save(); closeModal(); render();
-        toast('导入成功，正在刷新...');
-        setTimeout(()=>{ location.reload(); }, 800);
+        toast('导入成功');
       }catch(e){ toast('格式错误，导入失败：' + e.message); }
       break;
     }
