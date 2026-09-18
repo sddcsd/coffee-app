@@ -159,6 +159,8 @@ const curMonth=()=>{const d=new Date();return d.getFullYear()+'-'+pad2(d.getMont
 const money=n=>'¥'+(Math.round((Number(n)||0)*100)/100).toFixed(2);const num=v=>{const n=parseFloat(v);return isNaN(n)?0:n;};
 function toast(msg){const t=$('#toast');t.textContent=msg;t.classList.add('show');clearTimeout(t._tid);t._tid=setTimeout(()=>t.classList.remove('show'),1800);}
 
+const BEAN_COUNTRIES=['埃塞俄比亚','埃塞','哥伦比亚','巴西','印尼','印度尼西亚','危地马拉','哥斯达黎加','巴拿马','肯尼亚','洪都拉斯','云南','卢旺达','布隆迪','萨尔瓦多','墨西哥','秘鲁','玻利维亚','厄瓜多尔','也门','坦桑尼亚','乌干达','越南','泰国','印度','巴布亚新几内亚','牙买加','夏威夷','多米尼加','尼加拉瓜'];
+
 /* ---------- 颜色工具函数 ---------- */
 function normalizeHex(hex) {
   if (!hex) return '#FFFFFF';
