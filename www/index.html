@@ -122,6 +122,11 @@
 .confirm-box .confirm-btns button { flex: 1; height: 40px; border-radius: 10px; font-weight: 700; font-size: 13.5px; }
 .confirm-box .confirm-cancel { background: var(--card2); color: var(--title); }
 .confirm-box .confirm-delete { background: #C0392B; color: #fff; }
+
+/* 设置页面数据备份区域 */
+.backup-area { background: var(--card); border-radius: 12px; padding: 12px; margin-top: 10px; border: 1px solid var(--border); }
+.backup-area textarea { width: 100%; padding: 10px; border-radius: 10px; border: 1px solid var(--border); background: var(--card2); color: var(--text); font-family: monospace; font-size: 11px; resize: vertical; min-height: 100px; outline: none; }
+.backup-area .hint { font-size: 11px; color: var(--dim); margin-bottom: 6px; display: block; }
 </style>
 </head>
 <body>
@@ -362,9 +367,71 @@ function openRecipeForm(id){ const r=id?DB.recipes.find(x=>x.id===id)||{}:{}; co
    ===================================================== */
 const PRESET_THEMES=[{id:'euro-pink',name:'欧元粉',colors:['#F6E8EA','#E29A91','#B34C4E']},{id:'euro-blue',name:'欧元蓝',colors:['#E8EFF4','#87B8D8','#326FAD']},{id:'euro-green',name:'欧元绿',colors:['#E7EFEA','#91B889','#347B59']},{id:'euro-gold',name:'欧元金',colors:['#F7F0E5','#E4BD65','#BA8B36']},{id:'euro-purple',name:'欧元紫',colors:['#EFEAF2','#AF8AC1','#75529E']},{id:'dark',name:'深色',colors:['#161823','#53589A','#B8CEE2']}];
 
-function openSettings(){ const customThemes = DB.settings.customThemes || []; let html = modalHead('设置')+'<div class="sec-title" style="margin-top:0">App 名称</div><div class="field" style="display:flex;gap:8px;align-items:center"><input class="input" id="appNameInput" value="'+esc(DB.settings.appName||'西洋豆浆萃')+'" placeholder="输入你喜欢的名字" style="flex:1;min-width:0"><button class="btn" style="width:44px;height:44px;padding:0;border-radius:12px;flex:none;display:flex;align-items:center;justify-content:center" data-action="save-app-name"><span class="ic" style="width:20px;height:20px">'+ICON.check+'</span></button></div><div class="sec-title">官方预设主题</div><div class="theme-grid">'+PRESET_THEMES.map(t=>'<button class="theme-item '+(DB.settings.theme===t.id?'on':'')+'" data-action="set-theme" data-v="'+t.id+'"><div class="swatches">'+t.colors.map(c=>'<span class="sw" style="background:'+c+'"></span>').join('')+'</div><div class="tname">'+t.name+'</div></button>').join('')+'</div><div class="sec-title">我的自定义主题（'+customThemes.length+'/6）</div>';
-if (customThemes.length === 0) { html += '<div class="hint" style="text-align:center;padding:12px;color:var(--dim)">还没有自定义主题，点击下方按钮创建</div>'; } else { html += customThemes.map(t => '<div class="my-theme-item '+(DB.settings.theme===t.id?'on':'')+'" data-action="apply-custom-theme" data-id="'+t.id+'"><div class="theme-info"><div class="theme-name">'+esc(t.name)+'</div><div class="theme-colors"><span style="background:'+t.bg+'"></span><span style="background:'+t.card+'"></span><span style="background:'+t.title+'"></span><span style="background:'+t.accent+'"></span></div></div><div class="theme-actions"><button class="edit-btn" data-action="edit-custom-theme" data-id="'+t.id+'">编辑</button><button class="del-btn" data-action="delete-custom-theme" data-id="'+t.id+'">删除</button></div></div>').join(''); }
-html += '<div style="margin-top:12px"><button class="btn btn-ghost btn-block" style="margin-bottom:10px" data-action="create-custom-theme" '+(customThemes.length>=6?'disabled style="opacity:.5"':'')+'><span class="ic-sm">'+ICON.plus+'</span> 创建新主题</button></div><div class="sec-title">数据</div><button class="btn btn-ghost btn-block" style="margin-bottom:10px" data-action="export-data">导出备份 (JSON)</button><button class="btn btn-ghost btn-block" style="margin-bottom:10px" data-action="import-data">导入备份</button><button class="btn btn-danger btn-block" data-action="clear-data">清空全部数据</button><div class="hint" style="margin-top:14px;text-align:center">数据保存在本机，请定期导出备份</div>'; openModal(html); }
+function openSettings(){
+  const customThemes = DB.settings.customThemes || [];
+  let html = modalHead('设置')+
+    '<div class="sec-title" style="margin-top:0">App 名称</div>'+
+    '<div class="field" style="display:flex;gap:8px;align-items:center">'+
+      '<input class="input" id="appNameInput" value="'+esc(DB.settings.appName||'西洋豆浆萃')+'" placeholder="输入你喜欢的名字" style="flex:1;min-width:0">'+
+      '<button class="btn" style="width:44px;height:44px;padding:0;border-radius:12px;flex:none;display:flex;align-items:center;justify-content:center" data-action="save-app-name">'+
+        '<span class="ic" style="width:20px;height:20px">'+ICON.check+'</span>'+
+      '</button>'+
+    '</div>'+
+
+    '<div class="sec-title">官方预设主题</div>'+
+    '<div class="theme-grid">'+
+      PRESET_THEMES.map(t=>'<button class="theme-item '+(DB.settings.theme===t.id?'on':'')+'" data-action="set-theme" data-v="'+t.id+'">'+
+        '<div class="swatches">'+t.colors.map(c=>'<span class="sw" style="background:'+c+'"></span>').join('')+'</div>'+
+        '<div class="tname">'+t.name+'</div></button>').join('')+
+    '</div>'+
+
+    '<div class="sec-title">我的自定义主题（'+customThemes.length+'/6）</div>';
+  
+  if (customThemes.length === 0) {
+    html += '<div class="hint" style="text-align:center;padding:12px;color:var(--dim)">还没有自定义主题，点击下方按钮创建</div>';
+  } else {
+    html += customThemes.map(t => 
+      '<div class="my-theme-item '+(DB.settings.theme===t.id?'on':'')+'" data-action="apply-custom-theme" data-id="'+t.id+'">'+
+        '<div class="theme-info">'+
+          '<div class="theme-name">'+esc(t.name)+'</div>'+
+          '<div class="theme-colors">'+
+            '<span style="background:'+t.bg+'"></span>'+
+            '<span style="background:'+t.card+'"></span>'+
+            '<span style="background:'+t.title+'"></span>'+
+            '<span style="background:'+t.accent+'"></span>'+
+          '</div>'+
+        '</div>'+
+        '<div class="theme-actions">'+
+          '<button class="edit-btn" data-action="edit-custom-theme" data-id="'+t.id+'">编辑</button>'+
+          '<button class="del-btn" data-action="delete-custom-theme" data-id="'+t.id+'">删除</button>'+
+        '</div>'+
+      '</div>'
+    ).join('');
+  }
+
+  html += '<div style="margin-top:12px">'+
+    '<button class="btn btn-ghost btn-block" style="margin-bottom:10px" data-action="create-custom-theme" '+(customThemes.length>=6?'disabled style="opacity:.5"':'')+'>'+
+      '<span class="ic-sm">'+ICON.plus+'</span> 创建新主题'+
+    '</button>'+
+  '</div>';
+
+  // 直接在这里提供导入导出，不再弹窗
+  html += '<div class="sec-title">数据备份</div>'+
+    '<div class="backup-area">'+
+      '<span class="hint">导出：点击下方文字框全选复制，保存到备忘录或微信</span>'+
+      '<textarea id="exportArea" readonly>'+esc(JSON.stringify(DB,null,2))+'</textarea>'+
+      '<button class="btn btn-ghost btn-block" style="margin-top:8px" data-action="copy-export">复制到剪贴板</button>'+
+    '</div>'+
+    '<div class="backup-area" style="margin-top:12px">'+
+      '<span class="hint">导入：将之前备份的 JSON 粘贴到下方，点击导入</span>'+
+      '<textarea id="importArea" placeholder="粘贴 JSON..."></textarea>'+
+      '<button class="btn btn-danger btn-block" style="margin-top:8px" data-action="do-import">确认导入</button>'+
+    '</div>'+
+    '<button class="btn btn-danger btn-block" style="margin-top:16px" data-action="clear-data">清空全部数据</button>'+
+    '<div class="hint" style="margin-top:14px;text-align:center">数据保存在本机，请定期导出备份</div>';
+
+  openModal(html);
+}
 
 /* ============ 自定义主题编辑弹窗 ============ */
 function openThemeEditor(themeId){
@@ -480,33 +547,40 @@ document.addEventListener('click',function(ev){
       save(); applyTheme(); closeModal(); render(); toast('主题已保存并应用');
       break;
     }
-    case 'export-data': openExport(); break;
-    case 'copy-export':{
-      const ta=$('#exportArea');
-      if(ta){
-        ta.select(); ta.setSelectionRange(0,999999);
-        try{
-          if(navigator.clipboard && navigator.clipboard.writeText){
-            navigator.clipboard.writeText(ta.value).then(()=>toast('已复制到剪贴板')).catch(()=>{ document.execCommand('copy'); toast('已复制到剪贴板'); });
+    case 'copy-export': {
+      const ta = $('#exportArea');
+      if (ta) {
+        ta.select(); ta.setSelectionRange(0, 999999);
+        try {
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(ta.value).then(() => toast('已复制到剪贴板')).catch(() => { document.execCommand('copy'); toast('已复制到剪贴板'); });
           } else {
             document.execCommand('copy'); toast('已复制到剪贴板');
           }
-        }catch(e){ toast('复制失败，请长按文本框手动复制'); }
+        } catch (e) { toast('复制失败，请长按文本框手动复制'); }
       }
       break;
     }
-    case 'import-data': openImport(); break;
-    case 'do-import':{
-      const ta=$('#importArea'); if(!ta||!ta.value.trim()){toast('请先粘贴内容');return;}
-      try{
-        const d=JSON.parse(ta.value); const base=defaultDB();
-        base.beans=Array.isArray(d.beans)?d.beans:[]; base.brews=Array.isArray(d.brews)?d.brews:[];
-        base.experiences=Array.isArray(d.experiences)?d.experiences:[]; base.recipes=Array.isArray(d.recipes)?d.recipes:[];
-        base.settings=Object.assign({},DEFAULT_SETTINGS,d.settings||{});
-        if(!Array.isArray(base.settings.customThemes))base.settings.customThemes=[];
-        if(!Array.isArray(base.settings.historyColors))base.settings.historyColors=[];
-        DB=base; save(); closeModal(); render(); toast('导入成功');
-      }catch(e){ toast('格式错误，导入失败：' + e.message); }
+    case 'do-import': {
+      const ta = $('#importArea');
+      if (!ta || !ta.value.trim()) { toast('请先粘贴内容'); return; }
+      try {
+        const d = JSON.parse(ta.value);
+        const base = defaultDB();
+        base.beans = Array.isArray(d.beans) ? d.beans : [];
+        base.brews = Array.isArray(d.brews) ? d.brews : [];
+        base.experiences = Array.isArray(d.experiences) ? d.experiences : [];
+        base.recipes = Array.isArray(d.recipes) ? d.recipes : [];
+        base.settings = Object.assign({}, DEFAULT_SETTINGS, d.settings || {});
+        if (!Array.isArray(base.settings.customThemes)) base.settings.customThemes = [];
+        if (!Array.isArray(base.settings.historyColors)) base.settings.historyColors = [];
+        DB = base;
+        save();
+        toast('导入成功，正在刷新设置界面...');
+        setTimeout(() => { openSettings(); }, 500);
+      } catch (e) {
+        toast('格式错误，导入失败：' + e.message);
+      }
       break;
     }
     case 'clear-data':{if(!confirm('确定清空全部数据吗？此操作不可恢复。'))return;if(!confirm('再次确认：真的要清空所有记录吗？'))return;DB=defaultDB();save();closeModal();render();toast('已清空');break;}
