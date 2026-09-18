@@ -16,7 +16,6 @@
 [data-theme="euro-purple"]{--bg:#EFEAF2;--card:#FFFFFF;--card2:#EFE8F4;--text:#2A2133;--dim:#9182A3;--title:#513B68;--accent:#75529E;--border:rgba(81,59,104,.1);--fab-bg:#513B68;--fab-fg:#EFE8F4;--shadow:0 2px 10px rgba(81,59,104,.08);}
 [data-theme="dark"]{--bg:#161823;--card:#1E2130;--card2:#232739;--text:#E6EAF2;--dim:#8B93A8;--title:#B8CEE2;--accent:#53589A;--border:rgba(184,206,226,.16);--fab-bg:#53589A;--fab-fg:#E6EAF2;--shadow:0 2px 10px rgba(0,0,0,.35);}
 
-/* 基础样式（保持不变） */
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}html,body{margin:0;padding:0;}body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Helvetica Neue","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.5;overscroll-behavior-y:none;-webkit-font-smoothing:antialiased;}button,input,select,textarea{font-family:inherit;font-size:inherit;color:inherit;}button{border:none;background:none;cursor:pointer;padding:0;}svg{width:100%;height:100%;display:block;}
 .ic{width:22px;height:22px;flex:none;}.ic-sm{width:18px;height:18px;flex:none;}.ic-lg{width:30px;height:30px;flex:none;}.app{display:flex;flex-direction:column;height:100vh;height:100dvh;}
 .topbar{flex:none;display:flex;align-items:center;justify-content:space-between;padding:calc(env(safe-area-inset-top,0px) + 12px) 18px 10px;min-height:56px;background:var(--bg);transition:background .3s;}
@@ -131,7 +130,7 @@
 <div class="confirm-overlay" id="confirmOverlay"></div>
 
 <script>
-/* ---------- 图标（保留最新版本） ---------- */
+/* ---------- 图标 ---------- */
 const ICON={
   bean:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><g transform="rotate(25 8 11)"><ellipse cx="8" cy="11" rx="4.5" ry="7.5" /><path d="M 8 4 C 6 8, 10 12, 8 18" /></g><g transform="rotate(-35 15 14)"><ellipse cx="15" cy="14" rx="7.5" ry="4.5" fill="var(--card)" /><path d="M 8 14 C 11 11, 19 17, 22 14" fill="none"/></g></svg>',
   mug:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 10.5h12v6.5a3.5 3.5 0 0 1-3.5 3.5H7a3.5 3.5 0 0 1-3.5-3.5z" fill="currentColor" stroke="none"/><path d="M15.5 11.6h2.2a2.4 2.4 0 0 1 0 4.8h-2.2" fill="none"/><path d="M7.6 7.4c0-1.2 1-1.4 1-2.6M11.4 7.4c0-1.2 1-1.4 1-2.6" fill="none"/></svg>',
@@ -155,7 +154,28 @@ const curMonth=()=>{const d=new Date();return d.getFullYear()+'-'+pad2(d.getMont
 const money=n=>'¥'+(Math.round((Number(n)||0)*100)/100).toFixed(2);const num=v=>{const n=parseFloat(v);return isNaN(n)?0:n;};
 function toast(msg){const t=$('#toast');t.textContent=msg;t.classList.add('show');clearTimeout(t._tid);t._tid=setTimeout(()=>t.classList.remove('show'),1800);}
 
-/* ---------- 颜色工具函数 ---------- */
+/* ---------- 颜色工具函数（强化版） ---------- */
+function normalizeHex(hex) {
+  if (!hex) return '#FFFFFF';
+  hex = hex.trim().toUpperCase();
+  // 处理 #RGB 格式
+  if (/^#[0-9A-F]{3}$/.test(hex)) {
+    return '#' + hex[1] + hex[1] + hex[2] + hex[2] + hex[3] + hex[3];
+  }
+  // 处理 #RRGGBB 格式
+  if (/^#[0-9A-F]{6}$/.test(hex)) return hex;
+  // 处理 rgb(r,g,b) 格式
+  if (hex.startsWith('RGB')) {
+    const match = hex.match(/\d+/g);
+    if (match && match.length >= 3) {
+      const r = parseInt(match[0]), g = parseInt(match[1]), b = parseInt(match[2]);
+      return rgbToHex(r, g, b);
+    }
+  }
+  // 如果完全无法识别，返回默认白色
+  return '#FFFFFF';
+}
+
 function hexToRgb(hex) {
   let r = 0, g = 0, b = 0;
   if (hex.length == 4) {
@@ -166,7 +186,7 @@ function hexToRgb(hex) {
   return [r, g, b];
 }
 function rgbToHex(r, g, b) {
-  return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+  return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1).toUpperCase();
 }
 function getLuminance(hex) {
   const [r, g, b] = hexToRgb(hex).map(v => {
@@ -178,10 +198,6 @@ function getLuminance(hex) {
 function getContrast(hex1, hex2) {
   const l1 = getLuminance(hex1), l2 = getLuminance(hex2);
   return (Math.max(l1, l2) + 0.05) / (Math.min(l1, l2) + 0.05);
-}
-function adjustColor(hex, amount) {
-  const [r, g, b] = hexToRgb(hex);
-  return rgbToHex(Math.min(255, Math.max(0, r + amount)), Math.min(255, Math.max(0, g + amount)), Math.min(255, Math.max(0, b + amount)));
 }
 function mixColors(hex1, hex2, weight1) {
   const [r1, g1, b1] = hexToRgb(hex1);
@@ -211,13 +227,11 @@ let DB = (function load(){
     if(!raw) return defaultDB();
     const d=JSON.parse(raw);
     const base=defaultDB();
-    // 兼容旧数据，如果字段不存在，则补全
     base.beans=Array.isArray(d.beans)?d.beans:[];
     base.brews=Array.isArray(d.brews)?d.brews:[];
     base.experiences=Array.isArray(d.experiences)?d.experiences:[];
     base.recipes=Array.isArray(d.recipes)?d.recipes:[];
     base.settings=Object.assign({},DEFAULT_SETTINGS,d.settings||{});
-    // 确保自定义主题和历史色号是数组
     if (!Array.isArray(base.settings.customThemes)) base.settings.customThemes = [];
     if (!Array.isArray(base.settings.historyColors)) base.settings.historyColors = [];
     return base;
@@ -231,32 +245,30 @@ function save(){
 
 const state={tab:'home',beanFilter:'all',beanSearch:'',recipeFilter:'all',recipeSearch:'',logFilter:'all',logSearch:'',statsMonth:null,openSwipeId:null};
 
-/* ---------- 主题应用逻辑 ---------- */
+/* ---------- 主题应用逻辑（强健壮性） ---------- */
 function applyTheme(){
   const themeId = DB.settings.theme || 'euro-pink';
   const customThemes = DB.settings.customThemes || [];
   const custom = customThemes.find(t => t.id === themeId);
+  const presetIds = ['euro-pink', 'euro-blue', 'euro-green', 'euro-gold', 'euro-purple', 'dark'];
 
   if (custom) {
-    // 使用自定义主题
     document.documentElement.removeAttribute('data-theme');
     const bg = custom.bg || '#F6E8EA';
     const card = custom.card || '#FFFFFF';
-    const title = custom.title || '#673D47';
+    let title = custom.title || '#673D47';
     const accent = custom.accent || '#B34C4E';
 
-    // 派生逻辑
-    const card2 = mixColors(card, bg, 0.7); // 卡片与背景混合，形成稍浅的卡片内色块
-    let text = mixColors(title, bg, 0.7); // 正文色：标题与背景混合，降低对比度
-    let dim = mixColors(title, bg, 0.4); // 次要文字：标题与背景混合，更低对比度
-    const border = mixColors(accent, bg, 0.15); // 边框色：强调色与背景混合
+    const card2 = mixColors(card, bg, 0.7);
+    let text = mixColors(title, bg, 0.7);
+    let dim = mixColors(title, bg, 0.4);
+    const border = mixColors(accent, bg, 0.15);
     const fabBg = accent;
     const shadow = `0 2px 10px ${mixColors(title, bg, 0.08)}`;
 
     // 自动对比度保护
     let fabFg = getLuminance(accent) > 0.5 ? '#000000' : '#FFFFFF';
     if (getContrast(bg, title) < 4.5) {
-      // 如果标题和背景对比度太低，强制将标题调深/调浅
       title = getLuminance(bg) > 0.5 ? '#000000' : '#FFFFFF';
       text = mixColors(title, bg, 0.7);
       dim = mixColors(title, bg, 0.4);
@@ -280,9 +292,13 @@ function applyTheme(){
     root.style.setProperty('--shadow', shadow);
     root.style.setProperty('--r', '16px');
   } else {
-    // 使用预设主题
-    document.documentElement.setAttribute('data-theme', themeId);
-    // 清除内联样式
+    // 预设主题回退逻辑
+    let finalThemeId = themeId;
+    if (!presetIds.includes(themeId)) {
+      finalThemeId = 'euro-pink';
+      DB.settings.theme = 'euro-pink';
+    }
+    document.documentElement.setAttribute('data-theme', finalThemeId);
     const root = document.documentElement;
     ['--bg','--card','--card2','--text','--dim','--title','--accent','--border','--fab-bg','--fab-fg','--shadow'].forEach(p => root.style.removeProperty(p));
     root.style.setProperty('--r', '16px');
@@ -1318,19 +1334,15 @@ function openThemeEditor(themeId){
 
     // 实时预览逻辑
     const updatePreview = () => {
-      const bg = $('#hexBg').value;
-      const card = $('#hexCard').value;
-      const title = $('#hexTitle').value;
-      const accent = $('#hexAccent').value;
-      if (!/^#[0-9A-F]{6}$/i.test(bg) || !/^#[0-9A-F]{6}$/i.test(card) || !/^#[0-9A-F]{6}$/i.test(title) || !/^#[0-9A-F]{6}$/i.test(accent)) return;
+      const bg = normalizeHex($('#hexBg').value);
+      const card = normalizeHex($('#hexCard').value);
+      const title = normalizeHex($('#hexTitle').value);
+      const accent = normalizeHex($('#hexAccent').value);
 
       const preview = $('.preview-card');
       if (preview) {
-        // 简单派生用于预览
         let text = mixColors(title, bg, 0.7);
         let dim = mixColors(title, bg, 0.4);
-        const card2 = mixColors(card, bg, 0.7);
-        const border = mixColors(accent, bg, 0.15);
         const fabFg = getLuminance(accent) > 0.5 ? '#000000' : '#FFFFFF';
 
         if (getContrast(bg, title) < 4.5) {
@@ -1343,7 +1355,7 @@ function openThemeEditor(themeId){
         }
 
         preview.style.background = card;
-        preview.style.borderColor = border;
+        preview.style.borderColor = mixColors(accent, bg, 0.15);
         preview.querySelector('.p-title').style.color = title;
         preview.querySelector('.p-text').style.color = text;
         preview.querySelector('.p-dim').style.color = dim;
@@ -1365,30 +1377,25 @@ function openThemeEditor(themeId){
       ).join('');
     }
 
+    let historySaveTimer = null;
     function addHistoryColor(color) {
       if (!/^#[0-9A-F]{6}$/i.test(color)) return;
       color = color.toUpperCase();
       let colors = DB.settings.historyColors || [];
       const existIdx = colors.findIndex(c => c.color === color);
       if (existIdx !== -1) {
-        // 已存在，移到最新
         const [item] = colors.splice(existIdx, 1);
         colors.push(item);
       } else {
         colors.push({ color: color, locked: false });
       }
-      // 淘汰逻辑：最多10个，且优先淘汰未锁定的
       while (colors.length > 10) {
         const idx = colors.findIndex(c => !c.locked);
-        if (idx !== -1) {
-          colors.splice(idx, 1);
-        } else {
-          break; // 全部锁定，不再淘汰
-        }
+        if (idx !== -1) { colors.splice(idx, 1); } else { break; }
       }
       DB.settings.historyColors = colors;
-      save();
-      renderHistoryColors();
+      clearTimeout(historySaveTimer);
+      historySaveTimer = setTimeout(() => { save(); renderHistoryColors(); }, 500);
     }
 
     renderHistoryColors();
@@ -1407,7 +1414,6 @@ function openThemeEditor(themeId){
         const item = colors[idx];
         if (!item) return;
         
-        // 移除旧菜单
         if (activeMenu) activeMenu.remove();
 
         const rect = box.getBoundingClientRect();
@@ -1440,12 +1446,8 @@ function openThemeEditor(themeId){
       }, 600);
     }, { passive: true });
 
-    $('#historyColors').addEventListener('touchend', () => {
-      clearTimeout(longPressTimer);
-    });
-    $('#historyColors').addEventListener('touchmove', () => {
-      clearTimeout(longPressTimer);
-    });
+    $('#historyColors').addEventListener('touchend', () => { clearTimeout(longPressTimer); });
+    $('#historyColors').addEventListener('touchmove', () => { clearTimeout(longPressTimer); });
 
     // 点击历史色号填入
     $('#historyColors').addEventListener('click', (e) => {
@@ -1455,14 +1457,12 @@ function openThemeEditor(themeId){
       const colors = DB.settings.historyColors || [];
       const item = colors[idx];
       if (item) {
-        // 填到当前最近编辑的颜色输入框中（简单策略：填到背景色）
         $('#hexBg').value = item.color;
         $('#colorBg').value = item.color;
         updatePreview();
       }
     });
 
-    // 点击空白关闭气泡菜单
     document.addEventListener('click', function closeMenu(ev) {
       if (activeMenu && !ev.target.closest('.color-bubble-menu') && !ev.target.closest('.history-color-box')) {
         activeMenu.remove();
@@ -1470,7 +1470,6 @@ function openThemeEditor(themeId){
       }
     });
 
-    // 阻止菜单关闭时的冒泡
     document.querySelector('.color-bubble-menu')?.addEventListener('click', e => e.stopPropagation());
   }, 100);
 }
@@ -1491,19 +1490,14 @@ function showConfirm(title, message, onConfirm) {
   overlay.classList.add('show');
   
   overlay.querySelector('.confirm-cancel').addEventListener('click', () => {
-    overlay.classList.remove('show');
-    overlay.innerHTML = '';
+    overlay.classList.remove('show'); overlay.innerHTML = '';
   });
   overlay.querySelector('.confirm-delete').addEventListener('click', () => {
-    overlay.classList.remove('show');
-    overlay.innerHTML = '';
+    overlay.classList.remove('show'); overlay.innerHTML = '';
     onConfirm();
   });
   overlay.addEventListener('click', (e) => {
-    if (e.target === overlay) {
-      overlay.classList.remove('show');
-      overlay.innerHTML = '';
-    }
+    if (e.target === overlay) { overlay.classList.remove('show'); overlay.innerHTML = ''; }
   });
 }
 
@@ -1523,22 +1517,16 @@ document.addEventListener('click',function(ev){
     case 'close-modal':closeModal();break;
 
     case 'star':{
-      const wrap=el.closest('.stars');
-      const val=Number(el.dataset.val);
-      const cur=Number(wrap.dataset.value)||0;
-      const next=(cur===val)?0:val;
-      wrap.dataset.value=next;
+      const wrap=el.closest('.stars'); const val=Number(el.dataset.val); const cur=Number(wrap.dataset.value)||0;
+      const next=(cur===val)?0:val; wrap.dataset.value=next;
       $$('.star',wrap).forEach((s,i)=>{ s.classList.toggle('on',(i+1)<=next); });
       break;
     }
 
     case 'seg-set':{
-      const target=el.dataset.target;
-      const v=el.dataset.v;
-      const seg=el.parentElement;
+      const target=el.dataset.target; const v=el.dataset.v; const seg=el.parentElement;
       $$('button',seg).forEach(b=>b.classList.toggle('on',b===el));
-      const hidden=seg.parentElement.querySelector('input[type="hidden"][name="'+target+'"]');
-      if(hidden)hidden.value=v;
+      const hidden=seg.parentElement.querySelector('input[type="hidden"][name="'+target+'"]'); if(hidden)hidden.value=v;
       break;
     }
 
@@ -1585,10 +1573,7 @@ document.addEventListener('click',function(ev){
       if(!d.date)d.date=todayStr();
       if(d.friendShare){
         let friendBean=DB.beans.find(x=>x.tag==='friend'&&x.name===d.beanName);
-        if(!friendBean){
-          friendBean={id:uid(),name:d.beanName,tag:'friend',status:'在喝',blend:false,createdAt:Date.now()};
-          DB.beans.push(friendBean);
-        }
+        if(!friendBean){ friendBean={id:uid(),name:d.beanName,tag:'friend',status:'在喝',blend:false,createdAt:Date.now()}; DB.beans.push(friendBean); }
         d.beanId=friendBean.id;
       }
       if(id){Object.assign(DB.brews.find(x=>x.id===id),d);}else{d.id=uid();d.createdAt=Date.now();DB.brews.push(d);}
@@ -1638,17 +1623,12 @@ document.addEventListener('click',function(ev){
       let name = nameInp ? nameInp.value.trim() : '';
       if (!name) name = '自定义主题 ' + (DB.settings.customThemes.length + 1);
       
-      const bg = $('#hexBg')?.value || '#F6E8EA';
-      const card = $('#hexCard')?.value || '#FFFFFF';
-      const title = $('#hexTitle')?.value || '#673D47';
-      const accent = $('#hexAccent')?.value || '#B34C4E';
+      let bg = normalizeHex($('#hexBg')?.value || $('#colorBg')?.value || '#F6E8EA');
+      let card = normalizeHex($('#hexCard')?.value || $('#colorCard')?.value || '#FFFFFF');
+      let title = normalizeHex($('#hexTitle')?.value || $('#colorTitle')?.value || '#673D47');
+      let accent = normalizeHex($('#hexAccent')?.value || $('#colorAccent')?.value || '#B34C4E');
       
-      if (!/^#[0-9A-F]{6}$/i.test(bg) || !/^#[0-9A-F]{6}$/i.test(card) || !/^#[0-9A-F]{6}$/i.test(title) || !/^#[0-9A-F]{6}$/i.test(accent)) {
-        toast('颜色格式不正确，请使用 HEX 格式（如 #FFFFFF）');
-        return;
-      }
-      
-      const newTheme = { id: id || ('t_'+uid()), name, bg: bg.toUpperCase(), card: card.toUpperCase(), title: title.toUpperCase(), accent: accent.toUpperCase() };
+      const newTheme = { id: id || ('t_'+uid()), name, bg, card, title, accent };
       
       if (id) {
         const idx = DB.settings.customThemes.findIndex(t=>t.id===id);
@@ -1664,20 +1644,7 @@ document.addEventListener('click',function(ev){
     case 'export-data':closeModal();setTimeout(openExport,120);break;
     case 'copy-export':{const ta=$('#exportArea');if(ta){ta.select();ta.setSelectionRange(0,999999);try{document.execCommand('copy');toast('已复制');}catch(e){toast('请长按选择复制');}}break;}
     case 'download-export':{try{const data=JSON.stringify(DB,null,2);const blob=new Blob([data],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='西洋豆浆萃备份-'+todayStr()+'.json';document.body.appendChild(a);a.click();document.body.removeChild(a);setTimeout(()=>URL.revokeObjectURL(url),3000);toast('已下载');}catch(e){toast('下载失败，请用复制');}break;}
-    case 'import-data': 
-  isSwiping = false; // 关键：强制解除防误触锁
-  closeModal(); // 先关闭设置弹窗
-  setTimeout(() => {
-    const html=modalHead('导入备份')+
-      '<div class="hint" style="margin-bottom:10px">粘贴之前导出的 JSON 内容。导入会覆盖当前全部数据。</div>'+
-      '<textarea class="textarea" id="importArea" style="min-height:240px;font-size:11px;font-family:monospace" placeholder="粘贴 JSON..."></textarea>'+
-      '<div class="btn-row">'+
-        '<button class="btn btn-ghost" data-action="close-modal">取消</button>'+
-        '<button class="btn btn-danger" data-action="do-import">确认导入</button>'+
-      '</div>';
-    openModal(html);
-  }, 150);
-  break;
+    case 'import-data':closeModal();setTimeout(openImport,120);break;
     case 'do-import':{const ta=$('#importArea');if(!ta||!ta.value.trim()){toast('请先粘贴内容');return;}try{const d=JSON.parse(ta.value);const base=defaultDB();base.beans=Array.isArray(d.beans)?d.beans:[];base.brews=Array.isArray(d.brews)?d.brews:[];base.experiences=Array.isArray(d.experiences)?d.experiences:[];base.recipes=Array.isArray(d.recipes)?d.recipes:[];base.settings=Object.assign({},DEFAULT_SETTINGS,d.settings||{});if(!Array.isArray(base.settings.customThemes))base.settings.customThemes=[];if(!Array.isArray(base.settings.historyColors))base.settings.historyColors=[];DB=base;save();closeModal();render();toast('导入成功');}catch(e){toast('格式错误，导入失败');}break;}
     case 'clear-data':{if(!confirm('确定清空全部数据吗？此操作不可恢复。'))return;if(!confirm('再次确认：真的要清空所有记录吗？'))return;DB=defaultDB();save();closeModal();render();toast('已清空');break;}
   }
