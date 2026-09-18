@@ -3,17 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
-<meta name="theme-color" content="#F6E8EA">
+<meta name="theme-color" content="#F0E4E6">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
-<title>西洋豆浆萃</title>
+<title>咖啡笔记</title>
 <style>
-:root, [data-theme="euro-pink"]{--bg:#F6E8EA;--card:#FFFFFF;--card2:#F9E8E9;--text:#3A2022;--dim:#A8787A;--title:#673D47;--accent:#B34C4E;--border:rgba(103,61,71,.1);--fab-bg:#673D47;--fab-fg:#F9E8E9;--shadow:0 2px 10px rgba(103,61,71,.08);--r:16px;}
-[data-theme="euro-blue"]{--bg:#E8EFF4;--card:#FFFFFF;--card2:#E6EFF6;--text:#1B2A38;--dim:#7A93A8;--title:#29475F;--accent:#326FAD;--border:rgba(41,71,95,.1);--fab-bg:#29475F;--fab-fg:#E6EFF6;--shadow:0 2px 10px rgba(41,71,95,.08);}
-[data-theme="euro-green"]{--bg:#E7EFEA;--card:#FFFFFF;--card2:#E4F0E8;--text:#1C2E25;--dim:#7A9987;--title:#2D5044;--accent:#347B59;--border:rgba(45,80,68,.1);--fab-bg:#2D5044;--fab-fg:#E4F0E8;--shadow:0 2px 10px rgba(45,80,68,.08);}
-[data-theme="euro-gold"]{--bg:#F7F0E5;--card:#FFFFFF;--card2:#FAF0DF;--text:#332B21;--dim:#A8957C;--title:#65513B;--accent:#BA8B36;--border:rgba(101,81,59,.1);--fab-bg:#65513B;--fab-fg:#FAF0DF;--shadow:0 2px 10px rgba(101,81,59,.08);}
-[data-theme="euro-purple"]{--bg:#EFEAF2;--card:#FFFFFF;--card2:#EFE8F4;--text:#2A2133;--dim:#9182A3;--title:#513B68;--accent:#75529E;--border:rgba(81,59,104,.1);--fab-bg:#513B68;--fab-fg:#EFE8F4;--shadow:0 2px 10px rgba(81,59,104,.08);}
+:root, [data-theme="euro-pink"]{--bg:#F0E4E6;--card:#FFFFFF;--card2:#F6EBED;--text:#3A2022;--dim:#8A6A6C;--title:#673D47;--accent:#B34C4E;--border:rgba(103,61,71,.1);--fab-bg:#673D47;--fab-fg:#F0E4E6;--shadow:0 2px 10px rgba(103,61,71,.08);--r:16px;}
+[data-theme="euro-blue"]{--bg:#E2E9EE;--card:#FFFFFF;--card2:#EAF0F5;--text:#1B2A38;--dim:#5F7388;--title:#29475F;--accent:#326FAD;--border:rgba(41,71,95,.1);--fab-bg:#29475F;--fab-fg:#E2E9EE;--shadow:0 2px 10px rgba(41,71,95,.08);}
+[data-theme="euro-green"]{--bg:#E0E7E3;--card:#FFFFFF;--card2:#E8EFEA;--text:#1C2E25;--dim:#5B7566;--title:#2D5044;--accent:#347B59;--border:rgba(45,80,68,.1);--fab-bg:#2D5044;--fab-fg:#E0E7E3;--shadow:0 2px 10px rgba(45,80,68,.08);}
+[data-theme="euro-gold"]{--bg:#F0E9DF;--card:#FFFFFF;--card2:#F6F0E8;--text:#332B21;--dim:#8A7A63;--title:#65513B;--accent:#BA8B36;--border:rgba(101,81,59,.1);--fab-bg:#65513B;--fab-fg:#F0E9DF;--shadow:0 2px 10px rgba(101,81,59,.08);}
+[data-theme="euro-purple"]{--bg:#E8E3EB;--card:#FFFFFF;--card2:#EFEAF2;--text:#2A2133;--dim:#746585;--title:#513B68;--accent:#75529E;--border:rgba(81,59,104,.1);--fab-bg:#513B68;--fab-fg:#E8E3EB;--shadow:0 2px 10px rgba(81,59,104,.08);}
 [data-theme="dark"]{--bg:#161823;--card:#1E2130;--card2:#232739;--text:#E6EAF2;--dim:#8B93A8;--title:#B8CEE2;--accent:#53589A;--border:rgba(184,206,226,.16);--fab-bg:#53589A;--fab-fg:#E6EAF2;--shadow:0 2px 10px rgba(0,0,0,.35);}
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}html,body{margin:0;padding:0;}body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Helvetica Neue","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.5;overscroll-behavior-y:none;-webkit-font-smoothing:antialiased;}button,input,select,textarea{font-family:inherit;font-size:inherit;color:inherit;}button{border:none;background:none;cursor:pointer;padding:0;}svg{width:100%;height:100%;display:block;}
@@ -75,51 +75,6 @@
 .month-picker-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}.month-picker-grid button{padding:12px 0;border-radius:12px;background:var(--card2);color:var(--text);font-weight:700;border:1px solid var(--border);}.month-picker-grid button.on{background:var(--title);color:var(--card);border-color:var(--title);}.year-selector{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;padding:0 10px;}.year-selector button{width:40px;height:40px;border-radius:50%;background:var(--card2);display:flex;align-items:center;justify-content:center;font-size:18px;}.year-selector span{font-size:18px;font-weight:800;color:var(--title);}
 .dropdown-suggestions{position:absolute;top:100%;left:0;right:0;background:var(--card);border:1px solid var(--border);border-radius:0 0 12px 12px;box-shadow:0 8px 16px rgba(0,0,0,.1);z-index:50;max-height:180px;overflow-y:auto;display:none;}.dropdown-suggestions.show{display:block;}
 .dropdown-suggestions div{padding:10px 13px;font-size:14px;color:var(--text);border-bottom:1px solid var(--border);cursor:pointer;}.dropdown-suggestions div:last-child{border-bottom:none;}.dropdown-suggestions div:active{background:var(--card2);}
-
-.my-theme-item { display: flex; align-items: center; justify-content: space-between; padding: 10px 12px; background: var(--card2); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 8px; cursor: pointer; }
-.my-theme-item.on { border-color: var(--accent); }
-.my-theme-item .theme-info { display: flex; align-items: center; gap: 8px; }
-.my-theme-item .theme-name { font-size: 13.5px; font-weight: 700; color: var(--title); }
-.my-theme-item .theme-colors { display: flex; gap: 4px; }
-.my-theme-item .theme-colors span { width: 16px; height: 16px; border-radius: 4px; border: 1px solid rgba(0,0,0,.1); }
-.my-theme-item .theme-actions { display: flex; gap: 8px; align-items: center; }
-.my-theme-item .theme-actions button { font-size: 12px; font-weight: 700; color: var(--dim); padding: 4px; }
-.my-theme-item .theme-actions .edit-btn { color: var(--accent); }
-.my-theme-item .theme-actions .del-btn { color: #C0392B; }
-
-.color-input-row { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
-.color-input-row label { width: 60px; font-size: 13px; font-weight: 700; color: var(--dim); }
-.color-input-row input[type="color"] { width: 40px; height: 40px; padding: 0; border: none; border-radius: 8px; cursor: pointer; background: transparent; }
-.color-input-row input[type="text"] { flex: 1; padding: 10px; border-radius: 10px; border: 1px solid var(--border); background: var(--card2); color: var(--text); outline: none; font-family: monospace; }
-
-.history-colors { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
-.history-color-box { width: 38px; height: 38px; border-radius: 8px; border: 2px solid var(--border); cursor: pointer; position: relative; transition: transform .12s; }
-.history-color-box:active { transform: scale(.9); }
-.history-color-box.locked { border-color: var(--accent); }
-.history-color-box .lock-icon { position: absolute; bottom: -4px; right: -4px; background: var(--accent); color: #fff; border-radius: 50%; width: 16px; height: 16px; font-size: 10px; display: flex; align-items: center; justify-content: center; }
-
-.preview-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 14px; margin-top: 10px; box-shadow: var(--shadow); }
-.preview-card .p-title { font-size: 16px; font-weight: 800; color: var(--title); }
-.preview-card .p-text { font-size: 13px; color: var(--text); margin-top: 4px; }
-.preview-card .p-dim { font-size: 12px; color: var(--dim); margin-top: 2px; }
-.preview-card .p-btn { display: inline-block; padding: 6px 14px; border-radius: 8px; background: var(--accent); color: var(--fab-fg); font-size: 12px; font-weight: 700; margin-top: 8px; }
-
-.color-bubble-menu { position: absolute; background: var(--card); border: 1px solid var(--border); border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,.15); display: flex; overflow: hidden; z-index: 1000; animation: fade .15s; }
-.color-bubble-menu button { padding: 8px 14px; font-size: 12px; font-weight: 700; background: var(--card); color: var(--text); border: none; cursor: pointer; }
-.color-bubble-menu button:active { background: var(--card2); }
-.color-bubble-menu .bubble-del { color: #C0392B; }
-.color-bubble-menu .bubble-lock { color: var(--accent); }
-
-.confirm-overlay { position: fixed; inset: 0; background: rgba(0,0,0,.4); z-index: 200; display: none; align-items: center; justify-content: center; }
-.confirm-overlay.show { display: flex; }
-.confirm-box { background: var(--card); border-radius: 16px; width: 260px; padding: 20px; box-shadow: 0 8px 24px rgba(0,0,0,.2); text-align: center; }
-.confirm-box h4 { margin: 0 0 10px; font-size: 16px; color: var(--title); }
-.confirm-box p { margin: 0 0 18px; font-size: 13.5px; color: var(--dim); line-height: 1.5; }
-.confirm-box .confirm-btns { display: flex; gap: 10px; }
-.confirm-box .confirm-btns button { flex: 1; height: 40px; border-radius: 10px; font-weight: 700; font-size: 13.5px; }
-.confirm-box .confirm-cancel { background: var(--card2); color: var(--title); }
-.confirm-box .confirm-delete { background: #C0392B; color: #fff; }
-
 .backup-area { background: var(--card); border-radius: 12px; padding: 12px; margin-top: 10px; border: 1px solid var(--border); }
 .backup-area textarea { width: 100%; padding: 10px; border-radius: 10px; border: 1px solid var(--border); background: var(--card2); color: var(--text); font-family: monospace; font-size: 11px; resize: vertical; min-height: 100px; outline: none; }
 .backup-area .hint { font-size: 11px; color: var(--dim); margin-bottom: 6px; display: block; }
@@ -128,7 +83,6 @@
 <body>
 <div class="app"><header class="topbar" id="topbar"></header><main class="view" id="view"></main><nav class="tabbar" id="tabbar"></nav></div>
 <div class="modal" id="modal"></div><div class="toast" id="toast"></div>
-<div class="confirm-overlay" id="confirmOverlay"></div>
 
 <script>
 const ICON={
@@ -144,6 +98,7 @@ const ICON={
   arrowDown:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>',
   check:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>'
 };
+
 const $=(s,r=document)=>r.querySelector(s);const $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
 const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,7);const pad2=n=>String(n).padStart(2,'0');
@@ -154,42 +109,8 @@ function toast(msg){const t=$('#toast');t.textContent=msg;t.classList.add('show'
 
 const BEAN_COUNTRIES=['埃塞俄比亚','埃塞','哥伦比亚','巴西','印尼','印度尼西亚','危地马拉','哥斯达黎加','巴拿马','肯尼亚','洪都拉斯','云南','卢旺达','布隆迪','萨尔瓦多','墨西哥','秘鲁','玻利维亚','厄瓜多尔','也门','坦桑尼亚','乌干达','越南','泰国','印度','巴布亚新几内亚','牙买加','夏威夷','多米尼加','尼加拉瓜'];
 
-function normalizeHex(hex) {
-  if (!hex) return '#FFFFFF';
-  hex = hex.trim().toUpperCase();
-  if (/^#[0-9A-F]{3}$/.test(hex)) return '#' + hex[1] + hex[1] + hex[2] + hex[2] + hex[3] + hex[3];
-  if (/^#[0-9A-F]{6}$/.test(hex)) return hex;
-  if (hex.startsWith('RGB')) {
-    const match = hex.match(/\d+/g);
-    if (match && match.length >= 3) {
-      return rgbToHex(parseInt(match[0]), parseInt(match[1]), parseInt(match[2]));
-    }
-  }
-  return '#FFFFFF';
-}
-function hexToRgb(hex) {
-  let r = 0, g = 0, b = 0;
-  if (hex.length == 4) { r = parseInt(hex[1] + hex[1], 16); g = parseInt(hex[2] + hex[2], 16); b = parseInt(hex[3] + hex[3], 16); }
-  else if (hex.length == 7) { r = parseInt(hex.substring(1, 3), 16); g = parseInt(hex.substring(3, 5), 16); b = parseInt(hex.substring(5, 7), 16); }
-  return [r, g, b];
-}
-function rgbToHex(r, g, b) { return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1).toUpperCase(); }
-function getLuminance(hex) {
-  const [r, g, b] = hexToRgb(hex).map(v => { v /= 255; return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4); });
-  return 0.2126 * r + 0.7152 * g + 0.0722 * b;
-}
-function getContrast(hex1, hex2) {
-  const l1 = getLuminance(hex1), l2 = getLuminance(hex2);
-  return (Math.max(l1, l2) + 0.05) / (Math.min(l1, l2) + 0.05);
-}
-function mixColors(hex1, hex2, weight1) {
-  const [r1, g1, b1] = hexToRgb(hex1); const [r2, g2, b2] = hexToRgb(hex2);
-  const w1 = weight1, w2 = 1 - weight1;
-  return rgbToHex(Math.round(r1 * w1 + r2 * w2), Math.round(g1 * w1 + g2 * w2), Math.round(b1 * w1 + b2 * w2));
-}
-
 const STORE_KEY='xydjz_db_v1';
-const DEFAULT_SETTINGS={theme:'euro-pink', beanView:'detailed', recipeView:'detailed', appName:'西洋豆浆萃', beanSort:'desc', customThemes:[], historyColors:[]};
+const DEFAULT_SETTINGS={theme:'euro-pink', beanView:'detailed', recipeView:'detailed', appName:'咖啡笔记', beanSort:'desc'};
 function defaultDB(){ return {beans:[],brews:[],experiences:[],recipes:[],settings:Object.assign({},DEFAULT_SETTINGS)}; }
 
 let DB = (function load(){
@@ -203,8 +124,6 @@ let DB = (function load(){
     base.experiences=(Array.isArray(d.experiences)?d.experiences:[]).filter(x=>x&&typeof x==='object');
     base.recipes=(Array.isArray(d.recipes)?d.recipes:[]).filter(x=>x&&typeof x==='object');
     base.settings=Object.assign({},DEFAULT_SETTINGS,d.settings||{});
-    if (!Array.isArray(base.settings.customThemes)) base.settings.customThemes = [];
-    if (!Array.isArray(base.settings.historyColors)) base.settings.historyColors = [];
     return base;
   }catch(e){ return defaultDB(); }
 })();
@@ -218,40 +137,15 @@ const state={tab:'home',beanFilter:'all',beanSearch:'',recipeFilter:'all',recipe
 
 function applyTheme(){
   const themeId = DB.settings.theme || 'euro-pink';
-  const customThemes = DB.settings.customThemes || [];
-  const custom = customThemes.find(t => t.id === themeId);
   const presetIds = ['euro-pink', 'euro-blue', 'euro-green', 'euro-gold', 'euro-purple', 'dark'];
-
-  if (custom) {
-    document.documentElement.removeAttribute('data-theme');
-    const bg = custom.bg || '#F6E8EA'; const card = custom.card || '#FFFFFF';
-    let title = custom.title || '#673D47'; const accent = custom.accent || '#B34C4E';
-    const card2 = mixColors(card, bg, 0.7);
-    let text = mixColors(title, bg, 0.7); let dim = mixColors(title, bg, 0.4);
-    const border = mixColors(accent, bg, 0.15); const fabBg = accent;
-    const shadow = `0 2px 10px ${mixColors(title, bg, 0.08)}`;
-    let fabFg = getLuminance(accent) > 0.5 ? '#000000' : '#FFFFFF';
-    if (getContrast(bg, title) < 4.5) { title = getLuminance(bg) > 0.5 ? '#000000' : '#FFFFFF'; text = mixColors(title, bg, 0.7); dim = mixColors(title, bg, 0.4); }
-    if (getContrast(bg, text) < 4.5) { text = getLuminance(bg) > 0.5 ? '#1A1A1A' : '#E6EAF2'; dim = mixColors(text, bg, 0.5); }
-    const root = document.documentElement;
-    root.style.setProperty('--bg', bg); root.style.setProperty('--card', card); root.style.setProperty('--card2', card2);
-    root.style.setProperty('--text', text); root.style.setProperty('--dim', dim); root.style.setProperty('--title', title);
-    root.style.setProperty('--accent', accent); root.style.setProperty('--border', border);
-    root.style.setProperty('--fab-bg', fabBg); root.style.setProperty('--fab-fg', fabFg);
-    root.style.setProperty('--shadow', shadow); root.style.setProperty('--r', '16px');
-  } else {
-    let finalThemeId = themeId;
-    if (!presetIds.includes(themeId)) { finalThemeId = 'euro-pink'; DB.settings.theme = 'euro-pink'; }
-    document.documentElement.setAttribute('data-theme', finalThemeId);
-    const root = document.documentElement;
-    ['--bg','--card','--card2','--text','--dim','--title','--accent','--border','--fab-bg','--fab-fg','--shadow'].forEach(p => root.style.removeProperty(p));
-    root.style.setProperty('--r', '16px');
-  }
+  let finalThemeId = themeId;
+  if (!presetIds.includes(themeId)) { finalThemeId = 'euro-pink'; DB.settings.theme = 'euro-pink'; }
+  document.documentElement.setAttribute('data-theme', finalThemeId);
   document.querySelector('meta[name="theme-color"]').setAttribute('content', getComputedStyle(document.documentElement).getPropertyValue('--bg').trim());
 }
 
 function render(){ applyTheme(); $('#topbar').innerHTML=renderTopbar(); $('#view').innerHTML=renderView(); $('#tabbar').innerHTML=renderTabbar(); }
-function renderTopbar(){ if(state.tab==='home'){ return '<div class="brand">'+esc(DB.settings.appName||'西洋豆浆萃')+'</div><div class="tb-right"><button class="icon-btn" data-action="settings">'+ICON.gear+'</button></div>'; } const titles={beans:'豆仓',log:'记一笔',recipes:'冲煮方案',stats:'统计'}; return '<div class="tb-title">'+(titles[state.tab]||'')+'</div><div class="tb-right"></div>'; }
+function renderTopbar(){ if(state.tab==='home'){ return '<div class="brand">'+esc(DB.settings.appName||'咖啡笔记')+'</div><div class="tb-right"><button class="icon-btn" data-action="settings">'+ICON.gear+'</button></div>'; } const titles={beans:'豆仓',log:'记一笔',recipes:'冲煮方案',stats:'统计'}; return '<div class="tb-title">'+(titles[state.tab]||'')+'</div><div class="tb-right"></div>'; }
 const TABS=[{id:'home',label:'首页'},{id:'beans',label:'豆仓'},{id:'log',label:'记一笔'},{id:'recipes',label:'冲煮方案'},{id:'stats',label:'统计'}];
 function renderTabbar(){ return TABS.map(t=>{ const on=state.tab===t.id; return '<button class="tab'+(on?' active':'')+'" data-action="tab" data-tab="'+t.id+'"><span class="tab-icon">'+(on?ICON.mug:ICON.bean)+'</span><span class="tab-label">'+t.label+'</span></button>'; }).join(''); }
 function renderView(){ switch(state.tab){ case 'home':return viewHome(); case 'beans':return viewBeans(); case 'log':return viewLog(); case 'recipes':return viewRecipes(); case 'stats':return viewStats(); default:return ''; } }
@@ -277,7 +171,7 @@ return h; }
 
 function beanCardLite(b){ const blendTag='<span class="tag '+(b.blend?'tag-accent':'tag-title')+'">'+(b.blend?'拼配':'单品')+'</span>'; const statusTag='<span class="tag '+(b.status==='在喝'?'tag-accent':'')+'">'+esc(b.status||'在喝')+'</span>'; const friendTag=b.tag==='friend'?'<span class="tag tag-friend">朋友分享</span>':''; return '<div class="card" style="margin:0"><div class="bc-lite"><div><div class="bc-name">'+esc(b.name||'未命名')+'</div><div class="bc-sub" style="margin:2px 0 0">'+esc(b.roaster||'')+(b.roastLevel?' · '+esc(b.roastLevel):'')+'</div></div><div style="display:flex;gap:4px;flex-wrap:wrap;justify-content:flex-end;align-items:flex-start">'+friendTag+statusTag+blendTag+'</div></div></div>'; }
 
-function beanCardFull(b){ const perG=(num(b.price)&&num(b.weight))?(num(b.price)/num(b.weight)).toFixed(2):''; const flavors=String(b.flavor||'').split(/[,，\s]+/).filter(Boolean).slice(0,6); const blendTag='<span class="tag '+(b.blend?'tag-accent':'tag-title')+'">'+(b.blend?'拼配':'单品')+'</span>'; const statusTag='<span class="tag '+(b.status==='在喝'?'tag-accent':(b.status==='喝完'?'':'tag-title'))+'">'+esc(b.status||'在喝')+'</span>'; const friendTag=b.tag==='friend'?'<span class="tag tag-friend">朋友分享</span>':''; return '<div class="card" style="margin:0"><div class="bc-head"><div class="bc-name">'+esc(b.name||'未命名')+'</div><div style="display:flex;gap:4px;flex-wrap:wrap;justify-content:flex-end;align-items:flex-start">'+friendTag+statusTag+blendTag+'</div></div><div class="bc-sub">'+esc(b.roaster||'—')+(b.blend?' · 拼配':' · 单品')+(b.roastLevel?' · '+esc(b.roastLevel):'')+(b.process?' · '+esc(b.process):'')+'</div><div class="bc-meta">'+(b.origin?'<span>产地 <b>'+esc(b.origin)+'</b></span>':'')+(b.variety?'<span>豆种 <b>'+esc(b.variety)+'</b></span>':'')+(b.roastDate?'<span>烘焙 <b>'+esc(b.roastDate)+'</b></span>':'')+(perG?'<span>克价 <b>'+perG+' 元/g</b></span>':'')+'</div>'+(flavors.length?'<div class="bc-tags">'+flavors.map(f=>'<span class="tag">'+esc(f)+'</span>').join('')+'</div>':'')+'</div>'; }
+function beanCardFull(b){ const perG=(num(b.price)&&num(b.weight))?(num(b.price)/num(b.weight)).toFixed(2):''; const flavors=String(b.flavor||'').split(/[,，\s]+/).filter(Boolean).slice(0,6); const blendTag='<span class="tag '+(b.blend?'tag-accent':'tag-title')+'">'+(b.blend?'拼配':'单品')+'</span>'; const statusTag='<span class="tag '+(b.status==='在喝'?'tag-accent':(b.status==='喝完'?'':'tag-title'))+'">'+esc(b.status||'在喝')+'</span>'; const friendTag=b.tag==='friend'?'<span class="tag tag-friend">朋友分享</span>':''; return '<div class="card" style="margin:0"><div class="bc-head"><div class="bc-name">'+esc(b.name||'未命名')+'</div><div style="display:flex;gap:4px;flex-wrap:wrap;justify-content:flex-end;align-items:flex-start">'+friendTag+statusTag+blendTag+'</div></div><div class="bc-sub">'+esc(b.roaster||'—')+(b.blend?' · 拼配':' · 单品')+(b.roastLevel?' · '+esc(b.roastLevel):'')+(b.process?' · '+esc(b.process):'')+'</div><div class="bc-meta">'+(b.origin?'<span>产地 <b>'+esc(b.origin)+'</b></span>':'')+(b.variety?'<span>豆种 <b>'+esc(b.variety)+'</b></span>':'')+(perG?'<span>克价 <b>'+perG+' 元/g</b></span>':'')+'</div>'+(flavors.length?'<div class="bc-tags">'+flavors.map(f=>'<span class="tag">'+esc(f)+'</span>').join('')+'</div>':'')+'</div>'; }
 
 function viewLog(){ const filters=[['all','全部'],['brew','制作'],['exp','消费体验']]; const q=state.logSearch.trim().toLowerCase(); let list=[].concat(DB.brews.map(b=>({o:b,type:'brew'})),DB.experiences.map(e=>({o:e,type:'exp'}))).filter(x=>x&&x.o&&typeof x.o==='object'); if(state.logFilter!=='all') list=list.filter(x=>x.type===state.logFilter); if(q) list=list.filter(x=>{ const o=x.o; const str = x.type==='brew' ? [o.beanName,o.dripper,o.method,o.flavor,o.notes].map(v=>String(v||'')).join(' ') : [o.shop,o.drink,o.origin,o.other,o.experience].map(v=>String(v||'')).join(' '); return str.toLowerCase().includes(q); }); list.sort((a,b)=>(b.o.date||'').localeCompare(a.o.date||''));
 let h='<div class="searchbar"><span class="ic-sm" style="color:var(--dim)">'+ICON.search+'</span><input id="logSearch" placeholder="搜索豆子 / 店名 / 风味" value="'+esc(state.logSearch)+'"></div>';
@@ -325,7 +219,7 @@ function starsHTML(name,value){ value=Number(value)||0; let h='<div class="stars
 
 function openBeanForm(id){ const b=id?DB.beans.find(x=>x.id===id)||{}:{}; const isEdit=!!id; let purchases = b.purchases || []; if (purchases.length === 0 && (b.price || b.weight || b.purchaseDate)) { purchases.push({ date: b.purchaseDate || '', price: b.price || '', weight: b.weight || '' }); } if (purchases.length === 0) { purchases.push({ date: todayStr(), price: '', weight: '' }); }
 const purchaseHtml = purchases.map((p, i) => `<div class="purchase-row" data-index="${i}"><input type="date" class="input" value="${esc(p.date||'')}" data-field="date"><input type="number" step="0.01" class="input" placeholder="金额" value="${esc(p.price||'')}" data-field="price"><input type="number" step="1" class="input" placeholder="克重" value="${esc(p.weight||'')}" data-field="weight"><button type="button" class="btn btn-danger delete-purchase-row" ${purchases.length<=1?'style="display:none"':''}>×</button></div>`).join('');
-const html=modalHead(isEdit?'编辑豆子':'新增豆子')+'<div class="field"><label>品名 *</label><input class="input" name="name" value="'+esc(b.name||'')+'" placeholder="例如：埃塞 耶加雪菲"></div><div class="field"><label>烘焙商</label><input class="input" name="roaster" value="'+esc(b.roaster||'')+'" placeholder="例如：某某烘焙"></div><div class="field"><label>烘焙度</label><input class="input" name="roastLevel" value="'+esc(b.roastLevel||'')+'" placeholder="浅/中/深"></div><div class="field"><label class="switch" style="font-size:13px" id="blendLabel"><span style="color:var(--dim);font-weight:700" id="blendText">拼配豆</span><input type="checkbox" name="blend" id="fBlend" '+(b.blend?'checked':'')+'><span class="track"></span></label></div><div id="singleBeanFields"><div class="row2"><div class="field"><label>产地/产区/处理站</label><input class="input" name="origin" value="'+esc(b.origin||'')+'"></div><div class="field"><label>豆种</label><input class="input" name="variety" value="'+esc(b.variety||'')+'" placeholder="例如：Heirloom"></div></div><div class="row2"><div class="field"><label>处理法</label><input class="input" name="process" value="'+esc(b.process||'')+'" placeholder="水洗/日晒/蜜处理"></div></div></div><div id="blendBeanFields" style="display:none"><div class="field"><label>拼配组成（不同产区/豆种/处理法）</label><div id="blendList"></div><button type="button" class="btn btn-ghost btn-block" style="margin-top:8px;padding:8px" id="addBlendRowBtn">+ 添加一种豆</button></div></div><div class="field"><label>烘焙日期</label><input type="date" class="input" name="roastDate" value="'+esc(b.roastDate||'')+'"></div><div class="field"><label>状态</label><div class="seg" id="segStatus">'+['在喝','囤豆中','喝完'].map(s=>'<button type="button" data-action="seg-set" data-target="status" data-v="'+s+'" class="'+((b.status||'在喝')===s?'on':'')+'">'+s+'</button>').join('')+'</div><input type="hidden" name="status" value="'+esc(b.status||'在喝')+'"></div><div class="field"><label>购买记录（日期 / 金额 / 克重）</label><div id="purchaseList">'+purchaseHtml+'</div><button type="button" class="btn btn-ghost btn-block" style="margin-top:8px;padding:8px" id="addPurchaseRowBtn">+ 添加购买记录</button></div><div class="row2"><div class="field"><label>最新克价</label><div class="auto-val" id="latestPerG">— 元/g</div></div><div class="field"><label>最低克价</label><div class="auto-val" id="lowestPerG">— 元/g</div></div></div><div class="field"><label>参考风味</label><textarea class="textarea" name="flavor" placeholder="用逗号分隔，例如：柑橘，茉莉，蜂蜜">'+esc(b.flavor||'')+'</textarea></div><div class="field"><label>官方冲煮建议</label><textarea class="textarea" name="brewAdvice" style="min-height:110px" placeholder="粉量、水量、水温、研磨度、注水节奏…">'+esc(b.brewAdvice||'')+'</textarea></div><div class="field"><label>笔记</label><textarea class="textarea" name="personalNotes" style="min-height:100px" placeholder="记录你对这款豆子真实的感受...">'+esc(b.personalNotes||'')+'</textarea></div><div class="btn-row">'+(isEdit?'<button class="btn btn-danger" data-action="delete-bean" data-id="'+b.id+'">删除</button>':'')+'<button class="btn" data-action="save-bean" data-id="'+(b.id||'')+'">保存</button></div>';
+const html=modalHead(isEdit?'编辑豆子':'新增豆子')+'<div class="field"><label>品名 *</label><input class="input" name="name" value="'+esc(b.name||'')+'" placeholder="例如：埃塞 耶加雪菲"></div><div class="field"><label>烘焙商</label><input class="input" name="roaster" value="'+esc(b.roaster||'')+'" placeholder="例如：某某烘焙"></div><div class="field"><label>烘焙度</label><input class="input" name="roastLevel" value="'+esc(b.roastLevel||'')+'" placeholder="浅/中/深"></div><div class="field"><label class="switch" style="font-size:13px" id="blendLabel"><span style="color:var(--dim);font-weight:700" id="blendText">拼配豆</span><input type="checkbox" name="blend" id="fBlend" '+(b.blend?'checked':'')+'><span class="track"></span></label></div><div id="singleBeanFields"><div class="row2"><div class="field"><label>产地/产区/处理站</label><input class="input" name="origin" value="'+esc(b.origin||'')+'"></div><div class="field"><label>豆种</label><input class="input" name="variety" value="'+esc(b.variety||'')+'" placeholder="例如：Heirloom"></div></div><div class="row2"><div class="field"><label>处理法</label><input class="input" name="process" value="'+esc(b.process||'')+'" placeholder="水洗/日晒/蜜处理"></div></div></div><div id="blendBeanFields" style="display:none"><div class="field"><label>拼配组成（不同产区/豆种/处理法）</label><div id="blendList"></div><button type="button" class="btn btn-ghost btn-block" style="margin-top:8px;padding:8px" id="addBlendRowBtn">+ 添加一种豆</button></div></div><div class="field"><label>状态</label><div class="seg" id="segStatus">'+['在喝','囤豆中','喝完'].map(s=>'<button type="button" data-action="seg-set" data-target="status" data-v="'+s+'" class="'+((b.status||'在喝')===s?'on':'')+'">'+s+'</button>').join('')+'</div><input type="hidden" name="status" value="'+esc(b.status||'在喝')+'"></div><div class="field"><label>购买记录（日期 / 金额 / 克重）</label><div id="purchaseList">'+purchaseHtml+'</div><button type="button" class="btn btn-ghost btn-block" style="margin-top:8px;padding:8px" id="addPurchaseRowBtn">+ 添加购买记录</button></div><div class="row2"><div class="field"><label>最新克价</label><div class="auto-val" id="latestPerG">— 元/g</div></div><div class="field"><label>最低克价</label><div class="auto-val" id="lowestPerG">— 元/g</div></div></div><div class="field"><label>参考风味</label><textarea class="textarea" name="flavor" placeholder="用逗号分隔，例如：柑橘，茉莉，蜂蜜">'+esc(b.flavor||'')+'</textarea></div><div class="field"><label>官方冲煮建议</label><textarea class="textarea" name="brewAdvice" style="min-height:110px" placeholder="粉量、水量、水温、研磨度、注水节奏…">'+esc(b.brewAdvice||'')+'</textarea></div><div class="field"><label>笔记</label><textarea class="textarea" name="personalNotes" style="min-height:100px" placeholder="记录你对这款豆子真实的感受...">'+esc(b.personalNotes||'')+'</textarea></div><div class="btn-row">'+(isEdit?'<button class="btn btn-danger" data-action="delete-bean" data-id="'+b.id+'">删除</button>':'')+'<button class="btn" data-action="save-bean" data-id="'+(b.id||'')+'">保存</button></div>';
 openModal(html); setTimeout(()=>{ bindPerG(); bindBlendLogic(b); bindPurchaseLogic(); },30); }
 
 function bindPerG(){ const latest=$('#latestPerG'),lowest=$('#lowestPerG'); if(!latest||!lowest)return; const updatePrice = () => { const rows = $$('#purchaseList .purchase-row'); let latestPrice = 0, latestWeight = 0; let lowestPrice = Infinity; let hasValid = false; let latestDate = ''; rows.forEach(row => { const date = row.querySelector('[data-field="date"]').value; const price = num(row.querySelector('[data-field="price"]').value); const weight = num(row.querySelector('[data-field="weight"]').value); if (price && weight) { hasValid = true; const perG = price / weight; if (perG < lowestPrice) lowestPrice = perG; if (!latestDate || date > latestDate) { latestDate = date; latestPrice = price; latestWeight = weight; } } }); latest.textContent = (latestPrice && latestWeight) ? (latestPrice/latestWeight).toFixed(2)+' 元/g' : '— 元/g'; lowest.textContent = hasValid ? lowestPrice.toFixed(2)+' 元/g' : '— 元/g'; }; $('#purchaseList').addEventListener('input', updatePrice); updatePrice(); }
@@ -341,41 +235,41 @@ function openExpForm(id){ const e=id?DB.experiences.find(x=>x.id===id)||{}:{}; c
 
 function openRecipeForm(id){ const r=id?DB.recipes.find(x=>x.id===id)||{}:{}; const html=modalHead(id?'编辑方案':'新建方案')+'<div class="field"><label>方案名称 *</label><input class="input" name="name" value="'+esc(r.name||'')+'" placeholder="例如：V60 三段式"></div><div class="field"><label>类型</label><div class="seg"><button type="button" data-action="seg-set" data-target="type" data-v="own" class="'+((r.type||'own')==='own'?'on':'')+'">我的优化方案</button><button type="button" data-action="seg-set" data-target="type" data-v="collect" class="'+(r.type==='collect'?'on':'')+'">收集有趣方案</button></div><input type="hidden" name="type" value="'+esc(r.type||'own')+'"></div><div class="field"><label>关联豆子（可空）</label><select class="select" name="beanId" id="rBean"><option value="">— 不关联 —</option>'+DB.beans.map(x=>'<option value="'+x.id+'" '+(r.beanId===x.id?'selected':'')+'>'+esc(x.name)+'</option>').join('')+'</select></div><input type="hidden" name="beanName" id="rBeanName" value="'+esc(r.beanName||'')+'"><div class="row3"><div class="field"><label>粉量 (g)</label><input type="number" step="0.1" class="input" name="dose" id="rDose" value="'+esc(r.dose||'')+'"></div><div class="field"><label>水量 (g)</label><input type="number" step="1" class="input" name="water" id="rWater" value="'+esc(r.water||'')+'"></div><div class="field"><label>水温 (℃)</label><input type="number" step="1" class="input" name="temp" value="'+esc(r.temp||'')+'"></div></div><div class="row2"><div class="field"><label>粉水比</label><div class="auto-val" id="rRatio">'+esc(r.ratio||'—')+'</div><input type="hidden" name="ratio" id="rRatioInput" value="'+esc(r.ratio||'')+'"></div><div class="field"><label>总时长</label><input class="input" name="totalTime" value="'+esc(r.totalTime||'')+'" placeholder="2:15"></div></div><div class="row2"><div class="field"><label>滤杯</label><input class="input" name="dripper" value="'+esc(r.dripper||'')+'"></div><div class="field"><label>研磨度</label><input class="input" name="grind" value="'+esc(r.grind||'')+'"></div></div><div class="field"><label>注水段数 / 每段水量与时间</label><textarea class="textarea" name="stages" placeholder="闷蒸 30g / 30s&#10;第二段 至 150g / 60s&#10;第三段 至 240g / 45s">'+esc(r.stages||'')+'</textarea></div><div class="field"><label>风味</label><textarea class="textarea" name="flavor" placeholder="用逗号分隔">'+esc(r.flavor||'')+'</textarea></div><div class="field"><label>评价</label><textarea class="textarea" style="min-height:100px" name="review" placeholder="这套方案喝起来怎么样">'+esc(r.review||'')+'</textarea></div><div class="btn-row">'+(id?'<button class="btn btn-danger" data-action="delete-recipe" data-id="'+r.id+'">删除</button>':'')+'<button class="btn" data-action="save-recipe" data-id="'+(r.id||'')+'">保存</button></div>'; openModal(html); setTimeout(()=>{ const d=$('#rDose'),w=$('#rWater'),out=$('#rRatio'),inp=$('#rRatioInput'); const upd=()=>{ const dv=num(d.value),wv=num(w.value); if(dv&&wv){ const t='1:'+(wv/dv).toFixed(1); out.textContent=t; inp.value=t; } else { out.textContent='—'; inp.value=''; } }; if(d&&w){ d.addEventListener('input',upd); w.addEventListener('input',upd); upd(); } const sel=$('#rBean'),nm=$('#rBeanName'); if(sel){ sel.addEventListener('change',()=>{ const bean=DB.beans.find(x=>x.id===sel.value); nm.value=bean?(bean.name||''):''; }); } },30); }
 
-const PRESET_THEMES=[{id:'euro-pink',name:'欧元粉',colors:['#F6E8EA','#E29A91','#B34C4E']},{id:'euro-blue',name:'欧元蓝',colors:['#E8EFF4','#87B8D8','#326FAD']},{id:'euro-green',name:'欧元绿',colors:['#E7EFEA','#91B889','#347B59']},{id:'euro-gold',name:'欧元金',colors:['#F7F0E5','#E4BD65','#BA8B36']},{id:'euro-purple',name:'欧元紫',colors:['#EFEAF2','#AF8AC1','#75529E']},{id:'dark',name:'深色',colors:['#161823','#53589A','#B8CEE2']}];
+const PRESET_THEMES=[{id:'euro-pink',name:'欧元粉',colors:['#F0E4E6','#E29A91','#B34C4E']},{id:'euro-blue',name:'欧元蓝',colors:['#E2E9EE','#87B8D8','#326FAD']},{id:'euro-green',name:'欧元绿',colors:['#E0E7E3','#91B889','#347B59']},{id:'euro-gold',name:'欧元金',colors:['#F0E9DF','#E4BD65','#BA8B36']},{id:'euro-purple',name:'欧元紫',colors:['#E8E3EB','#AF8AC1','#75529E']},{id:'dark',name:'深色',colors:['#161823','#53589A','#B8CEE2']}];
 
 function openSettings(){
-  const customThemes = DB.settings.customThemes || [];
-  let html = modalHead('设置')+'<div class="sec-title" style="margin-top:0">App 名称</div><div class="field" style="display:flex;gap:8px;align-items:center"><input class="input" id="appNameInput" value="'+esc(DB.settings.appName||'西洋豆浆萃')+'" placeholder="输入你喜欢的名字" style="flex:1;min-width:0"><button class="btn" style="width:44px;height:44px;padding:0;border-radius:12px;flex:none;display:flex;align-items:center;justify-content:center" data-action="save-app-name"><span class="ic" style="width:20px;height:20px">'+ICON.check+'</span></button></div><div class="sec-title">官方预设主题</div><div class="theme-grid">'+PRESET_THEMES.map(t=>'<button class="theme-item '+(DB.settings.theme===t.id?'on':'')+'" data-action="set-theme" data-v="'+t.id+'"><div class="swatches">'+t.colors.map(c=>'<span class="sw" style="background:'+c+'"></span>').join('')+'</div><div class="tname">'+t.name+'</div></button>').join('')+'</div><div class="sec-title">我的自定义主题（'+customThemes.length+'/6）</div>';
-if (customThemes.length === 0) { html += '<div class="hint" style="text-align:center;padding:12px;color:var(--dim)">还没有自定义主题，点击下方按钮创建</div>'; } else { html += customThemes.map(t => '<div class="my-theme-item '+(DB.settings.theme===t.id?'on':'')+'" data-action="apply-custom-theme" data-id="'+t.id+'"><div class="theme-info"><div class="theme-name">'+esc(t.name)+'</div><div class="theme-colors"><span style="background:'+t.bg+'"></span><span style="background:'+t.card+'"></span><span style="background:'+t.title+'"></span><span style="background:'+t.accent+'"></span></div></div><div class="theme-actions"><button class="edit-btn" data-action="edit-custom-theme" data-id="'+t.id+'">编辑</button><button class="del-btn" data-action="delete-custom-theme" data-id="'+t.id+'">删除</button></div></div>').join(''); }
-html += '<div style="margin-top:12px"><button class="btn btn-ghost btn-block" style="margin-bottom:10px" data-action="create-custom-theme" '+(customThemes.length>=6?'disabled style="opacity:.5"':'')+'><span class="ic-sm">'+ICON.plus+'</span> 创建新主题</button></div><div class="sec-title">数据备份</div><div class="backup-area"><span class="hint">导出：点击下方文字框全选复制，保存到备忘录或微信</span><textarea id="exportArea" readonly>'+esc(JSON.stringify(DB,null,2))+'</textarea><button class="btn btn-ghost btn-block" style="margin-top:8px" data-action="copy-export">复制到剪贴板</button></div><div class="backup-area" style="margin-top:12px"><span class="hint">导入：将之前备份的 JSON 粘贴到下方，点击导入</span><textarea id="importArea" placeholder="粘贴 JSON..."></textarea><button class="btn btn-danger btn-block" style="margin-top:8px" data-action="do-import">确认导入</button></div><button class="btn btn-danger btn-block" style="margin-top:16px" data-action="clear-data">清空全部数据</button><div class="hint" style="margin-top:14px;text-align:center">数据保存在本机，请定期导出备份</div>'; openModal(html);
-}
+  let html = modalHead('设置')+
+    '<div class="sec-title" style="margin-top:0">App 名称</div>'+
+    '<div class="field" style="display:flex;gap:8px;align-items:center">'+
+      '<input class="input" id="appNameInput" value="'+esc(DB.settings.appName||'咖啡笔记')+'" placeholder="输入你喜欢的名字" style="flex:1;min-width:0">'+
+      '<button class="btn" style="width:44px;height:44px;padding:0;border-radius:12px;flex:none;display:flex;align-items:center;justify-content:center" data-action="save-app-name">'+
+        '<span class="ic" style="width:20px;height:20px">'+ICON.check+'</span>'+
+      '</button>'+
+    '</div>'+
 
-function openThemeEditor(themeId){
-  const customThemes = DB.settings.customThemes || [];
-  let theme = { id: '', name: '', bg: '#F6E8EA', card: '#FFFFFF', title: '#673D47', accent: '#B34C4E' };
-  if (themeId) { const found = customThemes.find(t => t.id === themeId); if (found) theme = Object.assign({}, found); }
-  const isEdit = !!themeId;
-  let html = modalHead(isEdit ? '编辑自定义主题' : '创建自定义主题')+'<div class="field"><label>主题名称</label><input class="input" id="themeNameInput" value="'+esc(theme.name)+'" placeholder="例如：我的秋日私语"></div><div class="color-input-row"><label>背景色</label><input type="color" id="colorBg" value="'+theme.bg+'"><input type="text" id="hexBg" value="'+theme.bg+'" maxlength="7" placeholder="#FFFFFF"></div><div class="color-input-row"><label>卡片色</label><input type="color" id="colorCard" value="'+theme.card+'"><input type="text" id="hexCard" value="'+theme.card+'" maxlength="7" placeholder="#FFFFFF"></div><div class="color-input-row"><label>标题色</label><input type="color" id="colorTitle" value="'+theme.title+'"><input type="text" id="hexTitle" value="'+theme.title+'" maxlength="7" placeholder="#000000"></div><div class="color-input-row"><label>强调色</label><input type="color" id="colorAccent" value="'+theme.accent+'"><input type="text" id="hexAccent" value="'+theme.accent+'" maxlength="7" placeholder="#000000"></div><div class="sec-title" style="margin-top:16px">历史色号（最多10个）</div><div class="hint" style="margin-bottom:6px">点击下方色块快速填入上方选择器，长按可锁定或删除</div><div class="history-colors" id="historyColors"></div><div class="sec-title">实时预览</div><div class="preview-card"><div class="p-title">耶加雪菲</div><div class="p-text">这是一段正文示例，展示文字颜色。</div><div class="p-dim">这是一段次要文字，用于辅助信息。</div><div class="p-btn">保存按钮</div></div><div class="btn-row">'+(isEdit ? '<button class="btn btn-danger" data-action="delete-custom-theme" data-id="'+theme.id+'">删除主题</button>' : '')+'<button class="btn" data-action="save-custom-theme" data-id="'+(isEdit ? theme.id : '')+'">保存并应用</button></div>';
+    '<div class="sec-title">官方预设主题</div>'+
+    '<div class="theme-grid">'+
+      PRESET_THEMES.map(t=>'<button class="theme-item '+(DB.settings.theme===t.id?'on':'')+'" data-action="set-theme" data-v="'+t.id+'">'+
+        '<div class="swatches">'+t.colors.map(c=>'<span class="sw" style="background:'+c+'"></span>').join('')+'</div>'+
+        '<div class="tname">'+t.name+'</div></button>').join('')+
+    '</div>'+
+
+    '<div class="sec-title">数据备份</div>'+
+    '<div class="backup-area">'+
+      '<span class="hint">导出：点击下方文字框全选复制，保存到备忘录或微信</span>'+
+      '<textarea id="exportArea" readonly>'+esc(JSON.stringify(DB,null,2))+'</textarea>'+
+      '<button class="btn btn-ghost btn-block" style="margin-top:8px" data-action="copy-export">复制到剪贴板</button>'+
+    '</div>'+
+    '<div class="backup-area" style="margin-top:12px">'+
+      '<span class="hint">导入：将之前备份的 JSON 粘贴到下方，点击导入</span>'+
+      '<textarea id="importArea" placeholder="粘贴 JSON..."></textarea>'+
+      '<button class="btn btn-danger btn-block" style="margin-top:8px" data-action="do-import">确认导入</button>'+
+    '</div>'+
+    '<button class="btn btn-danger btn-block" style="margin-top:16px" data-action="clear-data">清空全部数据</button>'+
+    '<div class="hint" style="margin-top:14px;text-align:center">数据保存在本机，请定期导出备份</div>';
+
   openModal(html);
-  setTimeout(()=>{
-    const bindColorSync = (colorId, hexId) => { const colorInput = $('#'+colorId); const hexInput = $('#'+hexId); if (colorInput && hexInput) { colorInput.addEventListener('input', () => { hexInput.value = colorInput.value.toUpperCase(); updatePreview(); addHistoryColor(colorInput.value); }); hexInput.addEventListener('input', () => { if (/^#[0-9A-F]{6}$/i.test(hexInput.value)) { colorInput.value = hexInput.value; updatePreview(); addHistoryColor(hexInput.value); } }); } };
-    bindColorSync('colorBg', 'hexBg'); bindColorSync('colorCard', 'hexCard'); bindColorSync('colorTitle', 'hexTitle'); bindColorSync('colorAccent', 'hexAccent');
-    const updatePreview = () => { const bg = normalizeHex($('#hexBg').value); const card = normalizeHex($('#hexCard').value); const title = normalizeHex($('#hexTitle').value); const accent = normalizeHex($('#hexAccent').value); const preview = $('.preview-card'); if (preview) { let text = mixColors(title, bg, 0.7); let dim = mixColors(title, bg, 0.4); const fabFg = getLuminance(accent) > 0.5 ? '#000000' : '#FFFFFF'; if (getContrast(bg, title) < 4.5) { text = getLuminance(bg) > 0.5 ? '#000000' : '#FFFFFF'; dim = mixColors(text, bg, 0.5); } if (getContrast(bg, text) < 4.5) { text = getLuminance(bg) > 0.5 ? '#1A1A1A' : '#E6EAF2'; dim = mixColors(text, bg, 0.5); } preview.style.background = card; preview.style.borderColor = mixColors(accent, bg, 0.15); preview.querySelector('.p-title').style.color = title; preview.querySelector('.p-text').style.color = text; preview.querySelector('.p-dim').style.color = dim; preview.querySelector('.p-btn').style.background = accent; preview.querySelector('.p-btn').style.color = fabFg; preview.style.boxShadow = `0 2px 10px ${mixColors(title, bg, 0.08)}`; } };
-    function renderHistoryColors() { const container = $('#historyColors'); if (!container) return; const colors = DB.settings.historyColors || []; container.innerHTML = colors.map((c, i) => '<div class="history-color-box '+(c.locked?'locked':'')+'" data-index="'+i+'" style="background:'+c.color+'">'+(c.locked ? '<div class="lock-icon">🔒</div>' : '')+'</div>').join(''); }
-    let historySaveTimer = null;
-    function addHistoryColor(color) { if (!/^#[0-9A-F]{6}$/i.test(color)) return; color = color.toUpperCase(); let colors = DB.settings.historyColors || []; const existIdx = colors.findIndex(c => c.color === color); if (existIdx !== -1) { const [item] = colors.splice(existIdx, 1); colors.push(item); } else { colors.push({ color: color, locked: false }); } while (colors.length > 10) { const idx = colors.findIndex(c => !c.locked); if (idx !== -1) { colors.splice(idx, 1); } else { break; } } DB.settings.historyColors = colors; clearTimeout(historySaveTimer); historySaveTimer = setTimeout(() => { save(); renderHistoryColors(); }, 500); }
-    renderHistoryColors(); updatePreview();
-    let longPressTimer = null; let activeMenu = null;
-    $('#historyColors').addEventListener('touchstart', (e) => { const box = e.target.closest('.history-color-box'); if (!box) return; longPressTimer = setTimeout(() => { const idx = parseInt(box.dataset.index); const colors = DB.settings.historyColors || []; const item = colors[idx]; if (!item) return; if (activeMenu) activeMenu.remove(); const rect = box.getBoundingClientRect(); const menu = document.createElement('div'); menu.className = 'color-bubble-menu'; menu.style.left = (rect.left - 20) + 'px'; menu.style.top = (rect.top - 44) + 'px'; menu.innerHTML = `<button class="bubble-lock">${item.locked ? '解锁' : '锁定'}</button><button class="bubble-del">删除</button>`; menu.querySelector('.bubble-lock').addEventListener('click', () => { item.locked = !item.locked; save(); renderHistoryColors(); menu.remove(); activeMenu = null; }); menu.querySelector('.bubble-del').addEventListener('click', () => { colors.splice(idx, 1); save(); renderHistoryColors(); menu.remove(); activeMenu = null; }); document.body.appendChild(menu); activeMenu = menu; }, 600); }, { passive: true });
-    $('#historyColors').addEventListener('touchend', () => { clearTimeout(longPressTimer); });
-    $('#historyColors').addEventListener('touchmove', () => { clearTimeout(longPressTimer); });
-    $('#historyColors').addEventListener('click', (e) => { const box = e.target.closest('.history-color-box'); if (!box) return; const idx = parseInt(box.dataset.index); const colors = DB.settings.historyColors || []; const item = colors[idx]; if (item) { $('#hexBg').value = item.color; $('#colorBg').value = item.color; updatePreview(); } });
-    document.addEventListener('click', function closeMenu(ev) { if (activeMenu && !ev.target.closest('.color-bubble-menu') && !ev.target.closest('.history-color-box')) { activeMenu.remove(); activeMenu = null; } });
-    document.querySelector('.color-bubble-menu')?.addEventListener('click', e => e.stopPropagation());
-  }, 100);
 }
-
-function showConfirm(title, message, onConfirm) { const overlay = $('#confirmOverlay'); overlay.innerHTML = `<div class="confirm-box"><h4>${title}</h4><p>${message}</p><div class="confirm-btns"><button class="confirm-cancel">取消</button><button class="confirm-delete">删除</button></div></div>`; overlay.classList.add('show'); overlay.querySelector('.confirm-cancel').addEventListener('click', () => { overlay.classList.remove('show'); overlay.innerHTML = ''; }); overlay.querySelector('.confirm-delete').addEventListener('click', () => { overlay.classList.remove('show'); overlay.innerHTML = ''; onConfirm(); }); overlay.addEventListener('click', (e) => { if (e.target === overlay) { overlay.classList.remove('show'); overlay.innerHTML = ''; } }); }
 
 document.addEventListener('click',function(ev){
   const el=ev.target.closest('[data-action]'); if(!el)return;
@@ -417,15 +311,10 @@ document.addEventListener('click',function(ev){
     case 'recipe-filter':state.recipeFilter=el.dataset.v;state.openSwipeId=null;render();break;
     case 'recipe-view':DB.settings.recipeView=el.dataset.v;save();state.openSwipeId=null;render();break;
     case 'log-filter':state.logFilter=el.dataset.v;state.openSwipeId=null;render();break;
-    case 'save-app-name':{const inp=$('#appNameInput');if(inp){DB.settings.appName=inp.value.trim()||'西洋豆浆萃';save();closeModal();render();toast('名称已保存');}break;}
+    case 'save-app-name':{const inp=$('#appNameInput');if(inp){DB.settings.appName=inp.value.trim()||'咖啡笔记';save();closeModal();render();toast('名称已保存');}break;}
     case 'set-theme':DB.settings.theme=el.dataset.v;save();applyTheme();openSettings();toast('主题已切换');break;
-    case 'apply-custom-theme':DB.settings.theme=el.dataset.id;save();applyTheme();openSettings();toast('已应用自定义主题');break;
-    case 'create-custom-theme':{ if(DB.settings.customThemes.length>=6){toast('最多只能保存6个自定义主题');return;} openThemeEditor(); }break;
-    case 'edit-custom-theme':openThemeEditor(el.dataset.id);break;
-    case 'delete-custom-theme':{ const themeId = el.dataset.id; const theme = DB.settings.customThemes.find(t=>t.id===themeId); if(!theme) return; showConfirm('删除主题', '确定要删除「'+esc(theme.name)+'」主题吗？此操作不可恢复。', () => { DB.settings.customThemes = DB.settings.customThemes.filter(t=>t.id!==themeId); if (DB.settings.theme === themeId) DB.settings.theme = 'euro-pink'; save(); applyTheme(); closeModal(); render(); toast('主题已删除'); }); break; }
-    case 'save-custom-theme':{ const nameInp = $('#themeNameInput'); let name = nameInp ? nameInp.value.trim() : ''; if (!name) name = '自定义主题 ' + (DB.settings.customThemes.length + 1); let bg = normalizeHex($('#hexBg')?.value || $('#colorBg')?.value || '#F6E8EA'); let card = normalizeHex($('#hexCard')?.value || $('#colorCard')?.value || '#FFFFFF'); let title = normalizeHex($('#hexTitle')?.value || $('#colorTitle')?.value || '#673D47'); let accent = normalizeHex($('#hexAccent')?.value || $('#colorAccent')?.value || '#B34C4E'); const newTheme = { id: id || ('t_'+uid()), name, bg, card, title, accent }; if (id) { const idx = DB.settings.customThemes.findIndex(t=>t.id===id); if (idx !== -1) DB.settings.customThemes[idx] = newTheme; } else { DB.settings.customThemes.push(newTheme); } DB.settings.theme = newTheme.id; save(); applyTheme(); closeModal(); render(); toast('主题已保存并应用'); break; }
     case 'copy-export': { const ta = $('#exportArea'); if (ta) { ta.select(); ta.setSelectionRange(0, 999999); try { if (navigator.clipboard && navigator.clipboard.writeText) { navigator.clipboard.writeText(ta.value).then(() => toast('已复制到剪贴板')).catch(() => { document.execCommand('copy'); toast('已复制到剪贴板'); }); } else { document.execCommand('copy'); toast('已复制到剪贴板'); } } catch (e) { toast('复制失败，请长按文本框手动复制'); } } break; }
-    case 'do-import': { const ta = $('#importArea'); if (!ta || !ta.value.trim()) { toast('请先粘贴内容'); return; } try { const d = JSON.parse(ta.value); const base = defaultDB(); base.beans = (Array.isArray(d.beans) ? d.beans : []).filter(x => x && typeof x === 'object'); base.brews = (Array.isArray(d.brews) ? d.brews : []).filter(x => x && typeof x === 'object'); base.experiences = (Array.isArray(d.experiences) ? d.experiences : []).filter(x => x && typeof x === 'object'); base.recipes = (Array.isArray(d.recipes) ? d.recipes : []).filter(x => x && typeof x === 'object'); base.settings = Object.assign({}, DEFAULT_SETTINGS, d.settings || {}); if (!Array.isArray(base.settings.customThemes)) base.settings.customThemes = []; if (!Array.isArray(base.settings.historyColors)) base.settings.historyColors = []; DB = base; save(); toast('导入成功，正在刷新设置界面...'); setTimeout(() => { openSettings(); }, 500); } catch (e) { toast('格式错误，导入失败：' + e.message); } break; }
+    case 'do-import': { const ta = $('#importArea'); if (!ta || !ta.value.trim()) { toast('请先粘贴内容'); return; } try { const d = JSON.parse(ta.value); const base = defaultDB(); base.beans = (Array.isArray(d.beans) ? d.beans : []).filter(x => x && typeof x === 'object'); base.brews = (Array.isArray(d.brews) ? d.brews : []).filter(x => x && typeof x === 'object'); base.experiences = (Array.isArray(d.experiences) ? d.experiences : []).filter(x => x && typeof x === 'object'); base.recipes = (Array.isArray(d.recipes) ? d.recipes : []).filter(x => x && typeof x === 'object'); base.settings = Object.assign({}, DEFAULT_SETTINGS, d.settings || {}); DB = base; save(); toast('导入成功，正在刷新设置界面...'); setTimeout(() => { openSettings(); }, 500); } catch (e) { toast('格式错误，导入失败：' + e.message); } break; }
     case 'clear-data':{if(!confirm('确定清空全部数据吗？此操作不可恢复。'))return;if(!confirm('再次确认：真的要清空所有记录吗？'))return;DB=defaultDB();save();closeModal();render();toast('已清空');break;}
   }
 });
